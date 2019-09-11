@@ -461,6 +461,18 @@
 		4CC1ECF9211A47CE00CC13BE /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CC1ECF8211A47CD00CC13BE /* StoreKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		4CC1ECFB211A553000CC13BE /* AppUpdateNag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC1ECFA211A553000CC13BE /* AppUpdateNag.swift */; };
 		4CEB78C92178EBAB00F315D2 /* OWSSessionResetJobRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CEB78C82178EBAB00F315D2 /* OWSSessionResetJobRecord.m */; };
+		591E657F2327B19300B7484E /* VinciChallengeListProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591E657E2327B19300B7484E /* VinciChallengeListProtocols.swift */; };
+		591E65812327B47800B7484E /* VinciChallengeListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 591E65802327B47800B7484E /* VinciChallengeListViewController.xib */; };
+		591E65852327B8C200B7484E /* VinciChallengeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591E65842327B8C200B7484E /* VinciChallengeListViewController.swift */; };
+		591E658D2327E23800B7484E /* VinciChallengeCompactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591E658C2327E23800B7484E /* VinciChallengeCompactCell.swift */; };
+		591E658F2327E25B00B7484E /* VinciChallengeCompactCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 591E658E2327E25B00B7484E /* VinciChallengeCompactCell.xib */; };
+		591E65912327E85F00B7484E /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591E65902327E85F00B7484E /* Challenge.swift */; };
+		591E65942327F05200B7484E /* UIImageView + download.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591E65932327F05200B7484E /* UIImageView + download.swift */; };
+		591E65962327FC5900B7484E /* VinciChallengeListViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591E65952327FC5900B7484E /* VinciChallengeListViewInteractor.swift */; };
+		591E65982327FE2500B7484E /* VinciChallengePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591E65972327FE2500B7484E /* VinciChallengePresenter.swift */; };
+		591E659A232811BD00B7484E /* VinciChallengeListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591E6599232811BC00B7484E /* VinciChallengeListRouter.swift */; };
+		591E659C2328E85C00B7484E /* Date + representation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591E659B2328E85C00B7484E /* Date + representation.swift */; };
+		591E659F2328FE1A00B7484E /* VinciChallengeExtendedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591E659E2328FE1A00B7484E /* VinciChallengeExtendedCell.swift */; };
 		70377AAB1918450100CAF501 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70377AAA1918450100CAF501 /* MobileCoreServices.framework */; };
 		768A1A2B17FC9CD300E00ED8 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 768A1A2A17FC9CD300E00ED8 /* libz.dylib */; };
 		76C87F19181EFCE600C4ACAB /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76C87F18181EFCE600C4ACAB /* MediaPlayer.framework */; };
@@ -1213,6 +1225,18 @@
 		4CEB78C72178EBAB00F315D2 /* OWSSessionResetJobRecord.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OWSSessionResetJobRecord.h; sourceTree = "<group>"; };
 		4CEB78C82178EBAB00F315D2 /* OWSSessionResetJobRecord.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OWSSessionResetJobRecord.m; sourceTree = "<group>"; };
 		4CFF4C0920F55BBA005DA313 /* MenuActionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuActionsViewController.swift; sourceTree = "<group>"; };
+		591E657E2327B19300B7484E /* VinciChallengeListProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinciChallengeListProtocols.swift; sourceTree = "<group>"; };
+		591E65802327B47800B7484E /* VinciChallengeListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VinciChallengeListViewController.xib; sourceTree = "<group>"; };
+		591E65842327B8C200B7484E /* VinciChallengeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinciChallengeListViewController.swift; sourceTree = "<group>"; };
+		591E658C2327E23800B7484E /* VinciChallengeCompactCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinciChallengeCompactCell.swift; sourceTree = "<group>"; };
+		591E658E2327E25B00B7484E /* VinciChallengeCompactCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VinciChallengeCompactCell.xib; sourceTree = "<group>"; };
+		591E65902327E85F00B7484E /* Challenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge.swift; sourceTree = "<group>"; };
+		591E65932327F05200B7484E /* UIImageView + download.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView + download.swift"; sourceTree = "<group>"; };
+		591E65952327FC5900B7484E /* VinciChallengeListViewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinciChallengeListViewInteractor.swift; sourceTree = "<group>"; };
+		591E65972327FE2500B7484E /* VinciChallengePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinciChallengePresenter.swift; sourceTree = "<group>"; };
+		591E6599232811BC00B7484E /* VinciChallengeListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinciChallengeListRouter.swift; sourceTree = "<group>"; };
+		591E659B2328E85C00B7484E /* Date + representation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date + representation.swift"; sourceTree = "<group>"; };
+		591E659E2328FE1A00B7484E /* VinciChallengeExtendedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinciChallengeExtendedCell.swift; sourceTree = "<group>"; };
 		69349DE607F5BA6036C9AC60 /* Pods-SignalShareExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SignalShareExtension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SignalShareExtension/Pods-SignalShareExtension.debug.xcconfig"; sourceTree = "<group>"; };
 		70377AAA1918450100CAF501 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		748A5CAEDD7C919FC64C6807 /* Pods_SignalTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SignalTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2235,9 +2259,100 @@
 			path = SSKTests;
 			sourceTree = "<group>";
 		};
+		591E65772327B07200B7484E /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				591E657E2327B19300B7484E /* VinciChallengeListProtocols.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		591E65782327B08900B7484E /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				591E65902327E85F00B7484E /* Challenge.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		591E65792327B09000B7484E /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				591E65952327FC5900B7484E /* VinciChallengeListViewInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		591E657A2327B09C00B7484E /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				591E6599232811BC00B7484E /* VinciChallengeListRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		591E657B2327B0A200B7484E /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				591E65972327FE2500B7484E /* VinciChallengePresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		591E657C2327B0A800B7484E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				591E65822327B7FA00B7484E /* VinciChallengeCompactCell */,
+				591E659D2328FD6400B7484E /* VinciChallengeExtendedCell */,
+				591E65802327B47800B7484E /* VinciChallengeListViewController.xib */,
+				591E65842327B8C200B7484E /* VinciChallengeListViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		591E657D2327B0C900B7484E /* VinciChallengeList */ = {
+			isa = PBXGroup;
+			children = (
+				591E65772327B07200B7484E /* Protocols */,
+				591E657C2327B0A800B7484E /* View */,
+				591E65792327B09000B7484E /* Interactor */,
+				591E657B2327B0A200B7484E /* Presenter */,
+				591E65782327B08900B7484E /* Entity */,
+				591E657A2327B09C00B7484E /* Router */,
+			);
+			path = VinciChallengeList;
+			sourceTree = "<group>";
+		};
+		591E65822327B7FA00B7484E /* VinciChallengeCompactCell */ = {
+			isa = PBXGroup;
+			children = (
+				591E658C2327E23800B7484E /* VinciChallengeCompactCell.swift */,
+				591E658E2327E25B00B7484E /* VinciChallengeCompactCell.xib */,
+			);
+			path = VinciChallengeCompactCell;
+			sourceTree = "<group>";
+		};
+		591E65922327F02D00B7484E /* Extentions */ = {
+			isa = PBXGroup;
+			children = (
+				591E65932327F05200B7484E /* UIImageView + download.swift */,
+				591E659B2328E85C00B7484E /* Date + representation.swift */,
+			);
+			path = Extentions;
+			sourceTree = "<group>";
+		};
+		591E659D2328FD6400B7484E /* VinciChallengeExtendedCell */ = {
+			isa = PBXGroup;
+			children = (
+				591E659E2328FE1A00B7484E /* VinciChallengeExtendedCell.swift */,
+			);
+			path = VinciChallengeExtendedCell;
+			sourceTree = "<group>";
+		};
 		76EB03C118170B33006006FC /* src */ = {
 			isa = PBXGroup;
 			children = (
+				591E65922327F02D00B7484E /* Extentions */,
 				CB89971C22E2981F00D07D94 /* VinciInterface */,
 				76EB03C218170B33006006FC /* AppDelegate.h */,
 				76EB03C318170B33006006FC /* AppDelegate.m */,
@@ -2633,6 +2748,7 @@
 		CB89972822E299BB00D07D94 /* VinciChallenge */ = {
 			isa = PBXGroup;
 			children = (
+				591E657D2327B0C900B7484E /* VinciChallengeList */,
 			);
 			path = VinciChallenge;
 			sourceTree = "<group>";
@@ -2949,7 +3065,7 @@
 						ProvisioningStyle = Automatic;
 					};
 					D221A088169C9E5E00537ABF = {
-						DevelopmentTeam = 225AS2YJCX;
+						DevelopmentTeam = 67U7CVYQJQ;
 						LastSwiftMigration = 0930;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -3115,7 +3231,9 @@
 				45B74A792044AAB600CD42F8 /* input.aifc in Resources */,
 				8DADFD41230C85BB00EC2F8C /* SF-Pro-Display-Bold.otf in Resources */,
 				45B74A8C2044AAB600CD42F8 /* input-quiet.aifc in Resources */,
+				591E65812327B47800B7484E /* VinciChallengeListViewController.xib in Resources */,
 				45B74A7A2044AAB600CD42F8 /* keys.aifc in Resources */,
+				591E658F2327E25B00B7484E /* VinciChallengeCompactCell.xib in Resources */,
 				45B74A762044AAB600CD42F8 /* keys-quiet.aifc in Resources */,
 				45B74A862044AAB600CD42F8 /* note.aifc in Resources */,
 				45B74A7F2044AAB600CD42F8 /* note-quiet.aifc in Resources */,
@@ -3534,6 +3652,7 @@
 				3461293E1FD1D72B00532771 /* ExperienceUpgradeFinder.swift in Sources */,
 				34C4E2582118957600BEA353 /* WebRTCProto.swift in Sources */,
 				34D1F0BD1F8D108C0066283D /* AttachmentUploadView.m in Sources */,
+				591E65852327B8C200B7484E /* VinciChallengeListViewController.swift in Sources */,
 				452EC6DF205E9E30000E787C /* MediaGalleryViewController.swift in Sources */,
 				8D117DEF2301B14600176F06 /* VinciSettingsViewController.swift in Sources */,
 				8D18BD5722F89E5F00DB9340 /* VNChatsViewController.swift in Sources */,
@@ -3561,6 +3680,7 @@
 				34D99CE4217509C2000AFB39 /* AppEnvironment.swift in Sources */,
 				348570A820F67575004FF32B /* OWSMessageHeaderView.m in Sources */,
 				8D1E7E6323190D53004104CC /* VinciCallsTitleViewController.swift in Sources */,
+				591E65982327FE2500B7484E /* VinciChallengePresenter.swift in Sources */,
 				450DF2091E0DD2C6003D14BE /* UserNotificationsAdaptee.swift in Sources */,
 				34B6A907218B5241007C4606 /* TypingIndicatorCell.swift in Sources */,
 				34D1F0AB1F867BFC0066283D /* OWSContactOffersCell.m in Sources */,
@@ -3594,6 +3714,7 @@
 				4C090A1B210FD9C7001FD7F9 /* HapticFeedback.swift in Sources */,
 				3496744F2076ACD000080B5F /* LongTextViewController.swift in Sources */,
 				34FD93701E3BD43A00109093 /* OWSAnyTouchGestureRecognizer.m in Sources */,
+				591E659C2328E85C00B7484E /* Date + representation.swift in Sources */,
 				34B3F8931E8DF1710035BE1A /* SignalsNavigationController.m in Sources */,
 				34F308A21ECB469700BB7697 /* OWSBezierPathView.m in Sources */,
 				45B27B862037FFB400A539DF /* DebugUIFileBrowser.swift in Sources */,
@@ -3651,6 +3772,7 @@
 				4542DF54208D40AC007B4E76 /* LoadingViewController.swift in Sources */,
 				34D5CCA91EAE3D30005515DB /* AvatarViewHelper.m in Sources */,
 				34D1F0B71F87F8850066283D /* OWSGenericAttachmentView.m in Sources */,
+				591E659F2328FE1A00B7484E /* VinciChallengeExtendedCell.swift in Sources */,
 				34D920E720E179C200D51158 /* OWSMessageFooterView.m in Sources */,
 				341341EF2187467A00192D59 /* ConversationViewModel.m in Sources */,
 				8D18BD5F22F9CA4B00DB9340 /* CallViewModel.swift in Sources */,
@@ -3662,9 +3784,11 @@
 				4C13C9F620E57BA30089A98B /* ColorPickerViewController.swift in Sources */,
 				8DADFD5C230C989400EC2F8C /* VinciChatsTitleView.swift in Sources */,
 				4CC1ECFB211A553000CC13BE /* AppUpdateNag.swift in Sources */,
+				591E65912327E85F00B7484E /* Challenge.swift in Sources */,
 				34B6A903218B3F63007C4606 /* TypingIndicatorView.swift in Sources */,
 				340FC8D0205BF2FA007AEB0F /* OWSBackupIO.m in Sources */,
 				458E38371D668EBF0094BD24 /* OWSDeviceProvisioningURLParser.m in Sources */,
+				591E659A232811BD00B7484E /* VinciChallengeListRouter.swift in Sources */,
 				8DADFD1D230C774300EC2F8C /* VinciMenuSearchBar.swift in Sources */,
 				34B6A905218B4C91007C4606 /* TypingIndicatorInteraction.swift in Sources */,
 				4517642B1DE939FD00EDB8B9 /* ContactCell.swift in Sources */,
@@ -3692,6 +3816,7 @@
 				45AE48511E0732D6004D96C2 /* TurnServerInfo.swift in Sources */,
 				4CA46F4A219C78050038ABDE /* GalleryRailView.swift in Sources */,
 				34B3F8771E8DF1700035BE1A /* ContactsPicker.swift in Sources */,
+				591E657F2327B19300B7484E /* VinciChallengeListProtocols.swift in Sources */,
 				45C0DC1B1E68FE9000E04C47 /* UIApplication+OWS.swift in Sources */,
 				45FBC5C81DF8575700E9B410 /* CallKitCallManager.swift in Sources */,
 				4539B5861F79348F007141FF /* PushRegistrationManager.swift in Sources */,
@@ -3706,6 +3831,7 @@
 				34D2CCDA2062E7D000CB1A14 /* OWSScreenLockUI.m in Sources */,
 				8D5D5F47230E756100BF6C9B /* VinciContactsSearchResultsController.swift in Sources */,
 				45F170BB1E2FC5D3003FC1F2 /* CallAudioService.swift in Sources */,
+				591E65962327FC5900B7484E /* VinciChallengeListViewInteractor.swift in Sources */,
 				8DADFD5F230E676400EC2F8C /* VNNewChatViewController.swift in Sources */,
 				4CA46F4C219CCC630038ABDE /* CaptionView.swift in Sources */,
 				345BC30C2047030700257B7C /* OWS2FASettingsViewController.m in Sources */,
@@ -3733,6 +3859,7 @@
 				76EB054018170B33006006FC /* AppDelegate.m in Sources */,
 				8DADFD1E230C774300EC2F8C /* VinciTopMenuController.swift in Sources */,
 				34D1F0831F8678AA0066283D /* ConversationInputTextView.m in Sources */,
+				591E658D2327E23800B7484E /* VinciChallengeCompactCell.swift in Sources */,
 				340FC8B6204DAC8D007AEB0F /* OWSQRCodeScanningViewController.m in Sources */,
 				8D1E7E6B231D1C95004104CC /* VinciInfoCallViewController.swift in Sources */,
 				8D1E7E612317B40F004104CC /* VinciCallsLargeTitleView.swift in Sources */,
@@ -3749,6 +3876,7 @@
 				34D2CCDF206939B400CB1A14 /* DebugUIMessagesAction.m in Sources */,
 				340FC8AC204DAC8D007AEB0F /* PrivacySettingsTableViewController.m in Sources */,
 				340FC8C5204DE223007AEB0F /* DebugUIBackup.m in Sources */,
+				591E65942327F05200B7484E /* UIImageView + download.swift in Sources */,
 				4C11AA5020FD59C700351FBD /* MessageStatusView.swift in Sources */,
 				340FC8AE204DAC8D007AEB0F /* OWSSoundSettingsViewController.m in Sources */,
 				4579431E1E7C8CE9008ED0C0 /* Pastelog.m in Sources */,
@@ -4263,7 +4391,8 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 225AS2YJCX;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 67U7CVYQJQ;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
@@ -4329,7 +4458,8 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 225AS2YJCX;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 67U7CVYQJQ;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",

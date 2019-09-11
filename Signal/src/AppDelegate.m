@@ -1218,7 +1218,7 @@ static NSTimeInterval launchStartedAt;
     callsViewController = [[VinciViewController alloc] init];
     chatsViewController = [[VNChatsViewController alloc] init];
     contactsViewController = [[VinciViewController alloc] init];
-    appsViewController = [[VinciViewController alloc] init];
+    appsViewController = [[VinciChallengeListViewController alloc] initWithNibName:nil bundle:nil];
     
     UIImage* callsImage = [[UIImage imageNamed:@"vinciCallsTabIcon"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     UIImage* chatsImage = [[UIImage imageNamed:@"vinciChatsTabIcon"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
@@ -1283,7 +1283,7 @@ static NSTimeInterval launchStartedAt;
         callsViewController = [[VNCallsViewController alloc] init];
         chatsViewController = [[VNChatsViewController alloc] init];
         contactsViewController = [[VNContactsViewController alloc] init];
-        appsViewController = [[VinciViewController alloc] init];
+        appsViewController = [VinciChallengeListRouter createModule];
 
         UIImage* callsImage = [[UIImage imageNamed:@"vinciCallsTabIcon"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
         UIImage* chatsImage = [[UIImage imageNamed:@"vinciChatsTabIcon"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];

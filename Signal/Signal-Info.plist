@@ -11,7 +11,7 @@
 		<key>OSXVersion</key>
 		<string>10.13.6</string>
 		<key>WebRTCCommit</key>
-		<string>ca71024b4993ba95e3e6b8d0758004cffc54ddaf M70</string>
+		<string>05282b30630d14dbb613ed196079d22e409bd44c Initial commit (Signal - 2.32.2.0 - b0318f59d1c9c429c615278456ed2221ad359fbe)</string>
 	</dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
