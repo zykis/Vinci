@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VinciChallengeCompactCell" customModule="Vinci" customModuleProvider="target">
+            <connections>
+                <outlet property="expiredInLabel" destination="wUS-ns-COn" id="dBe-bK-jm9"/>
+                <outlet property="favouriteButton" destination="wVj-I8-s5p" id="0ED-Mu-COU"/>
+                <outlet property="iconImageView" destination="eII-QY-dep" id="pDr-5A-frq"/>
+                <outlet property="likesLabel" destination="9LE-AW-t2z" id="lfV-5D-r7o"/>
+                <outlet property="rewardLabel" destination="oJ4-Os-Xym" id="5Dt-sm-gP7"/>
+                <outlet property="titleLabel" destination="RiR-UY-5O5" id="8ga-6Y-rA0"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="caK-WT-HXO">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="36"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eII-QY-dep">
+                    <rect key="frame" x="0.0" y="0.0" width="36" height="36"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="eII-QY-dep" secondAttribute="height" multiplier="1:1" id="ZnX-PL-cWt"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wVj-I8-s5p">
+                    <rect key="frame" x="344" y="5.5" width="31" height="25"/>
+                    <state key="normal" image="vinciChatsActiveTabIcon"/>
+                </button>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="nlq-fP-LVz">
+                    <rect key="frame" x="40" y="3" width="81.5" height="30"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#GameTitile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RiR-UY-5O5">
+                            <rect key="frame" x="0.0" y="0.0" width="81.5" height="18"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ends in: 16:11:24" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wUS-ns-COn">
+                            <rect key="frame" x="0.0" y="18" width="81.5" height="12"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                </stackView>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="flE-NI-IAn">
+                    <rect key="frame" x="287.5" y="2" width="52.5" height="32"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Wv4-KJ-iXB">
+                            <rect key="frame" x="0.0" y="0.0" width="52.5" height="16"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vinciTrashIcon" translatesAutoresizingMaskIntoConstraints="NO" id="Hiu-sI-la8">
+                                    <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="16" id="P34-Ec-cuV"/>
+                                        <constraint firstAttribute="width" constant="16" id="oKh-fo-I7M"/>
+                                    </constraints>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10,6 m" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9LE-AW-t2z">
+                                    <rect key="frame" x="20" y="0.0" width="32.5" height="16"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="IYJ-B7-Mnn">
+                            <rect key="frame" x="0.0" y="16" width="52.5" height="16"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="voice-memo-button" translatesAutoresizingMaskIntoConstraints="NO" id="fdS-2U-WxP">
+                                    <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="16" id="xWb-Az-Trs"/>
+                                        <constraint firstAttribute="width" constant="16" id="yIP-6H-ffG"/>
+                                    </constraints>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$2345" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oJ4-Os-Xym">
+                                    <rect key="frame" x="20" y="0.0" width="32.5" height="16"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="wVj-I8-s5p" firstAttribute="leading" secondItem="flE-NI-IAn" secondAttribute="trailing" constant="4" id="Emz-l3-BjT"/>
+                <constraint firstItem="eII-QY-dep" firstAttribute="top" secondItem="7Cr-Wv-s0N" secondAttribute="top" id="IVd-bf-2tF"/>
+                <constraint firstAttribute="height" constant="36" id="KJI-9w-YZP"/>
+                <constraint firstItem="eII-QY-dep" firstAttribute="leading" secondItem="7Cr-Wv-s0N" secondAttribute="leading" id="MXR-Uu-agp"/>
+                <constraint firstItem="nlq-fP-LVz" firstAttribute="leading" secondItem="eII-QY-dep" secondAttribute="trailing" constant="4" id="Tnn-vS-knl"/>
+                <constraint firstItem="wVj-I8-s5p" firstAttribute="centerY" secondItem="caK-WT-HXO" secondAttribute="centerY" id="hQ3-M0-KJW"/>
+                <constraint firstItem="flE-NI-IAn" firstAttribute="centerY" secondItem="caK-WT-HXO" secondAttribute="centerY" id="hcv-Qe-RQz"/>
+                <constraint firstItem="nlq-fP-LVz" firstAttribute="centerY" secondItem="caK-WT-HXO" secondAttribute="centerY" id="hoQ-CT-rmv"/>
+                <constraint firstItem="7Cr-Wv-s0N" firstAttribute="bottom" secondItem="eII-QY-dep" secondAttribute="bottom" id="lb8-P9-xAl"/>
+                <constraint firstItem="7Cr-Wv-s0N" firstAttribute="trailing" secondItem="wVj-I8-s5p" secondAttribute="trailing" id="njt-zv-snv"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="7Cr-Wv-s0N"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="vinciChatsActiveTabIcon" width="31" height="25"/>
+        <image name="vinciTrashIcon" width="21" height="24"/>
+        <image name="voice-memo-button" width="32" height="32"/>
+    </resources>
+</document>

@@ -465,7 +465,6 @@
 		591E65812327B47800B7484E /* VinciChallengeListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 591E65802327B47800B7484E /* VinciChallengeListViewController.xib */; };
 		591E65852327B8C200B7484E /* VinciChallengeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591E65842327B8C200B7484E /* VinciChallengeListViewController.swift */; };
 		591E658D2327E23800B7484E /* VinciChallengeCompactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591E658C2327E23800B7484E /* VinciChallengeCompactCell.swift */; };
-		591E658F2327E25B00B7484E /* VinciChallengeCompactCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 591E658E2327E25B00B7484E /* VinciChallengeCompactCell.xib */; };
 		591E65912327E85F00B7484E /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591E65902327E85F00B7484E /* Challenge.swift */; };
 		591E65942327F05200B7484E /* UIImageView + download.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591E65932327F05200B7484E /* UIImageView + download.swift */; };
 		591E65962327FC5900B7484E /* VinciChallengeListViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591E65952327FC5900B7484E /* VinciChallengeListViewInteractor.swift */; };
@@ -473,6 +472,7 @@
 		591E659A232811BD00B7484E /* VinciChallengeListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591E6599232811BC00B7484E /* VinciChallengeListRouter.swift */; };
 		591E659C2328E85C00B7484E /* Date + representation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591E659B2328E85C00B7484E /* Date + representation.swift */; };
 		591E659F2328FE1A00B7484E /* VinciChallengeExtendedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591E659E2328FE1A00B7484E /* VinciChallengeExtendedCell.swift */; };
+		591E65A123291D3D00B7484E /* VinciChallengeCompactCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 591E65A023291D3D00B7484E /* VinciChallengeCompactCellView.xib */; };
 		70377AAB1918450100CAF501 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70377AAA1918450100CAF501 /* MobileCoreServices.framework */; };
 		768A1A2B17FC9CD300E00ED8 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 768A1A2A17FC9CD300E00ED8 /* libz.dylib */; };
 		76C87F19181EFCE600C4ACAB /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76C87F18181EFCE600C4ACAB /* MediaPlayer.framework */; };
@@ -1229,7 +1229,6 @@
 		591E65802327B47800B7484E /* VinciChallengeListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VinciChallengeListViewController.xib; sourceTree = "<group>"; };
 		591E65842327B8C200B7484E /* VinciChallengeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinciChallengeListViewController.swift; sourceTree = "<group>"; };
 		591E658C2327E23800B7484E /* VinciChallengeCompactCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinciChallengeCompactCell.swift; sourceTree = "<group>"; };
-		591E658E2327E25B00B7484E /* VinciChallengeCompactCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VinciChallengeCompactCell.xib; sourceTree = "<group>"; };
 		591E65902327E85F00B7484E /* Challenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge.swift; sourceTree = "<group>"; };
 		591E65932327F05200B7484E /* UIImageView + download.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView + download.swift"; sourceTree = "<group>"; };
 		591E65952327FC5900B7484E /* VinciChallengeListViewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinciChallengeListViewInteractor.swift; sourceTree = "<group>"; };
@@ -1237,6 +1236,7 @@
 		591E6599232811BC00B7484E /* VinciChallengeListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinciChallengeListRouter.swift; sourceTree = "<group>"; };
 		591E659B2328E85C00B7484E /* Date + representation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date + representation.swift"; sourceTree = "<group>"; };
 		591E659E2328FE1A00B7484E /* VinciChallengeExtendedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinciChallengeExtendedCell.swift; sourceTree = "<group>"; };
+		591E65A023291D3D00B7484E /* VinciChallengeCompactCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VinciChallengeCompactCellView.xib; sourceTree = "<group>"; };
 		69349DE607F5BA6036C9AC60 /* Pods-SignalShareExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SignalShareExtension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SignalShareExtension/Pods-SignalShareExtension.debug.xcconfig"; sourceTree = "<group>"; };
 		70377AAA1918450100CAF501 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		748A5CAEDD7C919FC64C6807 /* Pods_SignalTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SignalTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2326,8 +2326,8 @@
 		591E65822327B7FA00B7484E /* VinciChallengeCompactCell */ = {
 			isa = PBXGroup;
 			children = (
+				591E65A22329316C00B7484E /* VinciChallengeCompactCellView */,
 				591E658C2327E23800B7484E /* VinciChallengeCompactCell.swift */,
-				591E658E2327E25B00B7484E /* VinciChallengeCompactCell.xib */,
 			);
 			path = VinciChallengeCompactCell;
 			sourceTree = "<group>";
@@ -2347,6 +2347,14 @@
 				591E659E2328FE1A00B7484E /* VinciChallengeExtendedCell.swift */,
 			);
 			path = VinciChallengeExtendedCell;
+			sourceTree = "<group>";
+		};
+		591E65A22329316C00B7484E /* VinciChallengeCompactCellView */ = {
+			isa = PBXGroup;
+			children = (
+				591E65A023291D3D00B7484E /* VinciChallengeCompactCellView.xib */,
+			);
+			path = VinciChallengeCompactCellView;
 			sourceTree = "<group>";
 		};
 		76EB03C118170B33006006FC /* src */ = {
@@ -3195,6 +3203,7 @@
 				34C3C78F2040A4F70000134C /* sonarping.mp3 in Resources */,
 				AD83FF431A73426500B5C81A /* audio_play_button@2x.png in Resources */,
 				34661FB820C1C0D60056EDD6 /* message_sent.aiff in Resources */,
+				591E65A123291D3D00B7484E /* VinciChallengeCompactCellView.xib in Resources */,
 				45CB2FA81CB7146C00E1B343 /* Launch Screen.storyboard in Resources */,
 				B633C5C31A1D190B0059AC12 /* mute_off@2x.png in Resources */,
 				AD83FF411A73426500B5C81A /* audio_play_button_blue@2x.png in Resources */,
@@ -3233,7 +3242,6 @@
 				45B74A8C2044AAB600CD42F8 /* input-quiet.aifc in Resources */,
 				591E65812327B47800B7484E /* VinciChallengeListViewController.xib in Resources */,
 				45B74A7A2044AAB600CD42F8 /* keys.aifc in Resources */,
-				591E658F2327E25B00B7484E /* VinciChallengeCompactCell.xib in Resources */,
 				45B74A762044AAB600CD42F8 /* keys-quiet.aifc in Resources */,
 				45B74A862044AAB600CD42F8 /* note.aifc in Resources */,
 				45B74A7F2044AAB600CD42F8 /* note-quiet.aifc in Resources */,

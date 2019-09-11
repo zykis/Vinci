@@ -11,7 +11,7 @@
 		<key>OSXVersion</key>
 		<string>10.13.6</string>
 		<key>WebRTCCommit</key>
-		<string>05282b30630d14dbb613ed196079d22e409bd44c Initial commit (Signal - 2.32.2.0 - b0318f59d1c9c429c615278456ed2221ad359fbe)</string>
+		<string>7756a860cc863b47466503b7e2459b4506cbf0a1 Added VinchiChallengeList VIPER module. VinchiChallengeCompactCell start implementation.</string>
 	</dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>

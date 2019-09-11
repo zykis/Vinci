@@ -11,8 +11,9 @@ class VinciChallengeListViewController: VinciViewController, VinciChallengeListV
     @IBOutlet weak var collectionView: UICollectionView!
     
     func setupTableView() {
-        self.tableView.register(UINib(nibName: VinciChallengeCompactCellNibName, bundle: nil),
-                                forCellReuseIdentifier: VinciChallengeCompactCellReuseIdentifier)
+//        self.tableView.register(UINib(nibName: VinciChallengeCompactCellNibName, bundle: nil),
+//                                forCellReuseIdentifier: VinciChallengeCompactCellReuseIdentifier)
+        self.tableView.register(VinciChallengeCompactCell.self, forCellReuseIdentifier: VinciChallengeCompactCellReuseIdentifier)
         self.tableView.delegate = self
         self.tableView.dataSource = self
     }
