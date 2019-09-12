@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1719DE49232A427100D051A4 /* VinciChallengeCollectionSmallCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1719DE48232A427100D051A4 /* VinciChallengeCollectionSmallCell.swift */; };
 		2AE2882E4C2B96BFFF9EE27C /* Pods_SignalShareExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F94C85CB0B235DA37F68ED0 /* Pods_SignalShareExtension.framework */; };
 		3403B95D20EA9527001A1F44 /* OWSContactShareButtonsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3403B95B20EA9526001A1F44 /* OWSContactShareButtonsView.m */; };
 		34074F61203D0CBE004596AE /* OWSSounds.m in Sources */ = {isa = PBXBuildFile; fileRef = 34074F5F203D0CBD004596AE /* OWSSounds.m */; };
@@ -674,6 +675,7 @@
 
 /* Begin PBXFileReference section */
 		0F94C85CB0B235DA37F68ED0 /* Pods_SignalShareExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SignalShareExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1719DE48232A427100D051A4 /* VinciChallengeCollectionSmallCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinciChallengeCollectionSmallCell.swift; sourceTree = "<group>"; };
 		1C93CF3971B64E8B6C1F9AC1 /* Pods-SignalShareExtension.test.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SignalShareExtension.test.xcconfig"; path = "Pods/Target Support Files/Pods-SignalShareExtension/Pods-SignalShareExtension.test.xcconfig"; sourceTree = "<group>"; };
 		1CE3CD5C23334683BDD3D78C /* Pods-Signal.test.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Signal.test.xcconfig"; path = "Pods/Target Support Files/Pods-Signal/Pods-Signal.test.xcconfig"; sourceTree = "<group>"; };
 		264242150E87D10A357DB07B /* Pods_SignalMessaging.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SignalMessaging.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1462,6 +1464,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1719DE4A232A432200D051A4 /* VinciChallengeCollectionCell */ = {
+			isa = PBXGroup;
+			children = (
+				1719DE48232A427100D051A4 /* VinciChallengeCollectionSmallCell.swift */,
+			);
+			path = VinciChallengeCollectionCell;
+			sourceTree = "<group>";
+		};
 		34074F54203D0722004596AE /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
@@ -2344,6 +2354,7 @@
 		591E659D2328FD6400B7484E /* VinciChallengeExtendedCell */ = {
 			isa = PBXGroup;
 			children = (
+				1719DE4A232A432200D051A4 /* VinciChallengeCollectionCell */,
 				591E659E2328FE1A00B7484E /* VinciChallengeExtendedCell.swift */,
 			);
 			path = VinciChallengeExtendedCell;
@@ -3723,6 +3734,7 @@
 				3496744F2076ACD000080B5F /* LongTextViewController.swift in Sources */,
 				34FD93701E3BD43A00109093 /* OWSAnyTouchGestureRecognizer.m in Sources */,
 				591E659C2328E85C00B7484E /* Date + representation.swift in Sources */,
+				1719DE49232A427100D051A4 /* VinciChallengeCollectionSmallCell.swift in Sources */,
 				34B3F8931E8DF1710035BE1A /* SignalsNavigationController.m in Sources */,
 				34F308A21ECB469700BB7697 /* OWSBezierPathView.m in Sources */,
 				45B27B862037FFB400A539DF /* DebugUIFileBrowser.swift in Sources */,

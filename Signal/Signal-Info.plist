@@ -9,9 +9,9 @@
 		<key>CocoapodsVersion</key>
 		<string>1.7.5</string>
 		<key>OSXVersion</key>
-		<string>10.13.6</string>
+		<string>10.15</string>
 		<key>WebRTCCommit</key>
-		<string>b953b3c1848866d5146b823c68069e069c8c6c95 Trying out inherit VinciChallengeExtendedCell from VinciChallengeCompactCell</string>
+		<string>cbb6ea5c4950af36c8ad2c2ffa679bde456e9849 Starting to implement collectionView inside VinciChallengeExtendedCell</string>
 	</dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
