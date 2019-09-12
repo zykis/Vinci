@@ -6,6 +6,7 @@ import UIKit
 import Foundation
 
 let kCompactCellHeight: CGFloat = 36.0
+let kCollectionCellOffset: CGFloat = 4.0
 let kRowHeightExtendedCell: CGFloat = kCellMargin + kCompactCellHeight + kCollectionCellMargin + kCellCollectionViewHeight + kCollectionCellMargin
 
 class VinciChallengeListViewController: VinciViewController, VinciChallengeListViewProtocol {
@@ -13,6 +14,12 @@ class VinciChallengeListViewController: VinciViewController, VinciChallengeListV
     
     @IBOutlet var tableView: UITableView!
     @IBOutlet var collectionView: UICollectionView!
+    
+    private var elementSize: CGSize {
+        get {
+            return CGSize(width: self.collectionView.bounds.height * 2.0, height: self.collectionView.bounds.height)
+        }
+    }
     
     func setupTableView() {
         self.tableView.register(VinciChallengeExtendedCell.self, forCellReuseIdentifier: kVinciChallengeExtendedCellReuseIdentifier)
@@ -39,6 +46,9 @@ extension VinciChallengeListViewController {
         self.setupTableView()
         self.setupCollectionView()
         self.presenter?.startFetchingChallenges()
+        
+        print("PHONE NUMBER: \(TSAccountManager.sharedInstance().localNumber() ?? "")")
+        print("REGISTRATION ID: \(TSAccountManager.sharedInstance().getOrGenerateRegistrationId())")
     }
 }
 
@@ -97,12 +107,26 @@ extension VinciChallengeListViewController: UICollectionViewDataSource {
 
 extension VinciChallengeListViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let height: CGFloat = self.collectionView.bounds.height
-        let width: CGFloat = height * 2.0
-        return CGSize(width: width, height: height)
+        return self.elementSize
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 4.0
+        return kCollectionCellOffset
+    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        let elementWidth: CGFloat = self.elementSize.width
+        let ofs: CGFloat = kCollectionCellOffset
+        let elementIndex: Int = Int(scrollView.contentOffset.x / (elementWidth + ofs))
+        let elementPos: CGFloat = (scrollView.contentOffset.x / (elementWidth + ofs)) - CGFloat(elementIndex)
+        let moreThenHalf: Bool = elementPos >= 0.5
+        
+        UIView.animate(withDuration: 0.2, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
+            let start: CGPoint = self.collectionView.contentOffset
+            let end: CGPoint = CGPoint(x: CGFloat(moreThenHalf ? elementIndex + 1 : elementIndex) * (elementWidth + ofs), y: start.y)
+            self.collectionView.contentOffset = end
+//            self.collectionView.reloadItems(at: [IndexPath(row: elementIndex, section: 0)])
+            self.collectionView.layoutIfNeeded()
+        }, completion: nil)
     }
 }

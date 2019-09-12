@@ -11,7 +11,7 @@
 		<key>OSXVersion</key>
 		<string>10.15</string>
 		<key>WebRTCCommit</key>
-		<string>cbb6ea5c4950af36c8ad2c2ffa679bde456e9849 Starting to implement collectionView inside VinciChallengeExtendedCell</string>
+		<string>f627f124d4a351e2f44834b491bb3b4e5421978c Base interface setup ready for VinciChallengeList</string>
 	</dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
