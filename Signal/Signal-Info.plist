@@ -11,7 +11,7 @@
 		<key>OSXVersion</key>
 		<string>10.13.6</string>
 		<key>WebRTCCommit</key>
-		<string>7756a860cc863b47466503b7e2459b4506cbf0a1 Added VinchiChallengeList VIPER module. VinchiChallengeCompactCell start implementation.</string>
+		<string>b953b3c1848866d5146b823c68069e069c8c6c95 Trying out inherit VinciChallengeExtendedCell from VinciChallengeCompactCell</string>
 	</dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>

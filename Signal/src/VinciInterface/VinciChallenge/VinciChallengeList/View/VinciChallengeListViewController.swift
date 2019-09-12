@@ -3,6 +3,10 @@
 // 
 
 import UIKit
+import Foundation
+
+let kCompactCellHeight: CGFloat = 36.0
+let kRowHeightExtendedCell: CGFloat = kCompactCellHeight + kCellMargin + kCellCollectionViewHeight + kCellMargin * 2
 
 class VinciChallengeListViewController: VinciViewController, VinciChallengeListViewProtocol {
     var presenter: VinciChallengeListPresenterProtocol? = VinciChallengeListPresenter()
@@ -11,9 +15,7 @@ class VinciChallengeListViewController: VinciViewController, VinciChallengeListV
     @IBOutlet weak var collectionView: UICollectionView!
     
     func setupTableView() {
-//        self.tableView.register(UINib(nibName: VinciChallengeCompactCellNibName, bundle: nil),
-//                                forCellReuseIdentifier: VinciChallengeCompactCellReuseIdentifier)
-        self.tableView.register(VinciChallengeCompactCell.self, forCellReuseIdentifier: VinciChallengeCompactCellReuseIdentifier)
+        self.tableView.register(VinciChallengeExtendedCell.self, forCellReuseIdentifier: VinciChallengeExtendedCellReuseIdentifier)
         self.tableView.delegate = self
         self.tableView.dataSource = self
     }
@@ -35,7 +37,13 @@ extension VinciChallengeListViewController {
 
 
 extension VinciChallengeListViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return kRowHeightExtendedCell
+    }
     
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return kRowHeightExtendedCell
+    }
 }
 
 
@@ -50,26 +58,10 @@ extension VinciChallengeListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let challenge = self.presenter?.challenge(at: indexPath) {
-            let cell: VinciChallengeCompactCell = self.tableView.dequeueReusableCell(withIdentifier: VinciChallengeCompactCellReuseIdentifier) as! VinciChallengeCompactCell
+            let cell: VinciChallengeExtendedCell = self.tableView.dequeueReusableCell(withIdentifier: VinciChallengeExtendedCellReuseIdentifier) as! VinciChallengeExtendedCell
             cell.setup(with: challenge)
             return cell
         }
         return UITableViewCell()
-    }
-}
-
-
-extension VinciChallengeListViewController: UICollectionViewDelegate {
-    
-}
-
-
-extension VinciChallengeListViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 0
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return UICollectionViewCell()
     }
 }

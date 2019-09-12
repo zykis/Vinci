@@ -7,9 +7,12 @@ import UIKit
 let VinciChallengeCompactCellNibName = "VinciChallengeCompactCell"
 let VinciChallengeCompactCellViewNibName = "VinciChallengeCompactCellView"
 let VinciChallengeCompactCellReuseIdentifier = "VinciChallengeCompactCellRI"
+let kCellMargin: CGFloat = 4.0
+let kSecondsInDay: Double = 24 * 60 * 60
 
 class VinciChallengeCompactCell: UITableViewCell {
     var compactCellView: UIView!
+    var compactCellViewBottomConstraint: NSLayoutConstraint?
     @IBOutlet var iconImageView: UIImageView!
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var rewardLabel: UILabel!
@@ -25,8 +28,6 @@ class VinciChallengeCompactCell: UITableViewCell {
         if let view = views?.first as? UIView {
             self.compactCellView = view
             self.contentView.addSubview(view)
-//            self.contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-//            self.contentView.frame = self.bounds
         }
     }
     
@@ -37,10 +38,11 @@ class VinciChallengeCompactCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        self.compactCellView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 4.0).isActive = true
-        self.compactCellView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -4.0).isActive = true
-        self.compactCellView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 4.0).isActive = true
-        self.compactCellView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -4.0).isActive = true
+        self.compactCellView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: kCellMargin).isActive = true
+        self.compactCellView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -kCellMargin).isActive = true
+        self.compactCellView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: kCellMargin).isActive = true
+        self.compactCellViewBottomConstraint = self.compactCellView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -kCellMargin)
+        self.compactCellViewBottomConstraint?.isActive = true
         
         self.iconImageView.layer.cornerRadius = iconImageView.bounds.height / 2.0
         self.iconImageView.clipsToBounds = true
@@ -56,7 +58,7 @@ class VinciChallengeCompactCell: UITableViewCell {
         }
         self.titleLabel.text = challenge.title
         self.rewardLabel.text = "$\(challenge.reward)"
-        if challenge.expirationDate?.timeIntervalSince(Date()) ?? 0.0 >= 24 * 60 * 60 {
+        if challenge.expirationDate?.timeIntervalSince(Date()) ?? 0.0 >= kSecondsInDay {
             self.expiredInLabel.text = "till \(challenge.expirationDate?.representation() ?? "???")"
         } else {
             self.expiredInLabel.text = "ends in less, then a day"
