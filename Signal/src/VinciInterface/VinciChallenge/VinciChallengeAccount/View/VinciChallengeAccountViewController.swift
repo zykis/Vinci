@@ -11,6 +11,12 @@ class VinciChallengeAccountViewController: VinciViewController, VinciChallengeAc
     @IBOutlet var avatar: UIImageView!
     @IBOutlet var navigationBar: UINavigationBar!
     
+    @IBOutlet var winsLabel: UILabel!
+    @IBOutlet var votesLabel: UILabel!
+    @IBOutlet var incomeLabel: UILabel!
+    
+    @IBOutlet var tableView: UITableView!
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }

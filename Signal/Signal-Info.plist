@@ -11,7 +11,7 @@
 		<key>OSXVersion</key>
 		<string>10.15</string>
 		<key>WebRTCCommit</key>
-		<string>49ddfe0cc83b722e70dae345724f19c7469b17e1 VinciChallengeCompactCellView attributedString added</string>
+		<string>9e1782472307f32e48b1bb0f5aa9028796d65694 Starting to implement VinciChallengeAccount</string>
 	</dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>

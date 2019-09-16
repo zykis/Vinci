@@ -13,8 +13,12 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VinciChallengeAccountViewController" customModule="Vinci" customModuleProvider="target">
             <connections>
                 <outlet property="avatar" destination="63y-S2-WX2" id="WXo-wP-jwn"/>
+                <outlet property="incomeLabel" destination="TzN-Ss-egf" id="9Bd-lA-YaM"/>
                 <outlet property="navigationBar" destination="Haf-Pm-xDB" id="Rty-tK-tie"/>
+                <outlet property="tableView" destination="vaN-C6-vNa" id="OlY-SL-Ym3"/>
                 <outlet property="view" destination="f95-8b-uAn" id="p61-w5-u68"/>
+                <outlet property="votesLabel" destination="WYF-SN-9Fa" id="JSg-kx-yg7"/>
+                <outlet property="winsLabel" destination="i3I-GS-54I" id="zRc-ps-fI0"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
