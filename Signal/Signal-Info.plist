@@ -11,7 +11,7 @@
 		<key>OSXVersion</key>
 		<string>10.15</string>
 		<key>WebRTCCommit</key>
-		<string>b27572a9a1ac49e84efc93f30d96fb74623af76a Moved challenge collectionView and searchbar into separate cells. Implemented animation on moving navigationItem</string>
+		<string>49ddfe0cc83b722e70dae345724f19c7469b17e1 VinciChallengeCompactCellView attributedString added</string>
 	</dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>

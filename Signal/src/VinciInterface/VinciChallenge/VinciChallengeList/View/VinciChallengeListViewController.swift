@@ -44,6 +44,11 @@ class VinciChallengeListViewController: VinciViewController, VinciChallengeListV
             self.view.layoutIfNeeded()
         }
     }
+    
+    @IBAction func pushToAccount() {
+        let accountVC = VinciChallengeAccountRouter.createModule()
+        self.navigationController?.pushViewController(accountVC, animated: true)
+    }
 }
 
 
