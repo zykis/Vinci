@@ -63,5 +63,9 @@ class VinciChallengeCompactCell: UITableViewCell {
         } else {
             self.expiredInLabel.text = "ends in less, then a day"
         }
+        let amountAbbreviation: String = challenge.likes >= 1_000_000 ? "m" : challenge.likes >= 1_000 ? "k" : ""
+        let amount: Double = challenge.likes > 1_000_000 ? Double(challenge.likes) / 1_000_000.0 : challenge.likes >= 1_000 ? Double(challenge.likes) / 1_000.0 : Double(challenge.likes)
+        let formatType = amount >= 1_000 ? "%.1f" : "%i"
+        self.likesLabel.text = String.init(format: formatType + amountAbbreviation, amount < 1_000 ? Int(amount) : amount)
     }
 }

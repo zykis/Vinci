@@ -45,7 +45,7 @@ extension VinciChallengeListViewController {
         super.viewDidLoad()
         self.setupTableView()
         self.setupCollectionView()
-        self.presenter?.startFetchingChallenges()
+        self.presenter?.startFetchingChallenges(limit: 20, offset: 0, signalID: "\(TSAccountManager.sharedInstance().getOrGenerateRegistrationId())")
         
         print("PHONE NUMBER: \(TSAccountManager.sharedInstance().localNumber() ?? "")")
         print("REGISTRATION ID: \(TSAccountManager.sharedInstance().getOrGenerateRegistrationId())")

@@ -11,8 +11,8 @@ class VinciChallengeListPresenter: VinciChallengeListPresenterProtocol {
     
     var challenges: [Challenge] = []
     
-    func startFetchingChallenges() {
-        self.interactor?.fetchChallenges()
+    func startFetchingChallenges(limit: Int?, offset: Int?, signalID: String?) {
+        self.interactor?.fetchChallenges(limit: limit, offset: offset, signalID: signalID)
     }
     
     func challengeFetchSuccess(challenges: [Challenge]) {

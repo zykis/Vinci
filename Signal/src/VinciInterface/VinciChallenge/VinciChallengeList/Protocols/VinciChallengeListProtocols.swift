@@ -15,7 +15,8 @@ protocol VinciChallengeListPresenterProtocol: class {
     var interactor: VinciChallengeListInteractorProtocol? {get set}
     var router: VinciChallengeListRouterProtocol? {get set}
     
-    func startFetchingChallenges()
+    func startFetchingChallenges(limit: Int?, offset: Int?, signalID: String?)
+    
     func challengeFetchSuccess(challenges: [Challenge])
     func challengeFetchFail(error: Error)
     
@@ -27,7 +28,7 @@ protocol VinciChallengeListPresenterProtocol: class {
 protocol VinciChallengeListInteractorProtocol {
     var presenter: VinciChallengeListPresenterProtocol? {get set}
     
-    func fetchChallenges()
+    func fetchChallenges(limit: Int?, offset: Int?, signalID: String?)
 }
 
 

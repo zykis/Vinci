@@ -14,6 +14,7 @@ class Challenge: Decodable {
     var latitude: Double?
     var longitude: Double?
     var iconUrl: String?
+    var tags: [String] = []
     var likes: Int = 0
     var favourite: Bool = false
     
@@ -21,12 +22,24 @@ class Challenge: Decodable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.title = try container.decode(String.self, forKey: .title)
         self.description = try container.decode(String.self, forKey: .description)
-        self.startDate = try container.decode(Date.self, forKey: .startDate)
-        self.endDate = try container.decode(Date.self, forKey: .endDate)
-        self.expirationDate = try container.decode(Date.self, forKey: .expirationDate)
+        
+        let start = try container.decode(String.self, forKey: .startDate)
+        self.startDate = Date.fromIso8601Representation(isoRepresentation: start)!
+        
+        let end = try container.decode(String.self, forKey: .endDate)
+        self.endDate = Date.fromIso8601Representation(isoRepresentation: end)!
+        
+        let expiration = try container.decode(String.self, forKey: .expirationDate)
+        self.expirationDate = Date.fromIso8601Representation(isoRepresentation: expiration)!
+        
         self.reward = try container.decode(Double.self, forKey: .reward)
-        self.latitude = try container.decode(Double.self, forKey: .latitude)
-        self.longitude = try container.decode(Double.self, forKey: .longitude)
+        
+        let location = try container.decode([Double].self, forKey: .location)
+        self.latitude = location.first
+        self.longitude = location.last
+        
+        self.tags = try container.decode([String].self, forKey: .tags)
+        self.likes = try container.decode(Int.self, forKey: .likes)
     }
     
     init(title: String, reward: Double, startDate: Date = Date()) {
@@ -46,11 +59,12 @@ class Challenge: Decodable {
     enum CodingKeys: String, CodingKey {
         case title = "NAME"
         case description = "DESCR"
-        case startDate = "START"
+        case startDate = "BEGIN"
         case endDate = "END"
         case expirationDate = "FINAL"
         case reward = "REWARD"
-        case latitude = "LAT"
-        case longitude = "LON"
+        case location = "LOC"
+        case tags = "TAGS"
+        case likes = "LIKES"
     }
 }

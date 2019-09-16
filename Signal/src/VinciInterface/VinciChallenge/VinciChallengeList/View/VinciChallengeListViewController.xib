@@ -27,7 +27,10 @@
                     <items>
                         <navigationItem title="Games" id="OSx-ey-ocJ">
                             <barButtonItem key="leftBarButtonItem" title="Item" image="vinciSettingsIcon" id="ja9-ge-GPn"/>
-                            <barButtonItem key="rightBarButtonItem" title="Item" image="actionsheet_camera_black" id="FsJ-Zy-2ST"/>
+                            <rightBarButtonItems>
+                                <barButtonItem image="audio_play_black_48" id="5iQ-4a-lZb"/>
+                                <barButtonItem title="Item" image="actionsheet_camera_black" id="FsJ-Zy-2ST"/>
+                            </rightBarButtonItems>
                         </navigationItem>
                     </items>
                 </navigationBar>
@@ -76,6 +79,7 @@
     </objects>
     <resources>
         <image name="actionsheet_camera_black" width="32" height="32"/>
+        <image name="audio_play_black_48" width="48" height="48"/>
         <image name="vinciSettingsIcon" width="25.5" height="25.5"/>
     </resources>
 </document>
