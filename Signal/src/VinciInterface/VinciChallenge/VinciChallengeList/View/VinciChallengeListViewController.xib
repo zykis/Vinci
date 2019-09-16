@@ -12,8 +12,12 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VinciChallengeListViewController" customModule="Vinci" customModuleProvider="target">
             <connections>
-                <outlet property="collectionView" destination="wdn-mo-cHV" id="nLt-17-Pgg"/>
+                <outlet property="gamesLabel" destination="tLf-AL-8Kx" id="WAI-nc-9Ii"/>
+                <outlet property="gamesLeadingConstraint" destination="hCU-ye-0FG" id="nue-CN-v3p"/>
+                <outlet property="gamesTopConstraint" destination="DGw-rc-Uy7" id="xha-sz-BFr"/>
+                <outlet property="navigationBar" destination="sEY-Q6-nSV" id="2Rs-7P-taz"/>
                 <outlet property="tableView" destination="5ih-IL-BV6" id="Y8e-2v-ysu"/>
+                <outlet property="tableViewTopConstraint" destination="POL-v0-dSi" id="QWj-6r-xt6"/>
                 <outlet property="view" destination="tEa-qO-yXe" id="w6U-bj-I5l"/>
             </connections>
         </placeholder>
@@ -25,52 +29,40 @@
                 <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sEY-Q6-nSV">
                     <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                     <items>
-                        <navigationItem title="Games" id="OSx-ey-ocJ">
+                        <navigationItem id="OSx-ey-ocJ">
                             <barButtonItem key="leftBarButtonItem" title="Item" image="vinciSettingsIcon" id="ja9-ge-GPn"/>
                             <rightBarButtonItems>
-                                <barButtonItem image="audio_play_black_48" id="5iQ-4a-lZb"/>
+                                <barButtonItem image="audio_play_black_48" id="5iQ-4a-lZb">
+                                    <connections>
+                                        <action selector="animateTitlePositionChange" destination="-1" id="PL1-ur-N7r"/>
+                                    </connections>
+                                </barButtonItem>
                                 <barButtonItem title="Item" image="actionsheet_camera_black" id="FsJ-Zy-2ST"/>
                             </rightBarButtonItems>
                         </navigationItem>
                     </items>
                 </navigationBar>
-                <searchBar contentMode="redraw" searchBarStyle="minimal" text="" placeholder="search" translatesAutoresizingMaskIntoConstraints="NO" id="VQt-ne-rX6">
-                    <rect key="frame" x="8" y="74" width="359" height="56"/>
-                    <textInputTraits key="textInputTraits"/>
-                </searchBar>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="wdn-mo-cHV">
-                    <rect key="frame" x="16" y="138" width="343" height="128"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="128" id="2BF-vV-43H"/>
-                    </constraints>
-                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="WIc-UG-B9M">
-                        <size key="itemSize" width="50" height="50"/>
-                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                    </collectionViewFlowLayout>
-                </collectionView>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5ih-IL-BV6">
-                    <rect key="frame" x="16" y="278" width="343" height="373"/>
+                    <rect key="frame" x="16" y="116" width="343" height="579"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Games" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tLf-AL-8Kx">
+                    <rect key="frame" x="16" y="69" width="98" height="39"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="kXj-vd-7Sz" firstAttribute="trailing" secondItem="5ih-IL-BV6" secondAttribute="trailing" constant="16" id="51U-Yx-8x4"/>
-                <constraint firstItem="kXj-vd-7Sz" firstAttribute="trailing" secondItem="VQt-ne-rX6" secondAttribute="trailing" constant="8" id="9Tb-tA-M7q"/>
                 <constraint firstItem="sEY-Q6-nSV" firstAttribute="top" secondItem="kXj-vd-7Sz" secondAttribute="top" id="COj-x2-g1f"/>
-                <constraint firstItem="VQt-ne-rX6" firstAttribute="top" secondItem="sEY-Q6-nSV" secondAttribute="bottom" constant="10" id="Ftn-14-5ti"/>
-                <constraint firstItem="wdn-mo-cHV" firstAttribute="top" secondItem="VQt-ne-rX6" secondAttribute="bottom" constant="8" id="SzL-hW-Lgm"/>
+                <constraint firstItem="tLf-AL-8Kx" firstAttribute="top" secondItem="sEY-Q6-nSV" secondAttribute="top" constant="49" id="DGw-rc-Uy7"/>
+                <constraint firstItem="5ih-IL-BV6" firstAttribute="top" secondItem="sEY-Q6-nSV" secondAttribute="bottom" constant="52" id="POL-v0-dSi"/>
                 <constraint firstItem="5ih-IL-BV6" firstAttribute="leading" secondItem="kXj-vd-7Sz" secondAttribute="leading" constant="16" id="YNg-8n-Mi4"/>
-                <constraint firstItem="kXj-vd-7Sz" firstAttribute="trailing" secondItem="wdn-mo-cHV" secondAttribute="trailing" constant="16" id="bsA-t9-MYm"/>
+                <constraint firstItem="tLf-AL-8Kx" firstAttribute="leading" secondItem="sEY-Q6-nSV" secondAttribute="leading" constant="16" id="hCU-ye-0FG"/>
                 <constraint firstItem="sEY-Q6-nSV" firstAttribute="leading" secondItem="kXj-vd-7Sz" secondAttribute="leading" id="hlj-5K-LtI"/>
-                <constraint firstItem="5ih-IL-BV6" firstAttribute="top" secondItem="wdn-mo-cHV" secondAttribute="bottom" constant="12" id="kmC-wc-7Nt"/>
-                <constraint firstItem="kXj-vd-7Sz" firstAttribute="bottom" secondItem="5ih-IL-BV6" secondAttribute="bottom" constant="16" id="n2k-pp-vpn"/>
-                <constraint firstItem="wdn-mo-cHV" firstAttribute="leading" secondItem="kXj-vd-7Sz" secondAttribute="leading" constant="16" id="nMZ-TV-8oe"/>
-                <constraint firstItem="VQt-ne-rX6" firstAttribute="leading" secondItem="kXj-vd-7Sz" secondAttribute="leading" constant="8" id="wS8-X1-7Zh"/>
+                <constraint firstItem="kXj-vd-7Sz" firstAttribute="bottom" secondItem="5ih-IL-BV6" secondAttribute="bottom" constant="-28" id="n2k-pp-vpn"/>
                 <constraint firstItem="sEY-Q6-nSV" firstAttribute="trailing" secondItem="kXj-vd-7Sz" secondAttribute="trailing" id="wel-8S-Nyu"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="kXj-vd-7Sz"/>

@@ -5,6 +5,8 @@
 import UIKit
 import Foundation
 
+let kSectionMargin: CGFloat = 16.0
+let kSearchBarHeight: CGFloat = 44.0
 let kCompactCellHeight: CGFloat = 36.0
 let kCollectionCellOffset: CGFloat = 4.0
 let kRowHeightExtendedCell: CGFloat = kCellMargin + kCompactCellHeight + kCollectionCellMargin + kCellCollectionViewHeight + kCollectionCellMargin
@@ -13,28 +15,34 @@ class VinciChallengeListViewController: VinciViewController, VinciChallengeListV
     var presenter: VinciChallengeListPresenterProtocol? = VinciChallengeListPresenter()
     
     @IBOutlet var tableView: UITableView!
-    @IBOutlet var collectionView: UICollectionView!
     
-    private var elementSize: CGSize {
-        get {
-            return CGSize(width: self.collectionView.bounds.height * 2.0, height: self.collectionView.bounds.height)
-        }
-    }
-    
+    @IBOutlet var navigationBar: UINavigationBar!
+    @IBOutlet var gamesLabel: UILabel!
+    @IBOutlet var gamesTopConstraint: NSLayoutConstraint!
+    @IBOutlet var gamesLeadingConstraint: NSLayoutConstraint!
+    @IBOutlet var tableViewTopConstraint: NSLayoutConstraint!
+        
     func setupTableView() {
         self.tableView.register(VinciChallengeExtendedCell.self, forCellReuseIdentifier: kVinciChallengeExtendedCellReuseIdentifier)
+        self.tableView.register(VinciChallengeLargeCollectionCell.self, forCellReuseIdentifier: kVinciChallengeLargeCollectionCellReuseIdentifier)
+        
         self.tableView.delegate = self
         self.tableView.dataSource = self
     }
-    
-    func setupCollectionView() {
-        self.collectionView.register(VinciChallengeCollectionSmallCell.self, forCellWithReuseIdentifier: kVinciChallengeCollectionCellReuseIdentifier)
-        self.collectionView.delegate = self
-        self.collectionView.dataSource = self
-    }
-    
+        
     func updateChallengeList() {
         self.tableView.reloadData()
+    }
+    
+    @IBAction func animateTitlePositionChange() {
+        self.gamesTopConstraint.constant = self.navigationBar.bounds.height / 2.0 - self.gamesLabel.bounds.height / 2.0
+        self.gamesLeadingConstraint.constant = self.view.bounds.width / 2.0 - self.gamesLabel.bounds.width / 2.0
+        self.tableViewTopConstraint.constant = 8.0
+        
+        UIView.animate(withDuration: 0.3) {
+            self.gamesLabel.transform = CGAffineTransform(scaleX: 0.65, y: 0.65)
+            self.view.layoutIfNeeded()
+        }
     }
 }
 
@@ -44,7 +52,6 @@ extension VinciChallengeListViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupTableView()
-        self.setupCollectionView()
         self.presenter?.startFetchingChallenges(limit: 20, offset: 0, signalID: "\(TSAccountManager.sharedInstance().getOrGenerateRegistrationId())")
         
         print("PHONE NUMBER: \(TSAccountManager.sharedInstance().localNumber() ?? "")")
@@ -55,78 +62,78 @@ extension VinciChallengeListViewController {
 
 extension VinciChallengeListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return kRowHeightExtendedCell
+        switch indexPath.section {
+        case 0:
+            return kSearchBarHeight
+        case 1:
+            return kLargeCollectionCellHeight
+        case 2:
+            return kRowHeightExtendedCell
+        default:
+            return 0.0
+        }
     }
     
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return kRowHeightExtendedCell
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.y > self.gamesLabel.bounds.height + kSearchBarHeight {
+            self.animateTitlePositionChange()
+        }
     }
 }
 
 
 extension VinciChallengeListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.presenter?.challengeCount() ?? 0
+        switch section {
+        case 0:
+            return 1
+        case 1:
+            return 1
+        case 2:
+            return self.presenter?.challengeCount() ?? 0
+        default:
+            return 0
+        }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let challenge = self.presenter?.challenge(at: indexPath) {
-            let cell: VinciChallengeExtendedCell = self.tableView.dequeueReusableCell(withIdentifier: kVinciChallengeExtendedCellReuseIdentifier) as! VinciChallengeExtendedCell
-            cell.setup(with: challenge)
+        switch indexPath.section {
+        case 0:
+            let width: CGFloat = tableView.bounds.width
+            let searchBar = UISearchBar(frame: CGRect(x: 0,
+                                                      y: 0,
+                                                      width: width,
+                                                      height: kSearchBarHeight))
+            searchBar.searchBarStyle = .minimal
+            let cell = UITableViewCell()
+            cell.contentView.addSubview(searchBar)
             return cell
+        case 1:
+            let cell = tableView.dequeueReusableCell(withIdentifier: kVinciChallengeLargeCollectionCellReuseIdentifier)!
+            return cell
+        case 2:
+            if let challenge = self.presenter?.challenge(at: indexPath) {
+                let cell: VinciChallengeExtendedCell = self.tableView.dequeueReusableCell(withIdentifier: kVinciChallengeExtendedCellReuseIdentifier) as! VinciChallengeExtendedCell
+                cell.setup(with: challenge)
+                return cell
+            }
+            return UITableViewCell()
+        default:
+            return UITableViewCell()
         }
-        return UITableViewCell()
-    }
-}
-
-
-extension VinciChallengeListViewController: UICollectionViewDelegate {
-    
-}
-
-
-extension VinciChallengeListViewController: UICollectionViewDataSource {
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return kSectionMargin
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: kVinciChallengeCollectionCellReuseIdentifier, for: indexPath)
-        return cell
-    }
-}
-
-
-extension VinciChallengeListViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return self.elementSize
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return kCollectionCellOffset
-    }
-    
-    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        let elementWidth: CGFloat = self.elementSize.width
-        let ofs: CGFloat = kCollectionCellOffset
-        let elementIndex: Int = Int(scrollView.contentOffset.x / (elementWidth + ofs))
-        let elementPos: CGFloat = (scrollView.contentOffset.x / (elementWidth + ofs)) - CGFloat(elementIndex)
-        let moreThenHalf: Bool = elementPos >= 0.5
-        
-        UIView.animate(withDuration: 0.2, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
-            let start: CGPoint = self.collectionView.contentOffset
-            let end: CGPoint = CGPoint(x: CGFloat(moreThenHalf ? elementIndex + 1 : elementIndex) * (elementWidth + ofs), y: start.y)
-            self.collectionView.contentOffset = end
-//            self.collectionView.reloadItems(at: [IndexPath(row: elementIndex, section: 0)])
-            self.collectionView.layoutIfNeeded()
-        }, completion: nil)
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = UIView()
+        view.backgroundColor = .clear
+        return view
     }
 }

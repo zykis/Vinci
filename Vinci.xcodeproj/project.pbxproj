@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1719DE49232A427100D051A4 /* VinciChallengeCollectionSmallCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1719DE48232A427100D051A4 /* VinciChallengeCollectionSmallCell.swift */; };
 		17BEFD95232A9DC90096ED75 /* StickyCollectionFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BEFD94232A9DC90096ED75 /* StickyCollectionFlowLayout.swift */; };
+		17BEFD99232F8ECF0096ED75 /* VinciChallengeLargeCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BEFD98232F8ECF0096ED75 /* VinciChallengeLargeCollectionCell.swift */; };
 		2AE2882E4C2B96BFFF9EE27C /* Pods_SignalShareExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F94C85CB0B235DA37F68ED0 /* Pods_SignalShareExtension.framework */; };
 		3403B95D20EA9527001A1F44 /* OWSContactShareButtonsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3403B95B20EA9526001A1F44 /* OWSContactShareButtonsView.m */; };
 		34074F61203D0CBE004596AE /* OWSSounds.m in Sources */ = {isa = PBXBuildFile; fileRef = 34074F5F203D0CBD004596AE /* OWSSounds.m */; };
@@ -678,6 +679,7 @@
 		0F94C85CB0B235DA37F68ED0 /* Pods_SignalShareExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SignalShareExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1719DE48232A427100D051A4 /* VinciChallengeCollectionSmallCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinciChallengeCollectionSmallCell.swift; sourceTree = "<group>"; };
 		17BEFD94232A9DC90096ED75 /* StickyCollectionFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickyCollectionFlowLayout.swift; sourceTree = "<group>"; };
+		17BEFD98232F8ECF0096ED75 /* VinciChallengeLargeCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinciChallengeLargeCollectionCell.swift; sourceTree = "<group>"; };
 		1C93CF3971B64E8B6C1F9AC1 /* Pods-SignalShareExtension.test.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SignalShareExtension.test.xcconfig"; path = "Pods/Target Support Files/Pods-SignalShareExtension/Pods-SignalShareExtension.test.xcconfig"; sourceTree = "<group>"; };
 		1CE3CD5C23334683BDD3D78C /* Pods-Signal.test.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Signal.test.xcconfig"; path = "Pods/Target Support Files/Pods-Signal/Pods-Signal.test.xcconfig"; sourceTree = "<group>"; };
 		264242150E87D10A357DB07B /* Pods_SignalMessaging.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SignalMessaging.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1473,6 +1475,14 @@
 				17BEFD94232A9DC90096ED75 /* StickyCollectionFlowLayout.swift */,
 			);
 			path = VinciChallengeCollectionCell;
+			sourceTree = "<group>";
+		};
+		17BEFD97232F8EA60096ED75 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				17BEFD98232F8ECF0096ED75 /* VinciChallengeLargeCollectionCell.swift */,
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 		34074F54203D0722004596AE /* Sounds */ = {
@@ -2317,6 +2327,7 @@
 			children = (
 				591E65822327B7FA00B7484E /* VinciChallengeCompactCell */,
 				591E659D2328FD6400B7484E /* VinciChallengeExtendedCell */,
+				17BEFD97232F8EA60096ED75 /* New Group */,
 				591E65802327B47800B7484E /* VinciChallengeListViewController.xib */,
 				591E65842327B8C200B7484E /* VinciChallengeListViewController.swift */,
 			);
@@ -3888,6 +3899,7 @@
 				8D1E7E6B231D1C95004104CC /* VinciInfoCallViewController.swift in Sources */,
 				8D1E7E612317B40F004104CC /* VinciCallsLargeTitleView.swift in Sources */,
 				4CB5F26920F7D060004D1B42 /* MessageActions.swift in Sources */,
+				17BEFD99232F8ECF0096ED75 /* VinciChallengeLargeCollectionCell.swift in Sources */,
 				340FC8B5204DAC8D007AEB0F /* AboutTableViewController.m in Sources */,
 				34BECE2B1F74C12700D7438D /* DebugUIStress.m in Sources */,
 				8D14130B232004DB004B5645 /* VinciChatInfoViewController.swift in Sources */,

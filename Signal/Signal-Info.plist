@@ -11,7 +11,7 @@
 		<key>OSXVersion</key>
 		<string>10.15</string>
 		<key>WebRTCCommit</key>
-		<string>20da34364f4f0a77eab3128f899d1b240b63053c Added sticky behavior on VinciChallengeList collection view</string>
+		<string>369f88bc8c1b374400580be15d68cf55f26e10c5 Requesting challenges through network</string>
 	</dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
