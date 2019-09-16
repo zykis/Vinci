@@ -1477,12 +1477,12 @@
 			path = VinciChallengeCollectionCell;
 			sourceTree = "<group>";
 		};
-		17BEFD97232F8EA60096ED75 /* New Group */ = {
+		17BEFD97232F8EA60096ED75 /* VinciChallengeLargeCollectionCell */ = {
 			isa = PBXGroup;
 			children = (
 				17BEFD98232F8ECF0096ED75 /* VinciChallengeLargeCollectionCell.swift */,
 			);
-			path = "New Group";
+			path = VinciChallengeLargeCollectionCell;
 			sourceTree = "<group>";
 		};
 		34074F54203D0722004596AE /* Sounds */ = {
@@ -2327,7 +2327,7 @@
 			children = (
 				591E65822327B7FA00B7484E /* VinciChallengeCompactCell */,
 				591E659D2328FD6400B7484E /* VinciChallengeExtendedCell */,
-				17BEFD97232F8EA60096ED75 /* New Group */,
+				17BEFD97232F8EA60096ED75 /* VinciChallengeLargeCollectionCell */,
 				591E65802327B47800B7484E /* VinciChallengeListViewController.xib */,
 				591E65842327B8C200B7484E /* VinciChallengeListViewController.swift */,
 			);

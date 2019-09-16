@@ -11,7 +11,7 @@
 		<key>OSXVersion</key>
 		<string>10.15</string>
 		<key>WebRTCCommit</key>
-		<string>369f88bc8c1b374400580be15d68cf55f26e10c5 Requesting challenges through network</string>
+		<string>b27572a9a1ac49e84efc93f30d96fb74623af76a Moved challenge collectionView and searchbar into separate cells. Implemented animation on moving navigationItem</string>
 	</dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>

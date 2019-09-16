@@ -34,7 +34,7 @@ class VinciChallengeListViewController: VinciViewController, VinciChallengeListV
         self.tableView.reloadData()
     }
     
-    @IBAction func animateTitlePositionChange() {
+    func animateTitlePositionChange() {
         self.gamesTopConstraint.constant = self.navigationBar.bounds.height / 2.0 - self.gamesLabel.bounds.height / 2.0
         self.gamesLeadingConstraint.constant = self.view.bounds.width / 2.0 - self.gamesLabel.bounds.width / 2.0
         self.tableViewTopConstraint.constant = 8.0

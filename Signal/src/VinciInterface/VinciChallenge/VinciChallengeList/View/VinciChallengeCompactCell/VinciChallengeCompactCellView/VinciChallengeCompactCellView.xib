@@ -52,7 +52,7 @@
                     </subviews>
                 </stackView>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="flE-NI-IAn">
-                    <rect key="frame" x="287.5" y="2" width="52.5" height="32"/>
+                    <rect key="frame" x="275.5" y="2" width="52.5" height="32"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Wv4-KJ-iXB">
                             <rect key="frame" x="0.0" y="0.0" width="52.5" height="16"/>
@@ -95,7 +95,7 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="wVj-I8-s5p" firstAttribute="leading" secondItem="flE-NI-IAn" secondAttribute="trailing" constant="4" id="Emz-l3-BjT"/>
+                <constraint firstItem="wVj-I8-s5p" firstAttribute="leading" secondItem="flE-NI-IAn" secondAttribute="trailing" constant="16" id="Emz-l3-BjT"/>
                 <constraint firstItem="eII-QY-dep" firstAttribute="top" secondItem="7Cr-Wv-s0N" secondAttribute="top" id="IVd-bf-2tF"/>
                 <constraint firstAttribute="height" constant="36" id="KJI-9w-YZP"/>
                 <constraint firstItem="eII-QY-dep" firstAttribute="leading" secondItem="7Cr-Wv-s0N" secondAttribute="leading" id="MXR-Uu-agp"/>

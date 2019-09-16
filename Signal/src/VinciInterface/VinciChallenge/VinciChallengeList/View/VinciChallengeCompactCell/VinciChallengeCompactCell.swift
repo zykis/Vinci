@@ -59,9 +59,19 @@ class VinciChallengeCompactCell: UITableViewCell {
         self.titleLabel.text = challenge.title
         self.rewardLabel.text = "$\(challenge.reward)"
         if challenge.expirationDate?.timeIntervalSince(Date()) ?? 0.0 >= kSecondsInDay {
-            self.expiredInLabel.text = "till \(challenge.expirationDate?.representation() ?? "???")"
+            let htmlString: String = "<p><font color=\"gray\">till </font><font color=\"black\"> \(challenge.expirationDate?.representation() ?? "???")</font></p>"
+            if let attributedString = try? NSAttributedString(data: Data(htmlString.utf8),
+                                                      options: [.documentType: NSAttributedString.DocumentType.html],
+                                                      documentAttributes: nil) {
+                self.expiredInLabel.attributedText = attributedString
+            }
         } else {
-            self.expiredInLabel.text = "ends in less, then a day"
+            let htmlString: String = "<p><font color=\"gray\">ends in</font><font color=\"orange\"> less then a day</font></p>"
+            if let attributedString = try? NSAttributedString(data: Data(htmlString.utf8),
+                                                             options: [.documentType: NSAttributedString.DocumentType.html],
+                                                             documentAttributes: nil) {
+                self.expiredInLabel.attributedText = attributedString
+            }
         }
         let amountAbbreviation: String = challenge.likes >= 1_000_000 ? "m" : challenge.likes >= 1_000 ? "k" : ""
         let amount: Double = challenge.likes > 1_000_000 ? Double(challenge.likes) / 1_000_000.0 : challenge.likes >= 1_000 ? Double(challenge.likes) / 1_000.0 : Double(challenge.likes)
