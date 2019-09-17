@@ -65,9 +65,10 @@
                             <rect key="frame" x="0.0" y="0.0" width="374" height="280"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="63y-S2-WX2">
-                                    <rect key="frame" x="-110" y="-61" width="251" height="251"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="135" height="180"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" secondItem="63y-S2-WX2" secondAttribute="height" multiplier="1:1" id="RAI-7P-xMZ"/>
+                                        <constraint firstAttribute="width" secondItem="63y-S2-WX2" secondAttribute="height" multiplier="3:4" id="EFm-wW-V5j"/>
+                                        <constraint firstAttribute="height" constant="180" id="Gxt-Ea-YjD"/>
                                     </constraints>
                                 </imageView>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon-App-40x40.png" translatesAutoresizingMaskIntoConstraints="NO" id="9wo-yt-9z7">
@@ -80,7 +81,7 @@
                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="PFc-uR-ICD">
                                     <rect key="frame" x="16" y="218" width="84" height="40"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="attachment_file" translatesAutoresizingMaskIntoConstraints="NO" id="bhn-Mh-W2U">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_wins.png" translatesAutoresizingMaskIntoConstraints="NO" id="bhn-Mh-W2U">
                                             <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="40" id="AWB-uT-NXt"/>
@@ -109,7 +110,7 @@
                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Oz1-b3-jia">
                                     <rect key="frame" x="250" y="218" width="108" height="40"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="audio_play_black_48" translatesAutoresizingMaskIntoConstraints="NO" id="t8y-3s-gcn">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_income.png" translatesAutoresizingMaskIntoConstraints="NO" id="t8y-3s-gcn">
                                             <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="40" id="04e-1c-xpr"/>
@@ -138,7 +139,7 @@
                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Wzx-BU-Fdw">
                                     <rect key="frame" x="136" y="218" width="102.5" height="40"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="message_status_failed" translatesAutoresizingMaskIntoConstraints="NO" id="sGH-Ze-Yux">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_like_empty.png" translatesAutoresizingMaskIntoConstraints="NO" id="sGH-Ze-Yux">
                                             <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="40" id="Qwb-r1-ntG"/>
@@ -169,14 +170,15 @@
                             <constraints>
                                 <constraint firstAttribute="bottom" secondItem="Oz1-b3-jia" secondAttribute="bottom" constant="22" id="1Lf-kj-pbF"/>
                                 <constraint firstItem="PFc-uR-ICD" firstAttribute="leading" secondItem="Lm2-2C-MqP" secondAttribute="leading" constant="16" id="Aq6-Pc-qAb"/>
-                                <constraint firstItem="63y-S2-WX2" firstAttribute="leading" secondItem="Lm2-2C-MqP" secondAttribute="leading" constant="-110" id="Fae-C6-pSW"/>
                                 <constraint firstAttribute="trailing" secondItem="9wo-yt-9z7" secondAttribute="trailing" constant="8" id="LHb-af-Lk3"/>
+                                <constraint firstItem="63y-S2-WX2" firstAttribute="leading" secondItem="Lm2-2C-MqP" secondAttribute="leading" id="LRm-xC-t01"/>
                                 <constraint firstAttribute="bottom" secondItem="PFc-uR-ICD" secondAttribute="bottom" constant="22" id="OJv-P9-qce"/>
+                                <constraint firstItem="63y-S2-WX2" firstAttribute="top" secondItem="Lm2-2C-MqP" secondAttribute="top" id="Pv3-EE-nGS"/>
+                                <constraint firstItem="63y-S2-WX2" firstAttribute="leading" secondItem="Lm2-2C-MqP" secondAttribute="leading" id="QOg-KI-vxS"/>
                                 <constraint firstAttribute="trailing" secondItem="Oz1-b3-jia" secondAttribute="trailing" constant="16" id="gr4-Xa-byt"/>
-                                <constraint firstItem="63y-S2-WX2" firstAttribute="top" secondItem="Lm2-2C-MqP" secondAttribute="top" constant="-61" id="mQi-F3-KLH"/>
+                                <constraint firstItem="63y-S2-WX2" firstAttribute="top" secondItem="Lm2-2C-MqP" secondAttribute="top" id="l8V-f9-Btp"/>
                                 <constraint firstAttribute="bottom" secondItem="Wzx-BU-Fdw" secondAttribute="bottom" constant="22" id="mze-DB-75H"/>
                                 <constraint firstItem="9wo-yt-9z7" firstAttribute="top" secondItem="Lm2-2C-MqP" secondAttribute="top" constant="8" id="nhS-VI-xyY"/>
-                                <constraint firstAttribute="bottom" secondItem="63y-S2-WX2" secondAttribute="bottom" constant="90" id="o8X-s2-uN4"/>
                                 <constraint firstItem="Wzx-BU-Fdw" firstAttribute="centerX" secondItem="Lm2-2C-MqP" secondAttribute="centerX" id="tVs-38-SAP"/>
                             </constraints>
                         </view>
@@ -240,10 +242,10 @@
     </objects>
     <resources>
         <image name="Icon-App-40x40.png" width="40" height="40"/>
-        <image name="attachment_file" width="24" height="24"/>
-        <image name="audio_play_black_48" width="48" height="48"/>
         <image name="avatar.jpg" width="960" height="960"/>
         <image name="backArrowIcon" width="12.5" height="21.5"/>
-        <image name="message_status_failed" width="12" height="12"/>
+        <image name="icon_income.png" width="45.333332061767578" height="53.333332061767578"/>
+        <image name="icon_like_empty.png" width="53.333332061767578" height="48.666667938232422"/>
+        <image name="icon_wins.png" width="53.333332061767578" height="41.333332061767578"/>
     </resources>
 </document>

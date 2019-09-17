@@ -11,7 +11,7 @@
 		<key>OSXVersion</key>
 		<string>10.15</string>
 		<key>WebRTCCommit</key>
-		<string>9e1782472307f32e48b1bb0f5aa9028796d65694 Starting to implement VinciChallengeAccount</string>
+		<string>462142fd7e800e5a65070885702486bd5e590ecf Added some outlets</string>
 	</dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>

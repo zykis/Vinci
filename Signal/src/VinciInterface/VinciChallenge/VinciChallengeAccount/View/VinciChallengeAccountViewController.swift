@@ -9,6 +9,7 @@ class VinciChallengeAccountViewController: VinciViewController, VinciChallengeAc
     var presenter: VinciChallengeAccountPresenterProtocol?
     
     @IBOutlet var avatar: UIImageView!
+    private var avatarMask: CAShapeLayer = CAShapeLayer()
     @IBOutlet var navigationBar: UINavigationBar!
     
     @IBOutlet var winsLabel: UILabel!
@@ -21,6 +22,11 @@ class VinciChallengeAccountViewController: VinciViewController, VinciChallengeAc
         return .lightContent
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.avatar.layer.mask = self.avatarMask
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationBar.barTintColor = .black
@@ -30,7 +36,20 @@ class VinciChallengeAccountViewController: VinciViewController, VinciChallengeAc
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         
-        self.avatar.layer.cornerRadius = self.avatar.bounds.width / 2.0
+        let af = self.avatar.frame
+        self.avatarMask.bounds = CGRect(x: 0,
+                                        y: 0,
+                                        width: af.height,
+                                        height: af.height)
+        self.avatarMask.anchorPoint = CGPoint(x: 0.5, y: 1.0)
+        self.avatarMask.position = CGPoint(x: af.origin.x,
+                                           y: af.origin.y + af.size.height)
+        self.avatarMask.path = UIBezierPath(roundedRect: self.avatarMask.bounds, cornerRadius: af.size.height / 2.0).cgPath
+        var t: CATransform3D = CATransform3DIdentity
+        t = CATransform3DMakeTranslation(af.size.width * 0.15, 0, 0)
+        t.m11 = 1.2
+        t.m22 = 1.2
+        self.avatarMask.transform = t
     }
     
     @IBAction func pop() {
