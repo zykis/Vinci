@@ -11,7 +11,7 @@
 		<key>OSXVersion</key>
 		<string>10.15</string>
 		<key>WebRTCCommit</key>
-		<string>462142fd7e800e5a65070885702486bd5e590ecf Added some outlets</string>
+		<string>54e5ed10c70aeae7247a2129026eca17c1bd5b4e Made an avatar mask for VinciChallengeAccountViewController</string>
 	</dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>

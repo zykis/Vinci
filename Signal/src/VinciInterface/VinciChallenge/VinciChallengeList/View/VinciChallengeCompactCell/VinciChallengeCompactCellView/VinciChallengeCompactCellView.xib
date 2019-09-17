@@ -30,10 +30,10 @@
                         <constraint firstAttribute="width" secondItem="eII-QY-dep" secondAttribute="height" multiplier="1:1" id="ZnX-PL-cWt"/>
                     </constraints>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wVj-I8-s5p">
-                    <rect key="frame" x="344" y="5.5" width="31" height="25"/>
+                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wVj-I8-s5p">
+                    <rect key="frame" x="342" y="2" width="29" height="32"/>
                     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <state key="normal" image="vinciChatsActiveTabIcon"/>
+                    <state key="normal" image="icon_favourite_empty_32.png"/>
                 </button>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="nlq-fP-LVz">
                     <rect key="frame" x="40" y="3" width="81.5" height="30"/>
@@ -53,12 +53,12 @@
                     </subviews>
                 </stackView>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="flE-NI-IAn">
-                    <rect key="frame" x="275.5" y="2" width="52.5" height="32"/>
+                    <rect key="frame" x="273.5" y="2" width="52.5" height="32"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Wv4-KJ-iXB">
                             <rect key="frame" x="0.0" y="0.0" width="52.5" height="16"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vinciTrashIcon" translatesAutoresizingMaskIntoConstraints="NO" id="Hiu-sI-la8">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_like_16.png" translatesAutoresizingMaskIntoConstraints="NO" id="Hiu-sI-la8">
                                     <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
                                     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
@@ -77,7 +77,7 @@
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="IYJ-B7-Mnn">
                             <rect key="frame" x="0.0" y="16" width="52.5" height="16"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="voice-memo-button" translatesAutoresizingMaskIntoConstraints="NO" id="fdS-2U-WxP">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_diamon_16.png" translatesAutoresizingMaskIntoConstraints="NO" id="fdS-2U-WxP">
                                     <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="16" id="xWb-Az-Trs"/>
@@ -106,15 +106,15 @@
                 <constraint firstItem="flE-NI-IAn" firstAttribute="centerY" secondItem="caK-WT-HXO" secondAttribute="centerY" id="hcv-Qe-RQz"/>
                 <constraint firstItem="nlq-fP-LVz" firstAttribute="centerY" secondItem="caK-WT-HXO" secondAttribute="centerY" id="hoQ-CT-rmv"/>
                 <constraint firstItem="7Cr-Wv-s0N" firstAttribute="bottom" secondItem="eII-QY-dep" secondAttribute="bottom" id="lb8-P9-xAl"/>
-                <constraint firstItem="7Cr-Wv-s0N" firstAttribute="trailing" secondItem="wVj-I8-s5p" secondAttribute="trailing" id="njt-zv-snv"/>
+                <constraint firstItem="7Cr-Wv-s0N" firstAttribute="trailing" secondItem="wVj-I8-s5p" secondAttribute="trailing" constant="4" id="njt-zv-snv"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="7Cr-Wv-s0N"/>
         </view>
     </objects>
     <resources>
-        <image name="vinciChatsActiveTabIcon" width="31" height="25"/>
-        <image name="vinciTrashIcon" width="21.5" height="24"/>
-        <image name="voice-memo-button" width="32" height="32"/>
+        <image name="icon_diamon_16.png" width="16" height="12"/>
+        <image name="icon_favourite_empty_32.png" width="29" height="32"/>
+        <image name="icon_like_16.png" width="16" height="16"/>
     </resources>
 </document>

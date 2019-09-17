@@ -4,6 +4,8 @@
 
 import UIKit
 
+let kVinciChallengeAccountCellReuseIdentifier = "kVinciChallengeAccountCellRI"
+let kVinciChallengeAccountCellXibName = "VinciChallengeAccountCell"
 
 class VinciChallengeAccountViewController: VinciViewController, VinciChallengeAccountViewProtocol {
     var presenter: VinciChallengeAccountPresenterProtocol?
@@ -24,6 +26,7 @@ class VinciChallengeAccountViewController: VinciViewController, VinciChallengeAc
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setupTableView()
         self.avatar.layer.mask = self.avatarMask
     }
     
@@ -54,5 +57,44 @@ class VinciChallengeAccountViewController: VinciViewController, VinciChallengeAc
     
     @IBAction func pop() {
         self.navigationController?.popViewController(animated: true)
+    }
+     
+    func setupTableView() {
+        let nib = UINib(nibName: kVinciChallengeAccountCellXibName, bundle: nil)
+        self.tableView.register(nib, forCellReuseIdentifier: kVinciChallengeAccountCellReuseIdentifier)
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+    }
+}
+
+
+
+extension VinciChallengeAccountViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60.0
+    }
+}
+
+
+extension VinciChallengeAccountViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 4
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell: VinciChallengeAccountCell = self.tableView.dequeueReusableCell(withIdentifier: kVinciChallengeAccountCellReuseIdentifier) as! VinciChallengeAccountCell
+        switch indexPath.row {
+        case 0:
+            cell.setup(iconName: "icon_gamerules", title: "Game Rules")
+        case 1:
+            cell.setup(iconName: "icon_star", title: "Now Trending")
+        case 2:
+            cell.setup(iconName: "icon_interests", title: "My Interests")
+        case 3:
+            cell.setup(iconName: "", title: "Game Statistics")
+        default:
+            cell.setup(iconName: "", title: "")
+        }
+        return cell
     }
 }
