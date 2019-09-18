@@ -5,6 +5,7 @@
 import Foundation
 
 class Challenge: Decodable {
+    var id: String?
     var title: String
     var description: String?
     var startDate: Date
@@ -17,9 +18,13 @@ class Challenge: Decodable {
     var tags: [String] = []
     var likes: Int = 0
     var favourite: Bool = false
+    var medias: [Media] = []
     
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        self.id = try container.decode(String.self, forKey: .id)
+        
         self.title = try container.decode(String.self, forKey: .title)
         self.description = try container.decode(String.self, forKey: .description)
         
@@ -57,6 +62,7 @@ class Challenge: Decodable {
     }
     
     enum CodingKeys: String, CodingKey {
+        case id = "ID"
         case title = "NAME"
         case description = "DESCR"
         case startDate = "BEGIN"

@@ -7,9 +7,10 @@ import Foundation
 
 let kSectionMargin: CGFloat = 16.0
 let kSearchBarHeight: CGFloat = 44.0
-let kCompactCellHeight: CGFloat = 36.0
+let kRowHeightCompactCell: CGFloat = 36.0 + kCellMargin * 2
 let kCollectionCellOffset: CGFloat = 4.0
-let kRowHeightExtendedCell: CGFloat = kCellMargin + kCompactCellHeight + kCollectionCellMargin + kCellCollectionViewHeight + kCollectionCellMargin
+let kRowSpacing: CGFloat = 8.0
+let kRowHeightExtendedCell: CGFloat = (kRowHeightCompactCell - kCellMargin) + kCollectionCellMargin + kCellCollectionViewHeight + kCollectionCellMargin
 
 class VinciChallengeListViewController: VinciViewController, VinciChallengeListViewProtocol {
     var presenter: VinciChallengeListPresenterProtocol? = VinciChallengeListPresenter()
@@ -57,7 +58,7 @@ extension VinciChallengeListViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupTableView()
-        self.presenter?.startFetchingChallenges(limit: 20, offset: 0, signalID: "\(TSAccountManager.sharedInstance().getOrGenerateRegistrationId())")
+        self.presenter?.startFetchingChallenges(limit: 100, offset: 0, signalID: "\(TSAccountManager.sharedInstance().getOrGenerateRegistrationId())")
         
         print("PHONE NUMBER: \(TSAccountManager.sharedInstance().localNumber() ?? "")")
         print("REGISTRATION ID: \(TSAccountManager.sharedInstance().getOrGenerateRegistrationId())")
@@ -66,18 +67,18 @@ extension VinciChallengeListViewController {
 
 
 extension VinciChallengeListViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        switch indexPath.section {
-        case 0:
-            return kSearchBarHeight
-        case 1:
-            return kLargeCollectionCellHeight
-        case 2:
-            return kRowHeightExtendedCell
-        default:
-            return 0.0
-        }
-    }
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        switch indexPath.section {
+//        case 0:
+//            return kSearchBarHeight
+//        case 1:
+//            return kLargeCollectionCellHeight
+//        case 2:
+//            return kRowHeightExtendedCell
+//        default:
+//            return 0.0
+//        }
+//    }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView.contentOffset.y > self.gamesLabel.bounds.height + kSearchBarHeight {

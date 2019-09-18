@@ -14,6 +14,8 @@ class VinciChallengeCollectionSmallCell: UICollectionViewCell {
         let minEdge = min(self.bounds.width, self.bounds.height)
         self.imageView.layer.cornerRadius = minEdge / 8.0
         self.imageView.backgroundColor = UIColor(white: 0.95, alpha: 1.0)
+        self.imageView.clipsToBounds = true
+        self.imageView.contentMode = .scaleAspectFill
         self.contentView.addSubview(imageView)
     }
     

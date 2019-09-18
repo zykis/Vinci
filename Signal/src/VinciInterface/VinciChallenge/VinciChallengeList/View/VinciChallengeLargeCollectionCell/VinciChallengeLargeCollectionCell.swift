@@ -39,6 +39,11 @@ class VinciChallengeLargeCollectionCell: UITableViewCell {
         self.collectionView.register(VinciChallengeCollectionSmallCell.self, forCellWithReuseIdentifier: kVinciChallengeCollectionCellReuseIdentifier)
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
+        
+        self.collectionView.leftAnchor.constraint(equalTo: self.contentView.leftAnchor, constant: kCellMargin).isActive = true
+        self.collectionView.rightAnchor.constraint(equalTo: self.contentView.rightAnchor, constant: -kCellMargin).isActive = true
+        self.collectionView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: kCellMargin).isActive = true
+        self.collectionView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -kCellMargin).isActive = true
     }
 }
 

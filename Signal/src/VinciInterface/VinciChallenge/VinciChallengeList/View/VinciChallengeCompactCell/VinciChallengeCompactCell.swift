@@ -22,22 +22,22 @@ class VinciChallengeCompactCell: UITableViewCell {
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
-        let bundle = Bundle(for: type(of: self))
-        let views = bundle.loadNibNamed(VinciChallengeCompactCellViewNibName, owner: self, options: nil)
-        if let view = views?.first as? UIView {
-            self.compactCellView = view
-            self.contentView.addSubview(view)
-        }
+        self.addCompactCellView()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) not implemented")
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
+    func addCompactCellView() {
+        let bundle = Bundle(for: type(of: self))
+        let views = bundle.loadNibNamed(VinciChallengeCompactCellViewNibName, owner: self, options: nil)
+        if let view = views?.first as? UIView {
+            self.compactCellView = view
+            self.contentView.addSubview(view)
+        }
         
+        self.compactCellView.translatesAutoresizingMaskIntoConstraints = false
         self.compactCellView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: kCellMargin).isActive = true
         self.compactCellView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -kCellMargin).isActive = true
         self.compactCellView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: kCellMargin).isActive = true

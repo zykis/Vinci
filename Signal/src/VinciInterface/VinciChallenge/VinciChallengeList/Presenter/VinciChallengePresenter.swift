@@ -12,7 +12,7 @@ class VinciChallengeListPresenter: VinciChallengeListPresenterProtocol {
     var challenges: [Challenge] = []
     
     func startFetchingChallenges(limit: Int?, offset: Int?, signalID: String?) {
-        self.interactor?.fetchChallenges(limit: limit, offset: offset, signalID: signalID)
+        self.interactor?.fetchChallengesWithMedia()
     }
     
     func challengeFetchSuccess(challenges: [Challenge]) {
@@ -21,6 +21,16 @@ class VinciChallengeListPresenter: VinciChallengeListPresenterProtocol {
     }
     
     func challengeFetchFail(error: Error) {
+        // TODO: handle error
+    }
+    
+    func mediasFetchSuccess(medias: [Media]) {
+        // FIXME: insert challenge may be?
+        // Multiple times update whole tableView isn't good
+        self.view?.updateChallengeList()
+    }
+    
+    func mediasFetchFail(error: Error) {
         // TODO: handle error
     }
     

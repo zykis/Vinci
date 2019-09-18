@@ -33,6 +33,7 @@
 		172D0DC323313BBC00A4725E /* icon_interests@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 172D0DBD23313BBB00A4725E /* icon_interests@3x.png */; };
 		172D0DC423313BBC00A4725E /* icon_interests@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 172D0DBE23313BBC00A4725E /* icon_interests@2x.png */; };
 		172D0DC62331470500A4725E /* VinciButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172D0DC52331470500A4725E /* VinciButton.swift */; };
+		172D0DC823315B9A00A4725E /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172D0DC723315B9A00A4725E /* Media.swift */; };
 		17BEFD95232A9DC90096ED75 /* StickyCollectionFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BEFD94232A9DC90096ED75 /* StickyCollectionFlowLayout.swift */; };
 		17BEFD99232F8ECF0096ED75 /* VinciChallengeLargeCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BEFD98232F8ECF0096ED75 /* VinciChallengeLargeCollectionCell.swift */; };
 		17C120C1232FBE7C00A38A87 /* VinciChallengeAccountProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C120C0232FBE7C00A38A87 /* VinciChallengeAccountProtocols.swift */; };
@@ -735,6 +736,7 @@
 		172D0DBD23313BBB00A4725E /* icon_interests@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_interests@3x.png"; sourceTree = "<group>"; };
 		172D0DBE23313BBC00A4725E /* icon_interests@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_interests@2x.png"; sourceTree = "<group>"; };
 		172D0DC52331470500A4725E /* VinciButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinciButton.swift; sourceTree = "<group>"; };
+		172D0DC723315B9A00A4725E /* Media.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
 		17BEFD94232A9DC90096ED75 /* StickyCollectionFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickyCollectionFlowLayout.swift; sourceTree = "<group>"; };
 		17BEFD98232F8ECF0096ED75 /* VinciChallengeLargeCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinciChallengeLargeCollectionCell.swift; sourceTree = "<group>"; };
 		17C120C0232FBE7C00A38A87 /* VinciChallengeAccountProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinciChallengeAccountProtocols.swift; sourceTree = "<group>"; };
@@ -2430,6 +2432,7 @@
 			isa = PBXGroup;
 			children = (
 				591E65902327E85F00B7484E /* Challenge.swift */,
+				172D0DC723315B9A00A4725E /* Media.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -3258,7 +3261,7 @@
 						ProvisioningStyle = Automatic;
 					};
 					D221A088169C9E5E00537ABF = {
-						DevelopmentTeam = 67U7CVYQJQ;
+						DevelopmentTeam = 225AS2YJCX;
 						LastSwiftMigration = 0930;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -3957,6 +3960,7 @@
 				CB89972A22E29CE700D07D94 /* VinciTabBarController.swift in Sources */,
 				8DADFD21230C774300EC2F8C /* VinciTopMenuRowView.swift in Sources */,
 				340FC8A9204DAC8D007AEB0F /* NotificationSettingsOptionsViewController.m in Sources */,
+				172D0DC823315B9A00A4725E /* Media.swift in Sources */,
 				452037D11EE84975004E4CDF /* DebugUISessionState.m in Sources */,
 				8DADFD2A230C77CF00EC2F8C /* VinciSearchResultsViewController.swift in Sources */,
 				D221A09A169C9E5E00537ABF /* main.m in Sources */,
@@ -4620,7 +4624,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 67U7CVYQJQ;
+				DEVELOPMENT_TEAM = 225AS2YJCX;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
@@ -4687,7 +4691,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 67U7CVYQJQ;
+				DEVELOPMENT_TEAM = 225AS2YJCX;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",

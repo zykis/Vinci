@@ -20,6 +20,9 @@ protocol VinciChallengeListPresenterProtocol: class {
     func challengeFetchSuccess(challenges: [Challenge])
     func challengeFetchFail(error: Error)
     
+    func mediasFetchSuccess(medias: [Media])
+    func mediasFetchFail(error: Error)
+    
     func challenge(at indexPath: IndexPath) -> Challenge
     func challengeCount() -> Int
 }
@@ -28,7 +31,7 @@ protocol VinciChallengeListPresenterProtocol: class {
 protocol VinciChallengeListInteractorProtocol {
     var presenter: VinciChallengeListPresenterProtocol? {get set}
     
-    func fetchChallenges(limit: Int?, offset: Int?, signalID: String?)
+    func fetchChallengesWithMedia()
 }
 
 
