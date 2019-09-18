@@ -1543,6 +1543,48 @@
 			path = VinciChallengeCollectionCell;
 			sourceTree = "<group>";
 		};
+		1722F4CE23328D6F00EC575B /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		1722F4CF23328D7800EC575B /* Router */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		1722F4D023328D8100EC575B /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		1722F4D123328D8800EC575B /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		1722F4D223328D9900EC575B /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		1722F4D323328DAF00EC575B /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		172D0DB42331372200A4725E /* New Group */ = {
 			isa = PBXGroup;
 			children = (
@@ -1550,6 +1592,19 @@
 				172D0DB72331387F00A4725E /* VinciChallengeAccountCell.swift */,
 			);
 			path = "New Group";
+			sourceTree = "<group>";
+		};
+		172D0DC92332883900A4725E /* VinciChallengeMediaView */ = {
+			isa = PBXGroup;
+			children = (
+				1722F4CE23328D6F00EC575B /* Protocols */,
+				1722F4D323328DAF00EC575B /* View */,
+				1722F4D223328D9900EC575B /* Interactor */,
+				1722F4D123328D8800EC575B /* Presenter */,
+				1722F4D023328D8100EC575B /* Entity */,
+				1722F4CF23328D7800EC575B /* Router */,
+			);
+			path = VinciChallengeMediaView;
 			sourceTree = "<group>";
 		};
 		17BEFD97232F8EA60096ED75 /* VinciChallengeLargeCollectionCell */ = {
@@ -2945,6 +3000,7 @@
 			children = (
 				591E657D2327B0C900B7484E /* VinciChallengeList */,
 				17C49A49232FBD5B006334E1 /* VinciChallengeAccount */,
+				172D0DC92332883900A4725E /* VinciChallengeMediaView */,
 			);
 			path = VinciChallenge;
 			sourceTree = "<group>";

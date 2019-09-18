@@ -50,6 +50,11 @@ class VinciChallengeListViewController: VinciViewController, VinciChallengeListV
         let accountVC = VinciChallengeAccountRouter.createModule()
         self.navigationController?.pushViewController(accountVC, animated: true)
     }
+    
+    @IBAction func presentSettings() {
+        let navigationController:OWSNavigationController = AppSettingsViewController.inModalNavigationController()
+        present(navigationController, animated: true, completion: nil)
+    }
 }
 
 
@@ -67,19 +72,6 @@ extension VinciChallengeListViewController {
 
 
 extension VinciChallengeListViewController: UITableViewDelegate {
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        switch indexPath.section {
-//        case 0:
-//            return kSearchBarHeight
-//        case 1:
-//            return kLargeCollectionCellHeight
-//        case 2:
-//            return kRowHeightExtendedCell
-//        default:
-//            return 0.0
-//        }
-//    }
-    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView.contentOffset.y > self.gamesLabel.bounds.height + kSearchBarHeight {
             self.animateTitlePositionChange()

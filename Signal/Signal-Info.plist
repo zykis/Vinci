@@ -11,7 +11,7 @@
 		<key>OSXVersion</key>
 		<string>10.15</string>
 		<key>WebRTCCommit</key>
-		<string>a79094b73b6f87f8dbfada0f92f2e3c2a8264928 Some improvement to VinciChallengeAccountViewController</string>
+		<string>375ab21fd247c7b22b33f786ae20fd42927b312a Getting mediaMeta with challenges. Setting up image</string>
 	</dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>

@@ -14,6 +14,8 @@ class VinciChallengeListInteractor: VinciChallengeListInteractorProtocol {
     weak var presenter: VinciChallengeListPresenterProtocol?
     let dispatchGroup = DispatchGroup()
     
+    var startDate: Date?
+    
     func fetchChallengesWithMedia() {
         let signalID = TSAccountManager.sharedInstance().getOrGenerateRegistrationId()
         let urlString = kEndpointGetChallenges + "?SIGNALID=\(signalID)&LIMIT=\(100)&OFFSET=\(0)"
@@ -24,6 +26,9 @@ class VinciChallengeListInteractor: VinciChallengeListInteractorProtocol {
                 let decoder = JSONDecoder()
                 do {
                     let challenges: [Challenge] = try decoder.decode([Challenge].self, from: data)
+                    
+                    self.startDate = Date()
+                    
                     for challenge in challenges {
                         self.dispatchGroup.enter()
                         self.fetchChallengeMedia(challenge: challenge, dispatchGroup: self.dispatchGroup, completionHandler: { (medias) in
@@ -32,6 +37,7 @@ class VinciChallengeListInteractor: VinciChallengeListInteractorProtocol {
                         })
                     }
                     self.dispatchGroup.notify(queue: .main, execute: {
+                        print("MEDIA METADATA REQUEST TIME: \(Date().timeIntervalSince(self.startDate!))")
                         self.presenter?.challengeFetchSuccess(challenges: challenges)
                     })
                 } catch {
@@ -45,11 +51,15 @@ class VinciChallengeListInteractor: VinciChallengeListInteractorProtocol {
     }
     
     private func fetchChallengeMedia(challenge: Challenge, dispatchGroup: DispatchGroup, completionHandler: @escaping ([Media]) -> Void) {
-        let signalID = TSAccountManager.sharedInstance().getOrGenerateRegistrationId()
+        let start = Date()
+        
+        let signalID = "4310"
         let urlString = kEndpointGetMediaMeta + "?LIMIT=20&OFFSET=0&SIGNALID=\(signalID)&CHID=\(challenge.id!)"
+//        let urlString = "https://www.google.com/search?client=safari&rls=en&q=\(challenge.id!)&ie=UTF-8&oe=UTF-8"
         if let url = URL(string: urlString) {
             let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
                 guard let data = data else { return }
+                print("SINGLE MEDIA METADATA REQUEST TIME: \(Date().timeIntervalSince(start))")
                 
                 let decoder = JSONDecoder()
                 

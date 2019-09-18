@@ -32,6 +32,9 @@
                         <navigationItem id="OSx-ey-ocJ">
                             <barButtonItem key="leftBarButtonItem" title="Item" image="vinciSettingsIcon" id="ja9-ge-GPn">
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="presentSettings" destination="-1" id="xVk-Hd-6Zw"/>
+                                </connections>
                             </barButtonItem>
                             <barButtonItem key="rightBarButtonItem" title="Item" image="icon_account.png" id="FsJ-Zy-2ST">
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -9,13 +9,17 @@ class VinciChallengeListPresenter: VinciChallengeListPresenterProtocol {
     var interactor: VinciChallengeListInteractorProtocol?
     var router: VinciChallengeListRouterProtocol?
     
+    var startDate: Date?
+    
     var challenges: [Challenge] = []
     
     func startFetchingChallenges(limit: Int?, offset: Int?, signalID: String?) {
+        self.startDate = Date()
         self.interactor?.fetchChallengesWithMedia()
     }
     
     func challengeFetchSuccess(challenges: [Challenge]) {
+        print("CHALLENGES WITH MEDIA METADATA REQUEST TIME: \(Date().timeIntervalSince(self.startDate!))")
         self.challenges = challenges
         self.view?.updateChallengeList()
     }

@@ -40,6 +40,7 @@ class VinciChallengeExtendedCell: VinciChallengeCompactCell {
         self.collectionView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -kCellMargin).isActive = true
         self.collectionView.bottomAnchor.constraint(lessThanOrEqualTo: self.contentView.bottomAnchor, constant: -kCollectionCellMargin).isActive = true
         self.collectionHeightConstraint = self.collectionView.heightAnchor.constraint(equalToConstant: 0)
+        self.collectionHeightConstraint?.priority = UILayoutPriority(999)
         self.collectionHeightConstraint?.isActive = true
     }
     
