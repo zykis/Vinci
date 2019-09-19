@@ -51,6 +51,8 @@ class VinciChallengeCompactCell: UITableViewCell {
     }
     
     func setup(with challenge: Challenge) {
+        self.cleanUpWithColor(color: .clear)
+        
         if let iconUrl = challenge.iconUrl {
             if let url = URL(string: iconUrl) {
                 self.iconImageView.downloadAndSetupImage(with: url, completion: nil)
@@ -77,5 +79,32 @@ class VinciChallengeCompactCell: UITableViewCell {
         let amount: Double = challenge.likes > 1_000_000 ? Double(challenge.likes) / 1_000_000.0 : challenge.likes >= 1_000 ? Double(challenge.likes) / 1_000.0 : Double(challenge.likes)
         let formatType = amount >= 1_000 ? "%.1f" : "%i"
         self.likesLabel.text = String.init(format: formatType + amountAbbreviation, amount < 1_000 ? Int(amount) : amount)
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.cleanUp()
+    }
+    
+    func cleanUp() {
+        let lightGray = UIColor.init(white: 0.95, alpha: 1.0)
+        self.cleanUpWithColor(color: lightGray)
+    }
+    
+    private func cleanUpWithColor(color: UIColor) {
+        self.iconImageView.image = nil
+        self.iconImageView.backgroundColor = color
+        
+        self.titleLabel.text = nil
+        self.titleLabel.backgroundColor = color
+        
+        self.rewardLabel.text = nil
+        self.rewardLabel.backgroundColor = color
+        
+        self.expiredInLabel.text = nil
+        self.expiredInLabel.backgroundColor = color
+        
+        self.likesLabel.text = nil
+        self.likesLabel.backgroundColor = color
     }
 }

@@ -39,7 +39,7 @@ class VinciChallengeExtendedCell: VinciChallengeCompactCell {
         self.collectionView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: kCellMargin).isActive = true
         self.collectionView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -kCellMargin).isActive = true
         self.collectionView.bottomAnchor.constraint(lessThanOrEqualTo: self.contentView.bottomAnchor, constant: -kCollectionCellMargin).isActive = true
-        self.collectionHeightConstraint = self.collectionView.heightAnchor.constraint(equalToConstant: 0)
+        self.collectionHeightConstraint = self.collectionView.heightAnchor.constraint(equalToConstant: kCellCollectionViewHeight)
         self.collectionHeightConstraint?.priority = UILayoutPriority(999)
         self.collectionHeightConstraint?.isActive = true
     }
@@ -54,21 +54,21 @@ class VinciChallengeExtendedCell: VinciChallengeCompactCell {
         super.setup(with: challenge)
         self.challenge = challenge
         
-        if challenge.medias.count > 0 {
-            self.collectionHeightConstraint?.constant = kCellCollectionViewHeight
-        } else {
-            self.collectionHeightConstraint?.constant = 0
-        }
-        self.collectionView.reloadData()
-//        for media in challenge.medias {
-//            if let url = URL(string: media.url) {
-//                self.imageView?.downloadAndSetupImage(with: url, completion: nil)
-//            }
+//        if challenge.medias.count > 0 {
+//            self.collectionHeightConstraint?.constant = kCellCollectionViewHeight
+//        } else {
+//            self.collectionHeightConstraint?.constant = 0
 //        }
+        self.collectionView.reloadData()
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        self.cleanUp()
+    }
+    
+    override func cleanUp() {
+        super.cleanUp()
         self.challenge = nil
     }
 }
@@ -85,7 +85,10 @@ extension VinciChallengeExtendedCell: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.challenge?.medias.count ?? 0
+        if let count = self.challenge?.medias.count, count > 0 {
+            return count
+        }
+        return 4
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

@@ -38,8 +38,11 @@ class VinciChallengeListPresenter: VinciChallengeListPresenterProtocol {
         // TODO: handle error
     }
     
-    func challenge(at indexPath: IndexPath) -> Challenge {
-        return self.challenges[indexPath.row]
+    func challenge(at indexPath: IndexPath) -> Challenge? {
+        if self.challenges.indices.contains(indexPath.row) {
+            return self.challenges[indexPath.row]
+        }
+        return nil
     }
     
     func challengeCount() -> Int {

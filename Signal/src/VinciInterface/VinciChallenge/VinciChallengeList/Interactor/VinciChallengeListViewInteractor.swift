@@ -17,7 +17,8 @@ class VinciChallengeListInteractor: VinciChallengeListInteractorProtocol {
     var startDate: Date?
     
     func fetchChallenges() {
-        let signalID = TSAccountManager.sharedInstance().getOrGenerateRegistrationId()
+//        let signalID = TSAccountManager.sharedInstance().getOrGenerateRegistrationId()
+        let signalID = "4310"
         let urlString = kEndpointGetChallenges + "?SIGNALID=\(signalID)&LIMIT=\(100)&OFFSET=\(0)"
         if let url = URL(string: urlString) {
             let task = URLSession.shared.dataTask(with: url) { (data, response, error) in

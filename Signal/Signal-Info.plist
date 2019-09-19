@@ -11,7 +11,7 @@
 		<key>OSXVersion</key>
 		<string>10.15</string>
 		<key>WebRTCCommit</key>
-		<string>5206a3fe42ebbca6094a3ab392d2a976556e08bf Checking mediaMeta request time is too high ~2s.</string>
+		<string>4eab399e368da8f20187ea897062b3fd3a2b752a Changing API</string>
 	</dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>

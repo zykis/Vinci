@@ -88,7 +88,9 @@ extension VinciChallengeListViewController: UITableViewDataSource {
         case 1:
             return 1
         case 2:
-            return self.presenter?.challengeCount() ?? 0
+            guard let count = self.presenter?.challengeCount(), count > 0
+                else { return 3 }
+            return count
         default:
             return 0
         }
@@ -114,12 +116,13 @@ extension VinciChallengeListViewController: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: kVinciChallengeLargeCollectionCellReuseIdentifier)!
             return cell
         case 2:
+            let cell: VinciChallengeExtendedCell = self.tableView.dequeueReusableCell(withIdentifier: kVinciChallengeExtendedCellReuseIdentifier) as! VinciChallengeExtendedCell
+            // FIXME: cell.prepareForReuse not getting called
+            cell.cleanUp()
             if let challenge = self.presenter?.challenge(at: indexPath) {
-                let cell: VinciChallengeExtendedCell = self.tableView.dequeueReusableCell(withIdentifier: kVinciChallengeExtendedCellReuseIdentifier) as! VinciChallengeExtendedCell
                 cell.setup(with: challenge)
-                return cell
             }
-            return UITableViewCell()
+            return cell
         default:
             return UITableViewCell()
         }
