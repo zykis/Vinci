@@ -16,6 +16,33 @@ class VinciChallengeListInteractor: VinciChallengeListInteractorProtocol {
     
     var startDate: Date?
     
+    func fetchChallenges() {
+        let signalID = TSAccountManager.sharedInstance().getOrGenerateRegistrationId()
+        let urlString = kEndpointGetChallenges + "?SIGNALID=\(signalID)&LIMIT=\(100)&OFFSET=\(0)"
+        if let url = URL(string: urlString) {
+            let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+                guard let data = data else { return }
+                
+                let decoder = JSONDecoder()
+                do {
+                    let challenges: [Challenge] = try decoder.decode([Challenge].self, from: data)
+                    DispatchQueue.main.async {
+                        self.presenter?.challengeFetchSuccess(challenges: challenges)
+                    }
+                } catch let error as NSError {
+                    DispatchQueue.main.async {
+                        self.presenter?.challengeFetchFail(error: error)
+                    }
+                } catch {
+                    DispatchQueue.main.async {
+                        self.presenter?.challengeFetchFail(error: NSError(domain: "com.vinci", code: 1, userInfo: [NSLocalizedDescriptionKey: "Failed to get list of challenges"]))
+                    }
+                }
+            }
+            task.resume()
+        }
+    }
+    
     func fetchChallengesWithMedia() {
         let signalID = TSAccountManager.sharedInstance().getOrGenerateRegistrationId()
         let urlString = kEndpointGetChallenges + "?SIGNALID=\(signalID)&LIMIT=\(100)&OFFSET=\(0)"
@@ -36,6 +63,7 @@ class VinciChallengeListInteractor: VinciChallengeListInteractorProtocol {
                             self.dispatchGroup.leave()
                         })
                     }
+                    
                     self.dispatchGroup.notify(queue: .main, execute: {
                         print("MEDIA METADATA REQUEST TIME: \(Date().timeIntervalSince(self.startDate!))")
                         self.presenter?.challengeFetchSuccess(challenges: challenges)

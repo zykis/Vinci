@@ -32,6 +32,7 @@ protocol VinciChallengeListInteractorProtocol {
     var presenter: VinciChallengeListPresenterProtocol? {get set}
     
     func fetchChallengesWithMedia()
+    func fetchChallenges()
 }
 
 

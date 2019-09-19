@@ -15,7 +15,7 @@ class VinciChallengeListPresenter: VinciChallengeListPresenterProtocol {
     
     func startFetchingChallenges(limit: Int?, offset: Int?, signalID: String?) {
         self.startDate = Date()
-        self.interactor?.fetchChallengesWithMedia()
+        self.interactor?.fetchChallenges()
     }
     
     func challengeFetchSuccess(challenges: [Challenge]) {
