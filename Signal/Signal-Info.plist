@@ -11,7 +11,7 @@
 		<key>OSXVersion</key>
 		<string>10.15</string>
 		<key>WebRTCCommit</key>
-		<string>4eab399e368da8f20187ea897062b3fd3a2b752a Changing API</string>
+		<string>24f9aef54162907a9e5755ee655d78c3dd4fdd06 Added cleanUp methods for cell (alternative to prepareForReuse)</string>
 	</dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
@@ -64,6 +64,8 @@
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
+		<key>NSAllowsArbitraryLoadsInWebContent</key>
+		<false/>
 		<key>NSExceptionDomains</key>
 		<dict>
 			<key>3.84.122.119</key>

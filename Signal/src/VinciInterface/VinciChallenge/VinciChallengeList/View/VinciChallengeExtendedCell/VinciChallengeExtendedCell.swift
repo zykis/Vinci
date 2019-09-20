@@ -13,6 +13,7 @@ class VinciChallengeExtendedCell: VinciChallengeCompactCell {
     var collectionView: UICollectionView!
     var collectionHeightConstraint: NSLayoutConstraint?
     weak var challenge: Challenge?
+    weak var viewContoller: VinciChallengeListViewController?
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -75,7 +76,13 @@ class VinciChallengeExtendedCell: VinciChallengeCompactCell {
 
 
 extension VinciChallengeExtendedCell: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard
+            let challenge = self.challenge,
+            challenge.medias.indices.contains(indexPath.row)
+        else { return }
+        self.viewContoller?.mediaTapped(media: challenge.medias[indexPath.row])
+    }
 }
 
 

@@ -11,13 +11,13 @@
 		17057F6E232FF33B001A0D6A /* Icon-App-40x40@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 17057F6C232FF33A001A0D6A /* Icon-App-40x40@3x.png */; };
 		17057F6F232FF33B001A0D6A /* Icon-App-40x40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 17057F6D232FF33B001A0D6A /* Icon-App-40x40@2x.png */; };
 		1719DE49232A427100D051A4 /* VinciChallengeCollectionSmallCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1719DE48232A427100D051A4 /* VinciChallengeCollectionSmallCell.swift */; };
-		1722F4D52332AE7D00EC575B /* VinciChallengeMediaProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1722F4D42332AE7D00EC575B /* VinciChallengeMediaProtocols.swift */; };
-		1722F4D72332AED300EC575B /* VinciChallengeMediaRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1722F4D62332AED300EC575B /* VinciChallengeMediaRouter.swift */; };
-		1722F4D92332AF1800EC575B /* VinciChallengeMediaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1722F4D82332AF1800EC575B /* VinciChallengeMediaViewController.swift */; };
-		1722F4DB2332AF5000EC575B /* VinciChallengeMediaInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1722F4DA2332AF5000EC575B /* VinciChallengeMediaInteractor.swift */; };
-		1722F4DD2332AF8400EC575B /* VinciChallengeMediaPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1722F4DC2332AF8400EC575B /* VinciChallengeMediaPresenter.swift */; };
+		1722F4D52332AE7D00EC575B /* VinciChallengeWatchMediaProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1722F4D42332AE7D00EC575B /* VinciChallengeWatchMediaProtocols.swift */; };
+		1722F4D72332AED300EC575B /* VinciChallengeWatchMediaRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1722F4D62332AED300EC575B /* VinciChallengeWatchMediaRouter.swift */; };
+		1722F4D92332AF1800EC575B /* VinciChallengeWatchMediaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1722F4D82332AF1800EC575B /* VinciChallengeWatchMediaViewController.swift */; };
+		1722F4DB2332AF5000EC575B /* VinciChallengeWatchMediaInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1722F4DA2332AF5000EC575B /* VinciChallengeWatchMediaInteractor.swift */; };
+		1722F4DD2332AF8400EC575B /* VinciChallengeWatchMediaPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1722F4DC2332AF8400EC575B /* VinciChallengeWatchMediaPresenter.swift */; };
 		1722F4DF2332AFC200EC575B /* MediaMeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1722F4DE2332AFC200EC575B /* MediaMeta.swift */; };
-		1722F4E12332B2E000EC575B /* VinciChallengeMediaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1722F4E02332B2E000EC575B /* VinciChallengeMediaViewController.xib */; };
+		1722F4E12332B2E000EC575B /* VinciChallengeWatchMediaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1722F4E02332B2E000EC575B /* VinciChallengeWatchMediaViewController.xib */; };
 		172D0D9E23311C5B00A4725E /* icon_like_empty@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 172D0D9A23311C5A00A4725E /* icon_like_empty@3x.png */; };
 		172D0D9F23311C5B00A4725E /* icon_wins@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 172D0D9B23311C5A00A4725E /* icon_wins@3x.png */; };
 		172D0DA023311C5B00A4725E /* icon_income@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 172D0D9C23311C5A00A4725E /* icon_income@3x.png */; };
@@ -41,6 +41,12 @@
 		172D0DC423313BBC00A4725E /* icon_interests@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 172D0DBE23313BBC00A4725E /* icon_interests@2x.png */; };
 		172D0DC62331470500A4725E /* VinciButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172D0DC52331470500A4725E /* VinciButton.swift */; };
 		172D0DC823315B9A00A4725E /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172D0DC723315B9A00A4725E /* Media.swift */; };
+		175934EF2334D10700F3EF02 /* VinciAnimatableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175934EE2334D10700F3EF02 /* VinciAnimatableButton.swift */; };
+		175934F12334DF0100F3EF02 /* icon_like_white_empty_60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 175934F02334DF0000F3EF02 /* icon_like_white_empty_60@2x.png */; };
+		175F251F2333910700FED9EC /* icon_reposts_white_60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 175F251C2333910600FED9EC /* icon_reposts_white_60@2x.png */; };
+		175F25202333910700FED9EC /* icon_comments_white_60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 175F251D2333910600FED9EC /* icon_comments_white_60@2x.png */; };
+		175F25212333910700FED9EC /* icon_like_white_60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 175F251E2333910600FED9EC /* icon_like_white_60@2x.png */; };
+		175F2523233391D100FED9EC /* icon_favourite_white_empty_60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 175F2522233391D000FED9EC /* icon_favourite_white_empty_60@2x.png */; };
 		17BEFD95232A9DC90096ED75 /* StickyCollectionFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BEFD94232A9DC90096ED75 /* StickyCollectionFlowLayout.swift */; };
 		17BEFD99232F8ECF0096ED75 /* VinciChallengeLargeCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BEFD98232F8ECF0096ED75 /* VinciChallengeLargeCollectionCell.swift */; };
 		17C120C1232FBE7C00A38A87 /* VinciChallengeAccountProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C120C0232FBE7C00A38A87 /* VinciChallengeAccountProtocols.swift */; };
@@ -721,13 +727,13 @@
 		17057F6C232FF33A001A0D6A /* Icon-App-40x40@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-40x40@3x.png"; sourceTree = "<group>"; };
 		17057F6D232FF33B001A0D6A /* Icon-App-40x40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-40x40@2x.png"; sourceTree = "<group>"; };
 		1719DE48232A427100D051A4 /* VinciChallengeCollectionSmallCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinciChallengeCollectionSmallCell.swift; sourceTree = "<group>"; };
-		1722F4D42332AE7D00EC575B /* VinciChallengeMediaProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinciChallengeMediaProtocols.swift; sourceTree = "<group>"; };
-		1722F4D62332AED300EC575B /* VinciChallengeMediaRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinciChallengeMediaRouter.swift; sourceTree = "<group>"; };
-		1722F4D82332AF1800EC575B /* VinciChallengeMediaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinciChallengeMediaViewController.swift; sourceTree = "<group>"; };
-		1722F4DA2332AF5000EC575B /* VinciChallengeMediaInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinciChallengeMediaInteractor.swift; sourceTree = "<group>"; };
-		1722F4DC2332AF8400EC575B /* VinciChallengeMediaPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinciChallengeMediaPresenter.swift; sourceTree = "<group>"; };
+		1722F4D42332AE7D00EC575B /* VinciChallengeWatchMediaProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinciChallengeWatchMediaProtocols.swift; sourceTree = "<group>"; };
+		1722F4D62332AED300EC575B /* VinciChallengeWatchMediaRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinciChallengeWatchMediaRouter.swift; sourceTree = "<group>"; };
+		1722F4D82332AF1800EC575B /* VinciChallengeWatchMediaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinciChallengeWatchMediaViewController.swift; sourceTree = "<group>"; };
+		1722F4DA2332AF5000EC575B /* VinciChallengeWatchMediaInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinciChallengeWatchMediaInteractor.swift; sourceTree = "<group>"; };
+		1722F4DC2332AF8400EC575B /* VinciChallengeWatchMediaPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinciChallengeWatchMediaPresenter.swift; sourceTree = "<group>"; };
 		1722F4DE2332AFC200EC575B /* MediaMeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaMeta.swift; sourceTree = "<group>"; };
-		1722F4E02332B2E000EC575B /* VinciChallengeMediaViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VinciChallengeMediaViewController.xib; sourceTree = "<group>"; };
+		1722F4E02332B2E000EC575B /* VinciChallengeWatchMediaViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VinciChallengeWatchMediaViewController.xib; sourceTree = "<group>"; };
 		172D0D9A23311C5A00A4725E /* icon_like_empty@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_like_empty@3x.png"; sourceTree = "<group>"; };
 		172D0D9B23311C5A00A4725E /* icon_wins@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_wins@3x.png"; sourceTree = "<group>"; };
 		172D0D9C23311C5A00A4725E /* icon_income@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_income@3x.png"; sourceTree = "<group>"; };
@@ -751,6 +757,12 @@
 		172D0DBE23313BBC00A4725E /* icon_interests@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_interests@2x.png"; sourceTree = "<group>"; };
 		172D0DC52331470500A4725E /* VinciButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinciButton.swift; sourceTree = "<group>"; };
 		172D0DC723315B9A00A4725E /* Media.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
+		175934EE2334D10700F3EF02 /* VinciAnimatableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinciAnimatableButton.swift; sourceTree = "<group>"; };
+		175934F02334DF0000F3EF02 /* icon_like_white_empty_60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_like_white_empty_60@2x.png"; sourceTree = "<group>"; };
+		175F251C2333910600FED9EC /* icon_reposts_white_60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_reposts_white_60@2x.png"; sourceTree = "<group>"; };
+		175F251D2333910600FED9EC /* icon_comments_white_60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_comments_white_60@2x.png"; sourceTree = "<group>"; };
+		175F251E2333910600FED9EC /* icon_like_white_60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_like_white_60@2x.png"; sourceTree = "<group>"; };
+		175F2522233391D000FED9EC /* icon_favourite_white_empty_60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_favourite_white_empty_60@2x.png"; sourceTree = "<group>"; };
 		17BEFD94232A9DC90096ED75 /* StickyCollectionFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickyCollectionFlowLayout.swift; sourceTree = "<group>"; };
 		17BEFD98232F8ECF0096ED75 /* VinciChallengeLargeCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinciChallengeLargeCollectionCell.swift; sourceTree = "<group>"; };
 		17C120C0232FBE7C00A38A87 /* VinciChallengeAccountProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinciChallengeAccountProtocols.swift; sourceTree = "<group>"; };
@@ -1560,7 +1572,7 @@
 		1722F4CE23328D6F00EC575B /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				1722F4D42332AE7D00EC575B /* VinciChallengeMediaProtocols.swift */,
+				1722F4D42332AE7D00EC575B /* VinciChallengeWatchMediaProtocols.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -1568,7 +1580,7 @@
 		1722F4CF23328D7800EC575B /* Router */ = {
 			isa = PBXGroup;
 			children = (
-				1722F4D62332AED300EC575B /* VinciChallengeMediaRouter.swift */,
+				1722F4D62332AED300EC575B /* VinciChallengeWatchMediaRouter.swift */,
 			);
 			path = Router;
 			sourceTree = "<group>";
@@ -1584,7 +1596,7 @@
 		1722F4D123328D8800EC575B /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
-				1722F4DC2332AF8400EC575B /* VinciChallengeMediaPresenter.swift */,
+				1722F4DC2332AF8400EC575B /* VinciChallengeWatchMediaPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -1592,7 +1604,7 @@
 		1722F4D223328D9900EC575B /* Interactor */ = {
 			isa = PBXGroup;
 			children = (
-				1722F4DA2332AF5000EC575B /* VinciChallengeMediaInteractor.swift */,
+				1722F4DA2332AF5000EC575B /* VinciChallengeWatchMediaInteractor.swift */,
 			);
 			path = Interactor;
 			sourceTree = "<group>";
@@ -1600,8 +1612,8 @@
 		1722F4D323328DAF00EC575B /* View */ = {
 			isa = PBXGroup;
 			children = (
-				1722F4D82332AF1800EC575B /* VinciChallengeMediaViewController.swift */,
-				1722F4E02332B2E000EC575B /* VinciChallengeMediaViewController.xib */,
+				1722F4D82332AF1800EC575B /* VinciChallengeWatchMediaViewController.swift */,
+				1722F4E02332B2E000EC575B /* VinciChallengeWatchMediaViewController.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1615,7 +1627,7 @@
 			path = "New Group";
 			sourceTree = "<group>";
 		};
-		172D0DC92332883900A4725E /* VinciChallengeMediaView */ = {
+		172D0DC92332883900A4725E /* VinciChallengeWatchMedia */ = {
 			isa = PBXGroup;
 			children = (
 				1722F4CE23328D6F00EC575B /* Protocols */,
@@ -1625,7 +1637,7 @@
 				1722F4D023328D8100EC575B /* Entity */,
 				1722F4CF23328D7800EC575B /* Router */,
 			);
-			path = VinciChallengeMediaView;
+			path = VinciChallengeWatchMedia;
 			sourceTree = "<group>";
 		};
 		17BEFD97232F8EA60096ED75 /* VinciChallengeLargeCollectionCell */ = {
@@ -2797,6 +2809,11 @@
 		B633C4FD1A1D190B0059AC12 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				175934F02334DF0000F3EF02 /* icon_like_white_empty_60@2x.png */,
+				175F2522233391D000FED9EC /* icon_favourite_white_empty_60@2x.png */,
+				175F251D2333910600FED9EC /* icon_comments_white_60@2x.png */,
+				175F251E2333910600FED9EC /* icon_like_white_60@2x.png */,
+				175F251C2333910600FED9EC /* icon_reposts_white_60@2x.png */,
 				172D0DBC23313BBB00A4725E /* icon_gamerules@2x.png */,
 				172D0DB923313BBA00A4725E /* icon_gamerules@3x.png */,
 				172D0DBE23313BBC00A4725E /* icon_interests@2x.png */,
@@ -2957,6 +2974,7 @@
 				8D18BD0822F2EFEB00DB9340 /* VinciInviteTabPanel.swift */,
 				17C120C6232FC2AD00A38A87 /* VinciCard.swift */,
 				172D0DC52331470500A4725E /* VinciButton.swift */,
+				175934EE2334D10700F3EF02 /* VinciAnimatableButton.swift */,
 			);
 			name = VinciControls;
 			path = "New Group";
@@ -3021,7 +3039,7 @@
 			children = (
 				591E657D2327B0C900B7484E /* VinciChallengeList */,
 				17C49A49232FBD5B006334E1 /* VinciChallengeAccount */,
-				172D0DC92332883900A4725E /* VinciChallengeMediaView */,
+				172D0DC92332883900A4725E /* VinciChallengeWatchMedia */,
 			);
 			path = VinciChallenge;
 			sourceTree = "<group>";
@@ -3464,6 +3482,7 @@
 				B6F509971AA53F760068F56A /* Localizable.strings in Resources */,
 				172D0D9F23311C5B00A4725E /* icon_wins@3x.png in Resources */,
 				B633C59D1A1D190B0059AC12 /* endcall@2x.png in Resources */,
+				175F251F2333910700FED9EC /* icon_reposts_white_60@2x.png in Resources */,
 				17057F6E232FF33B001A0D6A /* Icon-App-40x40@3x.png in Resources */,
 				FC5CDF391A3393DD00B47253 /* error_white@2x.png in Resources */,
 				172D0DAF23312D0300A4725E /* icon_favourite_filled_32@2x.png in Resources */,
@@ -3476,6 +3495,7 @@
 				AD83FF401A73426500B5C81A /* audio_pause_button_blue@2x.png in Resources */,
 				B66DBF4A19D5BBC8006EA940 /* Images.xcassets in Resources */,
 				34CF0788203E6B78005C4D61 /* ringback_tone_ansi.caf in Resources */,
+				175F25202333910700FED9EC /* icon_comments_white_60@2x.png in Resources */,
 				34C3C78F2040A4F70000134C /* sonarping.mp3 in Resources */,
 				AD83FF431A73426500B5C81A /* audio_play_button@2x.png in Resources */,
 				172D0DAD23312D0300A4725E /* icon_like_16@3x.png in Resources */,
@@ -3483,6 +3503,7 @@
 				172D0DC023313BBC00A4725E /* icon_star@2x.png in Resources */,
 				591E65A123291D3D00B7484E /* VinciChallengeCompactCellView.xib in Resources */,
 				45CB2FA81CB7146C00E1B343 /* Launch Screen.storyboard in Resources */,
+				175F2523233391D100FED9EC /* icon_favourite_white_empty_60@2x.png in Resources */,
 				B633C5C31A1D190B0059AC12 /* mute_off@2x.png in Resources */,
 				172D0DAE23312D0300A4725E /* icon_favourite_filled_32@3x.png in Resources */,
 				AD83FF411A73426500B5C81A /* audio_play_button_blue@2x.png in Resources */,
@@ -3495,7 +3516,7 @@
 				172D0DB023312D0300A4725E /* icon_diamon_16@2x.png in Resources */,
 				B10C9B601A7049EC00ECA2BF /* pause_icon@2x.png in Resources */,
 				FC9120411A39EFB70074545C /* qr@2x.png in Resources */,
-				1722F4E12332B2E000EC575B /* VinciChallengeMediaViewController.xib in Resources */,
+				1722F4E12332B2E000EC575B /* VinciChallengeWatchMediaViewController.xib in Resources */,
 				34CF0787203E6B78005C4D61 /* busy_tone_ansi.caf in Resources */,
 				B10C9B5F1A7049EC00ECA2BF /* pause_icon.png in Resources */,
 				AD83FF471A73428300B5C81A /* audio_play_button_blue.png in Resources */,
@@ -3505,6 +3526,7 @@
 				8DADFD43230C85C200EC2F8C /* SF-Pro-Text-Semibold.otf in Resources */,
 				45B74A882044AAB600CD42F8 /* aurora.aifc in Resources */,
 				45B74A742044AAB600CD42F8 /* aurora-quiet.aifc in Resources */,
+				175F25212333910700FED9EC /* icon_like_white_60@2x.png in Resources */,
 				172D0DC223313BBC00A4725E /* icon_gamerules@2x.png in Resources */,
 				45B74A852044AAB600CD42F8 /* bamboo.aifc in Resources */,
 				17C120C5232FC0F700A38A87 /* VinciChallengeAccountViewController.xib in Resources */,
@@ -3542,6 +3564,7 @@
 				172D0DA323312B4E00A4725E /* icon_account@2x.png in Resources */,
 				45B74A8B2044AAB600CD42F8 /* synth.aifc in Resources */,
 				45B74A752044AAB600CD42F8 /* synth-quiet.aifc in Resources */,
+				175934F12334DF0100F3EF02 /* icon_like_white_empty_60@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3974,6 +3997,7 @@
 				340FC8AF204DAC8D007AEB0F /* OWSLinkDeviceViewController.m in Sources */,
 				34E3EF0D1EFC235B007F6822 /* DebugUIDiskUsage.m in Sources */,
 				454A84042059C787008B8C75 /* MediaTileViewController.swift in Sources */,
+				175934EF2334D10700F3EF02 /* VinciAnimatableButton.swift in Sources */,
 				340FC8B4204DAC8D007AEB0F /* OWSBackupSettingsViewController.m in Sources */,
 				34D1F0871F8678AA0066283D /* ConversationViewItem.m in Sources */,
 				451A13B11E13DED2000A50FD /* CallNotificationsAdapter.swift in Sources */,
@@ -4040,7 +4064,7 @@
 				8DADFD21230C774300EC2F8C /* VinciTopMenuRowView.swift in Sources */,
 				340FC8A9204DAC8D007AEB0F /* NotificationSettingsOptionsViewController.m in Sources */,
 				172D0DC823315B9A00A4725E /* Media.swift in Sources */,
-				1722F4DB2332AF5000EC575B /* VinciChallengeMediaInteractor.swift in Sources */,
+				1722F4DB2332AF5000EC575B /* VinciChallengeWatchMediaInteractor.swift in Sources */,
 				452037D11EE84975004E4CDF /* DebugUISessionState.m in Sources */,
 				8DADFD2A230C77CF00EC2F8C /* VinciSearchResultsViewController.swift in Sources */,
 				D221A09A169C9E5E00537ABF /* main.m in Sources */,
@@ -4090,7 +4114,7 @@
 				4C13C9F620E57BA30089A98B /* ColorPickerViewController.swift in Sources */,
 				8DADFD5C230C989400EC2F8C /* VinciChatsTitleView.swift in Sources */,
 				4CC1ECFB211A553000CC13BE /* AppUpdateNag.swift in Sources */,
-				1722F4DD2332AF8400EC575B /* VinciChallengeMediaPresenter.swift in Sources */,
+				1722F4DD2332AF8400EC575B /* VinciChallengeWatchMediaPresenter.swift in Sources */,
 				591E65912327E85F00B7484E /* Challenge.swift in Sources */,
 				34B6A903218B3F63007C4606 /* TypingIndicatorView.swift in Sources */,
 				340FC8D0205BF2FA007AEB0F /* OWSBackupIO.m in Sources */,
@@ -4109,9 +4133,9 @@
 				34B3F8751E8DF1700035BE1A /* CallViewController.swift in Sources */,
 				8D18BD0B22F3193700DB9340 /* VinciNewChatViewController.swift in Sources */,
 				8DADFD22230C774300EC2F8C /* VinciTopMenuRowViewController.swift in Sources */,
-				1722F4D92332AF1800EC575B /* VinciChallengeMediaViewController.swift in Sources */,
+				1722F4D92332AF1800EC575B /* VinciChallengeWatchMediaViewController.swift in Sources */,
 				34D8C0281ED3673300188D7C /* DebugUITableViewController.m in Sources */,
-				1722F4D52332AE7D00EC575B /* VinciChallengeMediaProtocols.swift in Sources */,
+				1722F4D52332AE7D00EC575B /* VinciChallengeWatchMediaProtocols.swift in Sources */,
 				45F32C222057297A00A300D5 /* MediaDetailViewController.m in Sources */,
 				34B3F8851E8DF1700035BE1A /* NewGroupViewController.m in Sources */,
 				34D8C0271ED3673300188D7C /* DebugUIMessages.m in Sources */,
@@ -4197,7 +4221,7 @@
 				4579431E1E7C8CE9008ED0C0 /* Pastelog.m in Sources */,
 				8D14130F23213923004B5645 /* VNCallsSearchResultsController.swift in Sources */,
 				340FC8B0204DAC8D007AEB0F /* AddToBlockListViewController.m in Sources */,
-				1722F4D72332AED300EC575B /* VinciChallengeMediaRouter.swift in Sources */,
+				1722F4D72332AED300EC575B /* VinciChallengeWatchMediaRouter.swift in Sources */,
 				340FC8B3204DAC8D007AEB0F /* AppSettingsViewController.m in Sources */,
 				34C4E2572118957600BEA353 /* OWSWebRTCDataProtos.pb.swift in Sources */,
 				346B66311F4E29B200E5122F /* CropScaleImageViewController.swift in Sources */,

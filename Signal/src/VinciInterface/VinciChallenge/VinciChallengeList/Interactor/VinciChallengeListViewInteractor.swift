@@ -8,6 +8,9 @@ let kHost: String = "http://3.84.122.119:5000/"
 let kEndpointGetChallenges = kHost + "getChallenges"
 let kEndpointCreateChallenge = kHost + "createChallenge"
 let kEndpointGetMediaMeta = kHost + "getMediaMeta"
+let kEndpointGetMediaMetaById = kHost + "getMediaMetaById"
+let kEndpointPostComent = kHost + "createCommentForMedia"
+let kEndpointLikeMedia = kHost + "likeMedia"
 let kEndpointGetMedia = kHost + "getMedia"
 
 class VinciChallengeListInteractor: VinciChallengeListInteractorProtocol {
@@ -84,7 +87,6 @@ class VinciChallengeListInteractor: VinciChallengeListInteractorProtocol {
         
         let signalID = "4310"
         let urlString = kEndpointGetMediaMeta + "?LIMIT=20&OFFSET=0&SIGNALID=\(signalID)&CHID=\(challenge.id!)"
-//        let urlString = "https://www.google.com/search?client=safari&rls=en&q=\(challenge.id!)&ie=UTF-8&oe=UTF-8"
         if let url = URL(string: urlString) {
             let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
                 guard let data = data else { return }

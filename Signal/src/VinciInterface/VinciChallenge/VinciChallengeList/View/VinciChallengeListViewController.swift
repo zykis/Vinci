@@ -12,6 +12,10 @@ let kCollectionCellOffset: CGFloat = 4.0
 let kRowSpacing: CGFloat = 8.0
 let kRowHeightExtendedCell: CGFloat = (kRowHeightCompactCell - kCellMargin) + kCollectionCellMargin + kCellCollectionViewHeight + kCollectionCellMargin
 
+protocol VinciChallengeMediaTappedProtocol {
+    func mediaTapped(media: Media)
+}
+
 class VinciChallengeListViewController: VinciViewController, VinciChallengeListViewProtocol {
     var presenter: VinciChallengeListPresenterProtocol? = VinciChallengeListPresenter()
     
@@ -119,6 +123,7 @@ extension VinciChallengeListViewController: UITableViewDataSource {
             let cell: VinciChallengeExtendedCell = self.tableView.dequeueReusableCell(withIdentifier: kVinciChallengeExtendedCellReuseIdentifier) as! VinciChallengeExtendedCell
             // FIXME: cell.prepareForReuse not getting called
             cell.cleanUp()
+            cell.viewContoller = self
             if let challenge = self.presenter?.challenge(at: indexPath) {
                 cell.setup(with: challenge)
             }
@@ -136,5 +141,14 @@ extension VinciChallengeListViewController: UITableViewDataSource {
         let view = UIView()
         view.backgroundColor = .clear
         return view
+    }
+}
+
+
+extension VinciChallengeListViewController: VinciChallengeMediaTappedProtocol {
+    func mediaTapped(media: Media) {
+        let destVC: VinciChallengeWatchMediaViewController = VinciChallengeWatchMediaRouter.createModule()
+        destVC.presenter!.mediaID = media.id
+        self.navigationController?.pushViewController(destVC, animated: true)
     }
 }
