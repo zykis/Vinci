@@ -27,6 +27,8 @@ class VinciChallengeWatchMediaViewController: VinciViewController, VinciChalleng
     @IBOutlet var nicknameLabel: UILabel!
     @IBOutlet var descriptionTextView: UITextView!
     @IBOutlet var commentTextField: UITextField!
+    @IBOutlet var separator: UIView!
+    var sendButton: UIButton?
     
     @IBOutlet var leftStackView: UIStackView!
     @IBOutlet var rightStackView: UIStackView!
@@ -38,33 +40,59 @@ class VinciChallengeWatchMediaViewController: VinciViewController, VinciChalleng
         self.navigationController?.popViewController(animated: true)
     }
     
+    @IBAction func sendButtonPressed(_ sender: UIButton) {
+        if let comment = self.commentTextField.text {
+            // Sending comment
+            sender.isEnabled = false
+            self.presenter?.startPostingComment(comment: comment)
+        }
+    }
+    
     @IBAction func likePressed() {
         guard let media = self.presenter?.media
             else { return }
         let newLiked = !media.userLike
         let newLikes = newLiked ? media.likes + 1 : max(0, media.likes - 1)
-        media.likes = newLikes
-        media.userLike = newLiked
+        let newMedia = Media(media: media)
+        newMedia.likes = newLikes
+        newMedia.userLike = newLiked
         
         // chaning locally, while waiting server response
-        self.update(with: media)
+        self.update(media: newMedia)
         
         self.presenter?.likeOrUnlikeMedia(like: newLiked)
     }
     
     func likeOrUnlikeMediaSuccess() {
-        self.update(with: (self.presenter?.media)!)
+        self.presenter?.startFetchMedia(mediaID: (self.presenter?.mediaID)!)
+//        self.update(media: (self.presenter?.media)!)
     }
     
-    func likeOrUnlikeMediaFail() {
-        self.update(with: (self.presenter?.media)!)
+    func likeOrUnlikeMediaFail(error: Error) {
+        self.presenter?.startFetchMedia(mediaID: (self.presenter?.mediaID)!)
+//        self.update(media: (self.presenter?.media)!)
+    }
+    
+    func postingCommentFail(error: Error) {
+        self.sendButton?.isEnabled = true
+    }
+    
+    func postingCommentSuccess() {
+        self.sendButton?.isEnabled = true
+        // Clearing text
+        self.inputAccessoryTextView?.text = nil
+        self.commentTextField.text = nil
+        // Dismissing keyboard
+        self.inputAccessoryTextView?.resignFirstResponder()
+        self.commentTextField.endEditing(true)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first {
             if touch.phase == .began {
                 if (self.inputAccessoryTextView!.isFirstResponder) {
-                    self.commentTextField.resignFirstResponder()
+                    self.inputAccessoryTextView?.resignFirstResponder()
+                    self.commentTextField.endEditing(true)
                 } else {
                     if self.isUiHidden {
                         self.showUI()
@@ -107,30 +135,31 @@ class VinciChallengeWatchMediaViewController: VinciViewController, VinciChalleng
     
     func hideUI() {
         UIView.animate(withDuration: kAnimationHideDuration, animations: {
-//            self.likeButton.alpha = 0.0
-//            self.likeLabel.alpha = 0.0
             self.leftStackView.alpha = 0.0
             self.rightStackView.alpha = 0.0
+            self.commentTextField.alpha = 0.0
+            self.separator.alpha = 0.0
         }) { (completed) in
-//            self.likeButton.isHidden = true
-//            self.likeLabel.isHidden = true
             self.leftStackView.isHidden = true
             self.rightStackView.isHidden = true
+            self.commentTextField.isHidden = true
+            self.separator.isHidden = true
+            
             self.isUiHidden = true
         }
     }
     
     func showUI() {
-//        self.likeButton.isHidden = false
-//        self.likeLabel.isHidden = false
         self.leftStackView.isHidden = false
         self.rightStackView.isHidden = false
+        self.commentTextField.isHidden = false
+        self.separator.isHidden = false
         
         UIView.animate(withDuration: kAnimationHideDuration, animations: {
-//            self.likeButton.alpha = 1.0
-//            self.likeLabel.alpha = 1.0
             self.leftStackView.alpha = 1.0
             self.rightStackView.alpha = 1.0
+            self.commentTextField.alpha = 1.0
+            self.separator.alpha = 1.0
         }) { (completed) in
             self.isUiHidden = false
         }
@@ -157,27 +186,16 @@ class VinciChallengeWatchMediaViewController: VinciViewController, VinciChalleng
                                                selector: #selector(VinciChallengeWatchMediaViewController.keyboardWillHide(notification:)),
                                                name: .UIKeyboardWillHide,
                                                object: nil)
-        self.presenter?.startFetchMedia(with: (self.presenter?.mediaID)!)
+        self.presenter?.startFetchMedia(mediaID: (self.presenter?.mediaID)!)
     }
     
-    func update(with media: Media) {
+    func update(media: Media) {
         if let mediaUrl = URL(string: media.url) {
             self.mediaImageView.downloadAndSetupImage(with: mediaUrl, completion: nil)
         }
         self.likeLabel.text = "\(media.likes)"
         self.likeButton.setImage(media.userLike ? likedImage : unlikedImage, for: .normal)
         self.descriptionTextView.text = media.description
-    }
-    
-    @objc func sendMessagePressed() {
-        if let comment = self.commentTextField.text {
-            self.presenter?.startPostingComment(comment: comment)
-        }
-    }
-    
-    func postingCommentSuccess() {
-        self.commentTextField.text = nil
-        self.commentTextField.resignFirstResponder()
     }
     
     func addInputAccessoryView() {
@@ -195,29 +213,39 @@ class VinciChallengeWatchMediaViewController: VinciViewController, VinciChalleng
         inputTextView.leftAnchor.constraint(equalTo: toolbar.leftAnchor, constant: 4.0).isActive = true
         inputTextView.topAnchor.constraint(equalTo: toolbar.topAnchor, constant: 4.0).isActive = true
         inputTextView.bottomAnchor.constraint(equalTo: toolbar.bottomAnchor, constant: -4.0).isActive = true
-        inputTextView.delegate = self
+        inputTextView.inputTextViewDelegate = self
+        inputTextView.textViewToolbarDelegate = self
         
         let sendButton = UIButton(type: .custom)
+        self.sendButton = sendButton
+        sendButton.addTarget(self, action: #selector(VinciChallengeWatchMediaViewController.sendButtonPressed(_:)), for: .touchUpInside)
         sendButton.translatesAutoresizingMaskIntoConstraints = false
         sendButton.setImage(UIImage(named: "sendMessageIcon"), for: .normal)
-        sendButton.addTarget(self, action: #selector(VinciChallengeWatchMediaViewController.sendMessagePressed), for: .touchUpInside)
         toolbar.addSubview(sendButton)
         
         sendButton.widthAnchor.constraint(equalToConstant: 36.0).isActive = true
         sendButton.rightAnchor.constraint(equalTo: toolbar.rightAnchor, constant: -4.0).isActive = true
         sendButton.leftAnchor.constraint(equalTo: inputTextView.rightAnchor, constant: 4.0).isActive = true
         sendButton.topAnchor.constraint(equalTo: toolbar.topAnchor, constant: 4.0).isActive = true
-//        sendButton.bottomAnchor.constraint(equalTo: toolbar.bottomAnchor, constant: -4.0).isActive = true
         
         self.commentTextField.inputAccessoryView = toolbar
     }
 }
 
 
-extension VinciChallengeWatchMediaViewController: UITextViewDelegate {
-    func textViewDidChange(_ textView: UITextView) {
-        print("TEXT: \(textView.text)")
+extension VinciChallengeWatchMediaViewController: ConversationInputTextViewDelegate {
+    func didPaste(_ attachment: SignalAttachment?) {
     }
+    
+    func inputTextViewSendMessagePressed() {
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+    }
+}
+
+
+extension VinciChallengeWatchMediaViewController: ConversationTextViewToolbarDelegate {
 }
 
 

@@ -26,6 +26,17 @@ class Media: Decodable {
         self.id = id
     }
     
+    init(media: Media) {
+        self.id = media.id
+        self.username = media.username
+        self.description = media.description
+        self.likes = media.likes
+        self.comments = media.comments
+        self.reposts = media.reposts
+        self.userLike = media.userLike
+        self.userFavourite = media.userFavourite
+    }
+    
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         

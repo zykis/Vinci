@@ -13,13 +13,13 @@ class VinciChallengeWatchMediaPresenter: VinciChallengeWatchMediaPresenterProtoc
     var media: Media?
     var mediaID: String?
     
-    func startFetchMedia(with mediaID: String) {
+    func startFetchMedia(mediaID: String) {
         self.interactor?.fetchMedia(mediaID: mediaID)
     }
     
     func fetchMediaSuccess(media: Media) {
         self.media = media
-        self.view?.update(with: media)
+        self.view?.update(media: media)
     }
     
     func fetchMediaFail(error: Error) {
@@ -35,7 +35,7 @@ class VinciChallengeWatchMediaPresenter: VinciChallengeWatchMediaPresenterProtoc
     }
     
     func postingCommentFail(error: Error) {
-        print(error)
+        self.view?.postingCommentFail(error: error)
     }
     
     func likeOrUnlikeMedia(like: Bool) {
@@ -46,7 +46,7 @@ class VinciChallengeWatchMediaPresenter: VinciChallengeWatchMediaPresenterProtoc
         self.view?.likeOrUnlikeMediaSuccess()
     }
     
-    func likeOrUnlikeMediaFail() {
-        self.view?.likeOrUnlikeMediaFail()
+    func likeOrUnlikeMediaFail(error: Error) {
+        self.view?.likeOrUnlikeMediaFail(error: error)
     }
 }

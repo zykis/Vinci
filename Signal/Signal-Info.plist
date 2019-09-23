@@ -11,7 +11,7 @@
 		<key>OSXVersion</key>
 		<string>10.15</string>
 		<key>WebRTCCommit</key>
-		<string>24f9aef54162907a9e5755ee655d78c3dd4fdd06 Added cleanUp methods for cell (alternative to prepareForReuse)</string>
+		<string>c518141665aca1844d7b808e63f1aa9f418983b2 Implementing VinciChallengeWatchMediaViewController</string>
 	</dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>

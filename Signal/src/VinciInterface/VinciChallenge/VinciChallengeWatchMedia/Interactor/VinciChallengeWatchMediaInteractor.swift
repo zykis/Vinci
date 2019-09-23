@@ -9,7 +9,7 @@ class VinciChallengeWatchMediaInteractor: VinciChallengeWatchMediaInteractorProt
     var presenter: VinciChallengeWatchMediaPresenterProtocol?
     
     func fetchMedia(mediaID: String) {
-        let signalID = 4310
+        let signalID = TSAccountManager.sharedInstance().getOrGenerateRegistrationId()
         let urlString = kEndpointGetMediaMetaById + "?SIGNALID=\(signalID)&MEDIAMETAID=\(mediaID)"
         if let url = URL(string: urlString) {
             let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
@@ -32,7 +32,7 @@ class VinciChallengeWatchMediaInteractor: VinciChallengeWatchMediaInteractorProt
     }
     
     func postComment(comment: String) {
-        let signalID = 4310
+        let signalID = TSAccountManager.sharedInstance().getOrGenerateRegistrationId()
         guard
             let mediaID = self.presenter?.mediaID,
             let url = URL(string: kEndpointPostComent + "?SIGNALID=\(signalID)&MEDIAMETAID=\(mediaID)")
@@ -68,18 +68,18 @@ class VinciChallengeWatchMediaInteractor: VinciChallengeWatchMediaInteractorProt
                 let data = data
                 else { return }
             if let error = error {
-                print(error)
+                self.presenter?.likeOrUnlikeMediaFail(error: error)
             } else {
                 do {
-                    let json = try JSONSerialization.jsonObject(with: data, options: []) as! [AnyHashable:Any]
-                    let likes = (json["LIKES"] as? NSNumber)?.intValue
+//                    let json = try JSONSerialization.jsonObject(with: data, options: []) as! [AnyHashable:Any]
+//                    let likes = (json["LIKES"] as? NSNumber)?.intValue
                     DispatchQueue.main.async {
-                        self.presenter?.media?.likes = likes!
+//                        self.presenter?.media?.likes = likes!
                         self.presenter?.likeOrUnlikeMediaSuccess(like: true)
                     }
                 }
                 catch {
-                    print(error)
+                    self.presenter?.likeOrUnlikeMediaFail(error: error)
                 }
             }
         }

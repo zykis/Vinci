@@ -26,6 +26,7 @@
                 <outlet property="nicknameLabel" destination="Cez-1W-3z3" id="GJh-NJ-h37"/>
                 <outlet property="repostsLabel" destination="uU9-mL-2ka" id="dwK-ml-bbg"/>
                 <outlet property="rightStackView" destination="Hg4-Bh-4Vp" id="hHa-tq-6B1"/>
+                <outlet property="separator" destination="Z5w-qE-P3B" id="DVQ-pD-RpR"/>
                 <outlet property="view" destination="lVp-Ec-M6s" id="SmA-jX-x4d"/>
             </connections>
         </placeholder>
@@ -44,8 +45,8 @@
                         <constraint firstAttribute="height" constant="1" id="7ox-g0-sGv"/>
                     </constraints>
                 </view>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Add comment as Tom..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cfh-DN-NoE">
-                    <rect key="frame" x="20" y="811" width="374" height="27"/>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Add comment as Tom..." textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cfh-DN-NoE">
+                    <rect key="frame" x="0.0" y="803" width="414" height="93"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <fontDescription key="fontDescription" type="system" pointSize="22"/>
                     <textInputTraits key="textInputTraits"/>
@@ -168,13 +169,14 @@
                 <constraint firstItem="H85-Dp-TeA" firstAttribute="top" secondItem="Hg4-Bh-4Vp" secondAttribute="top" id="G2R-nl-HUM"/>
                 <constraint firstItem="Z5w-qE-P3B" firstAttribute="top" secondItem="Hg4-Bh-4Vp" secondAttribute="bottom" constant="8" id="Ggi-ZG-fdo"/>
                 <constraint firstItem="FRA-sP-YGy" firstAttribute="trailing" secondItem="g0e-l5-mok" secondAttribute="trailing" id="Hmi-Qq-mtd"/>
-                <constraint firstItem="g0e-l5-mok" firstAttribute="trailing" secondItem="Cfh-DN-NoE" secondAttribute="trailing" constant="20" id="Kdd-2t-yUa"/>
+                <constraint firstItem="g0e-l5-mok" firstAttribute="trailing" secondItem="Cfh-DN-NoE" secondAttribute="trailing" id="Kdd-2t-yUa"/>
                 <constraint firstItem="kcb-Qs-ofc" firstAttribute="top" secondItem="g0e-l5-mok" secondAttribute="top" id="OBA-Cf-ENH"/>
                 <constraint firstItem="g0e-l5-mok" firstAttribute="trailing" secondItem="kcb-Qs-ofc" secondAttribute="trailing" id="Rgz-kI-20f"/>
-                <constraint firstItem="Cfh-DN-NoE" firstAttribute="top" secondItem="Z5w-qE-P3B" secondAttribute="bottom" constant="8" id="RtA-4b-Pmg"/>
+                <constraint firstItem="Cfh-DN-NoE" firstAttribute="top" secondItem="Z5w-qE-P3B" secondAttribute="bottom" id="RtA-4b-Pmg"/>
                 <constraint firstItem="FRA-sP-YGy" firstAttribute="leading" secondItem="g0e-l5-mok" secondAttribute="leading" id="W4J-ex-Ipl"/>
                 <constraint firstAttribute="bottom" secondItem="FRA-sP-YGy" secondAttribute="bottom" id="XRX-hv-Oms"/>
-                <constraint firstItem="Cfh-DN-NoE" firstAttribute="leading" secondItem="g0e-l5-mok" secondAttribute="leading" constant="20" id="fVX-6h-0yu"/>
+                <constraint firstAttribute="bottom" secondItem="Cfh-DN-NoE" secondAttribute="bottom" id="bWZ-PX-OzQ"/>
+                <constraint firstItem="Cfh-DN-NoE" firstAttribute="leading" secondItem="g0e-l5-mok" secondAttribute="leading" id="fVX-6h-0yu"/>
                 <constraint firstAttribute="trailing" secondItem="Z5w-qE-P3B" secondAttribute="trailing" id="ijI-VH-8p0"/>
                 <constraint firstItem="lvC-gb-oe3" firstAttribute="width" secondItem="jDV-r7-InW" secondAttribute="width" id="jyw-kb-YUf"/>
                 <constraint firstItem="FRA-sP-YGy" firstAttribute="top" secondItem="lVp-Ec-M6s" secondAttribute="top" id="rVc-ZA-rn6"/>
