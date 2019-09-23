@@ -16,6 +16,7 @@ class VinciChallengeWatchMediaViewController: VinciViewController, VinciChalleng
     private let unlikedImage = UIImage(named: "icon_like_white_empty_60")!
     private weak var inputAccessoryTextView: UITextView?
     private var isUiHidden: Bool = false
+
     
     @IBOutlet var navigationBar: UINavigationBar!
     @IBOutlet var mediaImageView: UIImageView!
@@ -65,12 +66,10 @@ class VinciChallengeWatchMediaViewController: VinciViewController, VinciChalleng
     
     func likeOrUnlikeMediaSuccess() {
         self.presenter?.startFetchMedia(mediaID: (self.presenter?.mediaID)!)
-//        self.update(media: (self.presenter?.media)!)
     }
     
     func likeOrUnlikeMediaFail(error: Error) {
         self.presenter?.startFetchMedia(mediaID: (self.presenter?.mediaID)!)
-//        self.update(media: (self.presenter?.media)!)
     }
     
     func postingCommentFail(error: Error) {
@@ -249,8 +248,4 @@ extension VinciChallengeWatchMediaViewController: ConversationTextViewToolbarDel
 }
 
 
-extension VinciChallengeWatchMediaViewController: UIViewControllerTransitioningDelegate {
-    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return nil
-    }
-}
+

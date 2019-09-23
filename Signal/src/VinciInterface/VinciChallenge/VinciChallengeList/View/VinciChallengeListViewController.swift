@@ -13,7 +13,7 @@ let kRowSpacing: CGFloat = 8.0
 let kRowHeightExtendedCell: CGFloat = (kRowHeightCompactCell - kCellMargin) + kCollectionCellMargin + kCellCollectionViewHeight + kCollectionCellMargin
 
 protocol VinciChallengeMediaTappedProtocol {
-    func mediaTapped(media: Media)
+    func mediaTapped(media: Media, mediaFrame: CGRect, cell: VinciChallengeExtendedCell, image: UIImage?)
 }
 
 class VinciChallengeListViewController: VinciViewController, VinciChallengeListViewProtocol {
@@ -26,6 +26,8 @@ class VinciChallengeListViewController: VinciViewController, VinciChallengeListV
     @IBOutlet var gamesTopConstraint: NSLayoutConstraint!
     @IBOutlet var gamesLeadingConstraint: NSLayoutConstraint!
     @IBOutlet var tableViewTopConstraint: NSLayoutConstraint!
+    var selectedImageFrame: CGRect = .null
+    var selectedImage: UIImage?
         
     func setupTableView() {
         self.tableView.register(VinciChallengeExtendedCell.self, forCellReuseIdentifier: kVinciChallengeExtendedCellReuseIdentifier)
@@ -146,9 +148,30 @@ extension VinciChallengeListViewController: UITableViewDataSource {
 
 
 extension VinciChallengeListViewController: VinciChallengeMediaTappedProtocol {
-    func mediaTapped(media: Media) {
+    func mediaTapped(media: Media, mediaFrame: CGRect, cell: VinciChallengeExtendedCell, image: UIImage?) {
+        let relatedToTable = cell.contentView.convert(mediaFrame, to: self.tableView)
+        self.selectedImageFrame = self.tableView.convert(relatedToTable, to: self.tableView.superview)
+        self.selectedImage = image
+        
         let destVC: VinciChallengeWatchMediaViewController = VinciChallengeWatchMediaRouter.createModule()
         destVC.presenter!.mediaID = media.id
+        self.navigationController?.delegate = self
         self.navigationController?.pushViewController(destVC, animated: true)
+    }
+}
+
+
+extension VinciChallengeListViewController: UINavigationControllerDelegate {
+    func navigationController(_ navigationController: UINavigationController,
+                              animationControllerFor operation: UINavigationControllerOperation,
+                              from fromVC: UIViewController,
+                              to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        if toVC is VinciChallengeWatchMediaViewController {
+            let expandAnimator = ExpandAnimator()
+            expandAnimator.originFrame = self.selectedImageFrame
+            expandAnimator.originImage = self.selectedImage
+            return expandAnimator
+        }
+        return nil
     }
 }

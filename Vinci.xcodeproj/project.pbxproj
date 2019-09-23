@@ -10,6 +10,7 @@
 		17057F6B232FF1F6001A0D6A /* avatar.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 17057F6A232FF1F5001A0D6A /* avatar.jpg */; };
 		17057F6E232FF33B001A0D6A /* Icon-App-40x40@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 17057F6C232FF33A001A0D6A /* Icon-App-40x40@3x.png */; };
 		17057F6F232FF33B001A0D6A /* Icon-App-40x40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 17057F6D232FF33B001A0D6A /* Icon-App-40x40@2x.png */; };
+		1712A72B2338FADD00574D84 /* ExpandAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1712A72A2338FADD00574D84 /* ExpandAnimator.swift */; };
 		1719DE49232A427100D051A4 /* VinciChallengeCollectionSmallCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1719DE48232A427100D051A4 /* VinciChallengeCollectionSmallCell.swift */; };
 		1722F4D52332AE7D00EC575B /* VinciChallengeWatchMediaProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1722F4D42332AE7D00EC575B /* VinciChallengeWatchMediaProtocols.swift */; };
 		1722F4D72332AED300EC575B /* VinciChallengeWatchMediaRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1722F4D62332AED300EC575B /* VinciChallengeWatchMediaRouter.swift */; };
@@ -726,6 +727,7 @@
 		17057F6A232FF1F5001A0D6A /* avatar.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = avatar.jpg; path = "../../../../../../../../Library/CloudStorage/iCloud Drive/Desktop/avatar.jpg"; sourceTree = "<group>"; };
 		17057F6C232FF33A001A0D6A /* Icon-App-40x40@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-40x40@3x.png"; sourceTree = "<group>"; };
 		17057F6D232FF33B001A0D6A /* Icon-App-40x40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-40x40@2x.png"; sourceTree = "<group>"; };
+		1712A72A2338FADD00574D84 /* ExpandAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandAnimator.swift; sourceTree = "<group>"; };
 		1719DE48232A427100D051A4 /* VinciChallengeCollectionSmallCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinciChallengeCollectionSmallCell.swift; sourceTree = "<group>"; };
 		1722F4D42332AE7D00EC575B /* VinciChallengeWatchMediaProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinciChallengeWatchMediaProtocols.swift; sourceTree = "<group>"; };
 		1722F4D62332AED300EC575B /* VinciChallengeWatchMediaRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinciChallengeWatchMediaRouter.swift; sourceTree = "<group>"; };
@@ -1560,6 +1562,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1712A7292338FABD00574D84 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				1712A72A2338FADD00574D84 /* ExpandAnimator.swift */,
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		1719DE4A232A432200D051A4 /* VinciChallengeCollectionCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -1612,6 +1622,7 @@
 		1722F4D323328DAF00EC575B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1712A7292338FABD00574D84 /* New Group */,
 				1722F4D82332AF1800EC575B /* VinciChallengeWatchMediaViewController.swift */,
 				1722F4E02332B2E000EC575B /* VinciChallengeWatchMediaViewController.xib */,
 			);
@@ -4139,6 +4150,7 @@
 				45F32C222057297A00A300D5 /* MediaDetailViewController.m in Sources */,
 				34B3F8851E8DF1700035BE1A /* NewGroupViewController.m in Sources */,
 				34D8C0271ED3673300188D7C /* DebugUIMessages.m in Sources */,
+				1712A72B2338FADD00574D84 /* ExpandAnimator.swift in Sources */,
 				34DBF003206BD5A500025978 /* OWSMessageTextView.m in Sources */,
 				34D1F0B41F86D31D0066283D /* ConversationCollectionView.m in Sources */,
 				34B3F8821E8DF1700035BE1A /* NewContactThreadViewController.m in Sources */,
