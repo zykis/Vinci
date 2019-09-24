@@ -20,6 +20,7 @@ class VinciChallengeWatchMediaPresenter: VinciChallengeWatchMediaPresenterProtoc
     func fetchMediaSuccess(media: Media) {
         self.media = media
         self.view?.update(media: media)
+        self.view?.hideOverlay()
     }
     
     func fetchMediaFail(error: Error) {

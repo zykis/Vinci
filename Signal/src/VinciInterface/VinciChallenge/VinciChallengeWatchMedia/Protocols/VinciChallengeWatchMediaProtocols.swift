@@ -7,6 +7,7 @@ import Foundation
 
 protocol VinciChallengeWatchMediaViewProtocol: class {
     func update(media: Media)
+    func hideOverlay()
     func postingCommentSuccess()
     func postingCommentFail(error: Error)
     func likeOrUnlikeMediaSuccess()

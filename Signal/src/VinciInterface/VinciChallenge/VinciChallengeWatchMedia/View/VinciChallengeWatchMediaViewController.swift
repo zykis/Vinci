@@ -12,11 +12,17 @@ let kAnimationHideDuration = 0.2
 class VinciChallengeWatchMediaViewController: VinciViewController, VinciChallengeWatchMediaViewProtocol {
     var presenter: VinciChallengeWatchMediaPresenterProtocol?
     
+    var overlayView: UIView = {
+        let v = UIView()
+        v.backgroundColor = .black
+        
+        return v
+    }()
+    
     private let likedImage = UIImage(named: "icon_like_white_60")!
     private let unlikedImage = UIImage(named: "icon_like_white_empty_60")!
     private weak var inputAccessoryTextView: UITextView?
     private var isUiHidden: Bool = false
-
     
     @IBOutlet var navigationBar: UINavigationBar!
     @IBOutlet var mediaImageView: UIImageView!
@@ -175,6 +181,14 @@ class VinciChallengeWatchMediaViewController: VinciViewController, VinciChalleng
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        self.view.addSubview(self.overlayView)
+        self.overlayView.translatesAutoresizingMaskIntoConstraints = false
+        self.overlayView.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
+        self.overlayView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
+        self.overlayView.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
+        self.overlayView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+        
         self.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationBar.isTranslucent = true
         self.setNeedsStatusBarAppearanceUpdate()
@@ -206,6 +220,14 @@ class VinciChallengeWatchMediaViewController: VinciViewController, VinciChalleng
         self.commentsLabel.text = "\(media.comments)"
         self.repostsLabel.text = "\(media.reposts)"
         self.descriptionTextView.text = media.description
+    }
+    
+    func hideOverlay() {
+        UIView.animate(withDuration: 0.15, animations: {
+            self.overlayView.alpha = 0.0
+        }) { (_) in
+            self.overlayView.isHidden = true
+        }
     }
     
     func addInputAccessoryView() {
