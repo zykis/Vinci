@@ -41,6 +41,10 @@ class VinciChallengeListViewController: VinciViewController, VinciChallengeListV
         self.tableView.reloadData()
     }
     
+    func updateTopChallengeList() {
+        self.tableView.reloadSections(IndexSet(integer: 1), with: .none)
+    }
+    
     func animateTitlePositionChange() {
         self.gamesTopConstraint.constant = self.navigationBar.bounds.height / 2.0 - self.gamesLabel.bounds.height / 2.0
         self.gamesLeadingConstraint.constant = self.view.bounds.width / 2.0 - self.gamesLabel.bounds.width / 2.0
@@ -69,7 +73,8 @@ extension VinciChallengeListViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupTableView()
-        self.presenter?.startFetchingChallenges(limit: 100, offset: 0, signalID: "\(TSAccountManager.sharedInstance().getOrGenerateRegistrationId())")
+        self.presenter?.startFetchingChallenges()
+        self.presenter?.startFetchingTopChallenges()
         
         print("PHONE NUMBER: \(TSAccountManager.sharedInstance().localNumber() ?? "")")
         print("REGISTRATION ID: \(TSAccountManager.sharedInstance().getOrGenerateRegistrationId())")
@@ -119,7 +124,8 @@ extension VinciChallengeListViewController: UITableViewDataSource {
             cell.contentView.addSubview(searchBar)
             return cell
         case 1:
-            let cell = tableView.dequeueReusableCell(withIdentifier: kVinciChallengeLargeCollectionCellReuseIdentifier)!
+            let cell = tableView.dequeueReusableCell(withIdentifier: kVinciChallengeLargeCollectionCellReuseIdentifier)! as! VinciChallengeLargeCollectionCell
+            cell.setup(topChallenges: (self.presenter?.getTopChallenges())!)
             return cell
         case 2:
             let cell: VinciChallengeExtendedCell = self.tableView.dequeueReusableCell(withIdentifier: kVinciChallengeExtendedCellReuseIdentifier) as! VinciChallengeExtendedCell

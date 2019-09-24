@@ -8,6 +8,7 @@ let kVinciChallengeLargeCollectionCellReuseIdentifier = "kVinciChallengeLargeCol
 let kLargeCollectionCellHeight: CGFloat = 128.0
 
 class VinciChallengeLargeCollectionCell: UITableViewCell {
+    var topChallenges: [Challenge] = []
     var collectionView: UICollectionView! = UICollectionView(frame: CGRect(x: 0,
                                                                            y: 0,
                                                                            width: 500.0,
@@ -29,7 +30,7 @@ class VinciChallengeLargeCollectionCell: UITableViewCell {
         fatalError("init(coder:) not implemented")
     }
 
-    func setupCollectionView() {
+    private func setupCollectionView() {
         self.contentView.addSubview(self.collectionView)
         let flowLayout: UICollectionViewFlowLayout = self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         flowLayout.scrollDirection = .horizontal
@@ -45,6 +46,12 @@ class VinciChallengeLargeCollectionCell: UITableViewCell {
         self.collectionView.rightAnchor.constraint(equalTo: self.contentView.rightAnchor, constant: -kCellMargin).isActive = true
         self.collectionView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: kCellMargin).isActive = true
         self.collectionView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -kCellMargin).isActive = true
+        self.collectionView.heightAnchor.constraint(equalToConstant: kLargeCollectionCellHeight).isActive = true
+    }
+    
+    func setup(topChallenges: [Challenge]) {
+        self.topChallenges = topChallenges
+        self.collectionView.reloadData()
     }
 }
 
@@ -60,11 +67,14 @@ extension VinciChallengeLargeCollectionCell: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return self.topChallenges.count > 0 ? self.topChallenges.count : 3
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: kVinciChallengeCollectionCellReuseIdentifier, for: indexPath)
+        let cell: VinciChallengeCollectionSmallCell = self.collectionView.dequeueReusableCell(withReuseIdentifier: kVinciChallengeCollectionCellReuseIdentifier, for: indexPath) as! VinciChallengeCollectionSmallCell
+        if self.topChallenges.indices.contains(indexPath.row) {
+            cell.setup(challenge: self.topChallenges[indexPath.row])
+        }
         return cell
     }
 }

@@ -9,8 +9,16 @@ let VinciChallengeCompactCellViewNibName = "VinciChallengeCompactCellView"
 let VinciChallengeCompactCellReuseIdentifier = "VinciChallengeCompactCellRI"
 let kCellMargin: CGFloat = 4.0
 let kSecondsInDay: Double = 24 * 60 * 60
+let kEndpointFavourChallenge = kHost + "favChallenge"
+let kFavouriteImage = "icon_favourite_filled_32"
+let kUnfavouriteImage = "icon_favourite_empty_32"
 
 class VinciChallengeCompactCell: UITableViewCell {
+    private var challengeID: String? {
+        return self.challenge?.id
+    }
+    private var challenge: Challenge?
+    
     var compactCellView: UIView!
     var compactCellViewBottomConstraint: NSLayoutConstraint?
     @IBOutlet var iconImageView: UIImageView!
@@ -18,7 +26,7 @@ class VinciChallengeCompactCell: UITableViewCell {
     @IBOutlet var rewardLabel: UILabel!
     @IBOutlet var expiredInLabel: UILabel!
     @IBOutlet var likesLabel: UILabel!
-    @IBOutlet var favouriteButton: UIButton!
+    @IBOutlet var favouriteButton: VinciAnimatableButton!
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -37,6 +45,8 @@ class VinciChallengeCompactCell: UITableViewCell {
             self.contentView.addSubview(view)
         }
         
+        self.favouriteButton.addTarget(self, action: #selector(VinciChallengeCompactCell.favouriteButtonPressed), for: .touchDown)
+        
         self.compactCellView.translatesAutoresizingMaskIntoConstraints = false
         self.compactCellView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: kCellMargin).isActive = true
         self.compactCellView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -kCellMargin).isActive = true
@@ -50,7 +60,40 @@ class VinciChallengeCompactCell: UITableViewCell {
         self.iconImageView.layer.borderWidth = 0.5
     }
     
+    @objc func favouriteButtonPressed() {
+        let newFavourite: Bool = !self.challenge!.favourite
+        self.favouriteButton.setImage(UIImage(named: newFavourite ? kFavouriteImage : kUnfavouriteImage), for: .normal)
+        self.favourChallenge()
+    }
+    
+    func favourChallenge() {
+        let signalID = TSAccountManager.sharedInstance().getOrGenerateRegistrationId()
+        guard
+            let url = URL(string: kEndpointFavourChallenge)
+            else { return }
+        var urlRequest = URLRequest(url: url)
+        urlRequest.httpMethod = "POST"
+        urlRequest.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        urlRequest.httpBody = "SIGNALID=\(signalID)&CHID=\(self.challengeID!)".data(using: .utf8)
+        let task = URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
+            guard let data = data
+                else { return }
+            do {
+                let jsonObj = try JSONSerialization.jsonObject(with: data, options: []) as! [AnyHashable: Any]
+                let favourite = jsonObj["USERFAV"] as! Bool
+                self.challenge?.favourite = favourite
+                DispatchQueue.main.async {
+                    self.favouriteButton.setImage(UIImage(named: favourite ? kFavouriteImage: kUnfavouriteImage), for: .normal)
+                }
+            } catch {
+                print(error)
+            }
+        }
+        task.resume()
+    }
+    
     func setup(with challenge: Challenge) {
+        self.challenge = challenge
         self.cleanUpWithColor(color: .clear)
         
         if let iconUrl = challenge.iconUrl {
@@ -60,6 +103,7 @@ class VinciChallengeCompactCell: UITableViewCell {
         }
         self.titleLabel.text = challenge.title
         self.rewardLabel.text = "$\(challenge.reward)"
+        self.favouriteButton.setImage(UIImage(named: challenge.favourite ? kFavouriteImage: kUnfavouriteImage), for: .normal)
         if challenge.expirationDate?.timeIntervalSince(Date()) ?? 0.0 >= kSecondsInDay {
             let htmlString: String = "<p><font color=\"gray\">till </font><font color=\"black\"> \(challenge.expirationDate?.representation() ?? "???")</font></p>"
             if let attributedString = try? NSAttributedString(data: Data(htmlString.utf8),

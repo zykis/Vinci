@@ -1594,7 +1594,8 @@
 				1719DE48232A427100D051A4 /* VinciChallengeCollectionSmallCell.swift */,
 				17BEFD94232A9DC90096ED75 /* StickyCollectionFlowLayout.swift */,
 			);
-			path = VinciChallengeCollectionCell;
+			name = VinciChallengeCollectionCell;
+			path = VinciChallengeExtendedCell/VinciChallengeCollectionCell;
 			sourceTree = "<group>";
 		};
 		1722F4CE23328D6F00EC575B /* Protocols */ = {
@@ -2594,6 +2595,7 @@
 			children = (
 				591E65822327B7FA00B7484E /* VinciChallengeCompactCell */,
 				591E659D2328FD6400B7484E /* VinciChallengeExtendedCell */,
+				1719DE4A232A432200D051A4 /* VinciChallengeCollectionCell */,
 				17BEFD97232F8EA60096ED75 /* VinciChallengeLargeCollectionCell */,
 				591E65802327B47800B7484E /* VinciChallengeListViewController.xib */,
 				591E65842327B8C200B7484E /* VinciChallengeListViewController.swift */,
@@ -2635,7 +2637,6 @@
 		591E659D2328FD6400B7484E /* VinciChallengeExtendedCell */ = {
 			isa = PBXGroup;
 			children = (
-				1719DE4A232A432200D051A4 /* VinciChallengeCollectionCell */,
 				591E659E2328FE1A00B7484E /* VinciChallengeExtendedCell.swift */,
 			);
 			path = VinciChallengeExtendedCell;

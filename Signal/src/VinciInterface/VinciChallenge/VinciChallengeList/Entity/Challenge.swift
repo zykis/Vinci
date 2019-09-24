@@ -46,6 +46,10 @@ class Challenge: Decodable {
         self.tags = try container.decode([String].self, forKey: .tags)
         self.likes = try container.decode(Int.self, forKey: .likes)
         
+        self.favourite = try container.decode(Bool.self, forKey: .favourite)
+        
+//        self.medias = try container.decode([Media].self, forKey: .medias)
+        
         if  let mediaIDs = try container.decodeIfPresent([String].self, forKey: .medias) {
             for mediaID in mediaIDs {
                 let media = Media(id: mediaID)
@@ -80,5 +84,6 @@ class Challenge: Decodable {
         case tags = "TAGS"
         case likes = "LIKES"
         case medias = "MEDIA"
+        case favourite = "USERFAV"
     }
 }

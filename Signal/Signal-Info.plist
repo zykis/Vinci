@@ -11,7 +11,7 @@
 		<key>OSXVersion</key>
 		<string>10.15</string>
 		<key>WebRTCCommit</key>
-		<string>d99f1ff33b8975e9f0adf25caf9dd294ca1ea62d like comment implemented</string>
+		<string>8a206415c8d807304766a7a9d4aa40a31d99f7c4 Media finished</string>
 	</dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>

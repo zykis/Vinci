@@ -30,7 +30,7 @@
                         <constraint firstAttribute="width" secondItem="eII-QY-dep" secondAttribute="height" multiplier="1:1" id="ZnX-PL-cWt"/>
                     </constraints>
                 </imageView>
-                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wVj-I8-s5p">
+                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wVj-I8-s5p" customClass="VinciAnimatableButton" customModule="Vinci" customModuleProvider="target">
                     <rect key="frame" x="342" y="2" width="29" height="32"/>
                     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <state key="normal" image="icon_favourite_empty_32.png"/>

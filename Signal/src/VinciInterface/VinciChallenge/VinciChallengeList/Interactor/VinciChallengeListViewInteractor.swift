@@ -20,9 +20,28 @@ class VinciChallengeListInteractor: VinciChallengeListInteractorProtocol {
     var startDate: Date?
     
     func fetchChallenges() {
-//        let signalID = TSAccountManager.sharedInstance().getOrGenerateRegistrationId()
-        let signalID = "4310"
-        let urlString = kEndpointGetChallenges + "?SIGNALID=\(signalID)&LIMIT=\(100)&OFFSET=\(0)"
+        self.fetchChallenges(limit: 20, offset: 0) { (challenges, error) in
+            if let challenges = challenges {
+                self.presenter?.challengesFetchSuccess(challenges: challenges)
+            } else if let error = error {
+                self.presenter?.challengesFetchFail(error: error)
+            }
+        }
+    }
+    
+    func fetchTopChallenges() {
+        self.fetchChallenges(limit: 20, offset: 0) { (challenges, error) in
+            if let challenges = challenges {
+                self.presenter?.topChallengesFetchSuccess(challenges: challenges)
+            } else if let error = error {
+                self.presenter?.topChallengesFetchFail(error: error)
+            }
+        }
+    }
+    
+    private func fetchChallenges(limit: Int, offset: Int, completion:(([Challenge]?, Error?) -> Void)?) {
+        let signalID = TSAccountManager.sharedInstance().getOrGenerateRegistrationId()
+        let urlString = kEndpointGetChallenges + "?SIGNALID=\(signalID)&LIMIT=\(limit)&OFFSET=\(offset)"
         if let url = URL(string: urlString) {
             let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
                 guard let data = data else { return }
@@ -31,74 +50,16 @@ class VinciChallengeListInteractor: VinciChallengeListInteractorProtocol {
                 do {
                     let challenges: [Challenge] = try decoder.decode([Challenge].self, from: data)
                     DispatchQueue.main.async {
-                        self.presenter?.challengeFetchSuccess(challenges: challenges)
+                        completion?(challenges, nil)
                     }
                 } catch let error as NSError {
                     DispatchQueue.main.async {
-                        self.presenter?.challengeFetchFail(error: error)
+                        completion?(nil, error)
                     }
                 } catch {
                     DispatchQueue.main.async {
-                        self.presenter?.challengeFetchFail(error: NSError(domain: "com.vinci", code: 1, userInfo: [NSLocalizedDescriptionKey: "Failed to get list of challenges"]))
+                        completion?(nil, error)
                     }
-                }
-            }
-            task.resume()
-        }
-    }
-    
-    func fetchChallengesWithMedia() {
-        let signalID = TSAccountManager.sharedInstance().getOrGenerateRegistrationId()
-        let urlString = kEndpointGetChallenges + "?SIGNALID=\(signalID)&LIMIT=\(100)&OFFSET=\(0)"
-        if let url = URL(string: urlString) {
-            let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-                guard let data = data else { return }
-                
-                let decoder = JSONDecoder()
-                do {
-                    let challenges: [Challenge] = try decoder.decode([Challenge].self, from: data)
-                    
-                    self.startDate = Date()
-                    
-                    for challenge in challenges {
-                        self.dispatchGroup.enter()
-                        self.fetchChallengeMedia(challenge: challenge, dispatchGroup: self.dispatchGroup, completionHandler: { (medias) in
-                            challenge.medias = medias
-                            self.dispatchGroup.leave()
-                        })
-                    }
-                    
-                    self.dispatchGroup.notify(queue: .main, execute: {
-                        print("MEDIA METADATA REQUEST TIME: \(Date().timeIntervalSince(self.startDate!))")
-                        self.presenter?.challengeFetchSuccess(challenges: challenges)
-                    })
-                } catch {
-                    DispatchQueue.main.async {
-                        self.presenter?.challengeFetchFail(error: NSError(domain: "com.vinci", code: 1, userInfo: [NSLocalizedDescriptionKey: "Failed to get list of challenges"]))
-                    }
-                }
-            }
-            task.resume()
-        }
-    }
-    
-    private func fetchChallengeMedia(challenge: Challenge, dispatchGroup: DispatchGroup, completionHandler: @escaping ([Media]) -> Void) {
-        let start = Date()
-        
-        let signalID = "4310"
-        let urlString = kEndpointGetMediaMeta + "?LIMIT=20&OFFSET=0&SIGNALID=\(signalID)&CHID=\(challenge.id!)"
-        if let url = URL(string: urlString) {
-            let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-                guard let data = data else { return }
-                print("SINGLE MEDIA METADATA REQUEST TIME: \(Date().timeIntervalSince(start))")
-                
-                let decoder = JSONDecoder()
-                
-                do {
-                    let medias: [Media] = try decoder.decode([Media].self, from: data)
-                    completionHandler(medias)
-                } catch {
-                    dispatchGroup.leave()
                 }
             }
             task.resume()

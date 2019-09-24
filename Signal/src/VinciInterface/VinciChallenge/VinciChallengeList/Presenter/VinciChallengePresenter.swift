@@ -9,28 +9,36 @@ class VinciChallengeListPresenter: VinciChallengeListPresenterProtocol {
     var interactor: VinciChallengeListInteractorProtocol?
     var router: VinciChallengeListRouterProtocol?
     
-    var startDate: Date?
-    
     var challenges: [Challenge] = []
+    var topChallenges: [Challenge] = []
     
-    func startFetchingChallenges(limit: Int?, offset: Int?, signalID: String?) {
-        self.startDate = Date()
+    func startFetchingChallenges() {
         self.interactor?.fetchChallenges()
     }
     
-    func challengeFetchSuccess(challenges: [Challenge]) {
-        print("CHALLENGES WITH MEDIA METADATA REQUEST TIME: \(Date().timeIntervalSince(self.startDate!))")
+    func startFetchingTopChallenges() {
+        self.interactor?.fetchTopChallenges()
+    }
+    
+    func challengesFetchSuccess(challenges: [Challenge]) {
         self.challenges = challenges
         self.view?.updateChallengeList()
     }
     
-    func challengeFetchFail(error: Error) {
+    func topChallengesFetchSuccess(challenges: [Challenge]) {
+        self.topChallenges = challenges
+        self.view?.updateTopChallengeList()
+    }
+    
+    func challengesFetchFail(error: Error) {
+        // TODO: handle error
+    }
+    
+    func topChallengesFetchFail(error: Error) {
         // TODO: handle error
     }
     
     func mediasFetchSuccess(medias: [Media]) {
-        // FIXME: insert challenge may be?
-        // Multiple times update whole tableView isn't good
         self.view?.updateChallengeList()
     }
     
@@ -47,5 +55,9 @@ class VinciChallengeListPresenter: VinciChallengeListPresenterProtocol {
     
     func challengeCount() -> Int {
         return self.challenges.count
+    }
+    
+    func getTopChallenges() -> [Challenge] {
+        return self.topChallenges
     }
 }

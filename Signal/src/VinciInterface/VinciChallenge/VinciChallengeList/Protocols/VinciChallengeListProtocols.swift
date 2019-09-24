@@ -7,6 +7,7 @@ import Foundation
 
 protocol VinciChallengeListViewProtocol: class {
     func updateChallengeList()
+    func updateTopChallengeList()
 }
 
 
@@ -15,24 +16,28 @@ protocol VinciChallengeListPresenterProtocol: class {
     var interactor: VinciChallengeListInteractorProtocol? {get set}
     var router: VinciChallengeListRouterProtocol? {get set}
     
-    func startFetchingChallenges(limit: Int?, offset: Int?, signalID: String?)
+    func startFetchingChallenges()
+    func startFetchingTopChallenges()
     
-    func challengeFetchSuccess(challenges: [Challenge])
-    func challengeFetchFail(error: Error)
+    func challengesFetchSuccess(challenges: [Challenge])
+    func challengesFetchFail(error: Error)
+    func topChallengesFetchSuccess(challenges: [Challenge])
+    func topChallengesFetchFail(error: Error)
     
     func mediasFetchSuccess(medias: [Media])
     func mediasFetchFail(error: Error)
     
     func challenge(at indexPath: IndexPath) -> Challenge?
     func challengeCount() -> Int
+    func getTopChallenges() -> [Challenge]
 }
 
 
 protocol VinciChallengeListInteractorProtocol {
     var presenter: VinciChallengeListPresenterProtocol? {get set}
     
-    func fetchChallengesWithMedia()
     func fetchChallenges()
+    func fetchTopChallenges()
 }
 
 

@@ -5,6 +5,7 @@
 import UIKit
 
 class VinciChallengeCollectionSmallCell: UICollectionViewCell {
+    var challenge: Challenge?
     var imageView: UIImageView!
     
     override init(frame: CGRect) {
@@ -21,5 +22,13 @@ class VinciChallengeCollectionSmallCell: UICollectionViewCell {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) not implemented")
+    }
+    
+    func setup(challenge: Challenge) {
+        self.challenge = challenge
+        // FIXME: Load an avatar instead of 1st Media
+        if let firstMedia = challenge.medias.first, let url = URL(string: firstMedia.url) {
+            self.imageView.downloadAndSetupImage(with: url, completion: nil)
+        }
     }
 }
