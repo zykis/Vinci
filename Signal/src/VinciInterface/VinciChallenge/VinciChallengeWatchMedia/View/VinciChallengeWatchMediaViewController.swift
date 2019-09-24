@@ -15,10 +15,23 @@ class VinciChallengeWatchMediaViewController: VinciViewController, VinciChalleng
     var overlayView: UIView = {
         let v = UIView()
         v.backgroundColor = .black
-        
         return v
     }()
     
+    private var commentsVC: VinciChallengeCommentsViewController = {
+        let vc = VinciChallengeCommentsViewController(nibName: nil, bundle: nil)
+        return vc
+    }()
+    
+    private var isCommentsOpen: Bool = false {
+        didSet {
+            if self.isCommentsOpen {
+                self.present(commentsVC, animated: true, completion: nil)
+            } else {
+                self.commentsVC.dismiss(animated: true, completion: nil)
+            }
+        }
+    }
     private let likedImage = UIImage(named: "icon_like_white_60")!
     private let unlikedImage = UIImage(named: "icon_like_white_empty_60")!
     private weak var inputAccessoryTextView: UITextView?
@@ -72,11 +85,7 @@ class VinciChallengeWatchMediaViewController: VinciViewController, VinciChalleng
     }
     
     @IBAction func commentsPressed() {
-        let destVC = VinciChallengeCommentsViewController(nibName: nil, bundle: nil)
-        destVC.mediaID = self.presenter?.mediaID
-        destVC.modalPresentationStyle = .custom
-        destVC.transitioningDelegate = self
-        self.present(destVC, animated: true, completion: nil)
+        self.isCommentsOpen = true
     }
     
     func likeOrUnlikeMediaSuccess() {
@@ -196,6 +205,11 @@ class VinciChallengeWatchMediaViewController: VinciViewController, VinciChalleng
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Setting up CommentsViewController
+        self.commentsVC.modalPresentationStyle = .custom
+        self.commentsVC.mediaID = self.presenter?.mediaID
+        self.commentsVC.transitioningDelegate = self
+
         self.addInputAccessoryView()
         let placeholderColor = UIColor(white: 1.0, alpha: 0.54)
         self.commentTextField.attributedPlaceholder = NSAttributedString(string: self.commentTextField.placeholder!,
