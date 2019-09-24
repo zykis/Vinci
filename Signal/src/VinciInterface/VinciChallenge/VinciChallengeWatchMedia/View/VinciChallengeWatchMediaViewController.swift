@@ -23,6 +23,7 @@ class VinciChallengeWatchMediaViewController: VinciViewController, VinciChalleng
     @IBOutlet var favouriteImageView: UIImageView!
     @IBOutlet var likeButton: VinciAnimatableButton!
     @IBOutlet var likeLabel: UILabel!
+    @IBOutlet var commentsButton: VinciAnimatableButton!
     @IBOutlet var commentsLabel: UILabel!
     @IBOutlet var repostsLabel: UILabel!
     @IBOutlet var nicknameLabel: UILabel!
@@ -42,7 +43,7 @@ class VinciChallengeWatchMediaViewController: VinciViewController, VinciChalleng
     }
     
     @IBAction func sendButtonPressed(_ sender: UIButton) {
-        if let comment = self.commentTextField.text {
+        if let comment = self.inputAccessoryTextView?.text {
             // Sending comment
             sender.isEnabled = false
             self.presenter?.startPostingComment(comment: comment)
@@ -61,7 +62,15 @@ class VinciChallengeWatchMediaViewController: VinciViewController, VinciChalleng
         // chaning locally, while waiting server response
         self.update(media: newMedia)
         
-        self.presenter?.likeOrUnlikeMedia(like: newLiked)
+        self.presenter?.likeOrUnlikeMedia()
+    }
+    
+    @IBAction func commentsPressed() {
+        let destVC = VinciChallengeCommentsViewController(nibName: nil, bundle: nil)
+        destVC.mediaID = self.presenter?.mediaID
+        destVC.modalPresentationStyle = .custom
+        destVC.transitioningDelegate = self
+        self.present(destVC, animated: true, completion: nil)
     }
     
     func likeOrUnlikeMediaSuccess() {
@@ -194,6 +203,8 @@ class VinciChallengeWatchMediaViewController: VinciViewController, VinciChalleng
         }
         self.likeLabel.text = "\(media.likes)"
         self.likeButton.setImage(media.userLike ? likedImage : unlikedImage, for: .normal)
+        self.commentsLabel.text = "\(media.comments)"
+        self.repostsLabel.text = "\(media.reposts)"
         self.descriptionTextView.text = media.description
     }
     
@@ -248,4 +259,25 @@ extension VinciChallengeWatchMediaViewController: ConversationTextViewToolbarDel
 }
 
 
+extension VinciChallengeWatchMediaViewController: UIViewControllerTransitioningDelegate {
+    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+        return HalfSizePresentationController(presentedViewController: presented, presenting: presenting)
+    }
+}
 
+
+class HalfSizePresentationController: UIPresentationController {
+    private let cornerRadius: CGFloat = 16.0
+    
+    override init(presentedViewController: UIViewController, presenting: UIViewController?) {
+        super.init(presentedViewController: presentedViewController, presenting: presenting)
+        presentedViewController.view.layer.cornerRadius = self.cornerRadius
+    }
+    
+    override var frameOfPresentedViewInContainerView: CGRect {
+        return CGRect(x: 0.0,
+                      y: self.containerView!.bounds.height * (1.0 / 3.0),
+                      width: self.containerView!.bounds.width,
+                      height: self.containerView!.bounds.height * (2.0 / 3.0) + self.cornerRadius / 2.0)
+    }
+}

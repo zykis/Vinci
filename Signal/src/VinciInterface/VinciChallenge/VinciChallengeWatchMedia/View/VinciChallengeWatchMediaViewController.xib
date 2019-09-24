@@ -14,6 +14,7 @@
             <connections>
                 <outlet property="bottomConstraint" destination="sfD-dM-Z1d" id="8As-Cb-sel"/>
                 <outlet property="commentTextField" destination="Cfh-DN-NoE" id="k0D-ph-a3W"/>
+                <outlet property="commentsButton" destination="8O3-V3-5i0" id="MMB-vu-X75"/>
                 <outlet property="commentsLabel" destination="Yhl-oh-wIp" id="vjp-G2-vaN"/>
                 <outlet property="descriptionTextView" destination="UYN-In-kTJ" id="0PL-NZ-f73"/>
                 <outlet property="favouriteImageView" destination="lvC-gb-oe3" id="M1N-5z-Oja"/>
@@ -52,7 +53,7 @@
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="Hg4-Bh-4Vp">
-                    <rect key="frame" x="349" y="547.5" width="45" height="246.5"/>
+                    <rect key="frame" x="349" y="562.5" width="45" height="231.5"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="FhP-eo-5Dr">
                             <rect key="frame" x="0.0" y="0.0" width="45" height="62.5"/>
@@ -77,13 +78,21 @@
                             </subviews>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="QEt-4L-sCc">
-                            <rect key="frame" x="0.0" y="84.5" width="45" height="77.5"/>
+                            <rect key="frame" x="0.0" y="84.5" width="45" height="62.5"/>
                             <subviews>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_comments_white_60.png" translatesAutoresizingMaskIntoConstraints="NO" id="mfs-8T-Psq">
-                                    <rect key="frame" x="2.5" y="0.0" width="40" height="55"/>
-                                </imageView>
+                                <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8O3-V3-5i0" customClass="VinciAnimatableButton" customModule="Vinci" customModuleProvider="target">
+                                    <rect key="frame" x="2.5" y="0.0" width="40" height="40"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="40" id="69k-H3-fe3"/>
+                                        <constraint firstAttribute="width" secondItem="8O3-V3-5i0" secondAttribute="height" multiplier="1:1" id="Yvo-De-MaV"/>
+                                    </constraints>
+                                    <state key="normal" image="icon_comments_white_60.png"/>
+                                    <connections>
+                                        <action selector="commentsPressed" destination="-1" eventType="touchUpInside" id="zdu-ve-wTV"/>
+                                    </connections>
+                                </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9999" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yhl-oh-wIp">
-                                    <rect key="frame" x="0.0" y="57" width="45" height="20.5"/>
+                                    <rect key="frame" x="0.0" y="42" width="45" height="20.5"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
@@ -91,7 +100,7 @@
                             </subviews>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="cKy-0J-Ah6">
-                            <rect key="frame" x="0.0" y="184" width="45" height="62.5"/>
+                            <rect key="frame" x="0.0" y="169" width="45" height="62.5"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_reposts_white_60.png" translatesAutoresizingMaskIntoConstraints="NO" id="myr-5q-kfq">
                                     <rect key="frame" x="2.5" y="0.0" width="40" height="40"/>
@@ -110,11 +119,10 @@
                     </subviews>
                     <constraints>
                         <constraint firstItem="myr-5q-kfq" firstAttribute="width" secondItem="jDV-r7-InW" secondAttribute="width" id="Ggh-M5-EJc"/>
-                        <constraint firstItem="mfs-8T-Psq" firstAttribute="width" secondItem="jDV-r7-InW" secondAttribute="width" id="SOj-Uh-V2k"/>
                     </constraints>
                 </stackView>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="H85-Dp-TeA">
-                    <rect key="frame" x="20" y="547.5" width="305" height="246.5"/>
+                    <rect key="frame" x="20" y="562.5" width="305" height="231.5"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_favourite_white_empty_60.png" translatesAutoresizingMaskIntoConstraints="NO" id="lvC-gb-oe3">
                             <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
@@ -123,13 +131,13 @@
                             </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@nickname" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cez-1W-3z3">
-                            <rect key="frame" x="0.0" y="50" width="112" height="26.5"/>
+                            <rect key="frame" x="0.0" y="42.5" width="112" height="26.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="22"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UYN-In-kTJ">
-                            <rect key="frame" x="0.0" y="86.5" width="289" height="160"/>
+                            <rect key="frame" x="0.0" y="71.5" width="289" height="160"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="160" id="M6Z-YK-BnU"/>

@@ -35,27 +35,37 @@ class VinciChallengeWatchMediaInteractor: VinciChallengeWatchMediaInteractorProt
         let signalID = TSAccountManager.sharedInstance().getOrGenerateRegistrationId()
         guard
             let mediaID = self.presenter?.mediaID,
-            let url = URL(string: kEndpointPostComent + "?SIGNALID=\(signalID)&MEDIAMETAID=\(mediaID)")
+            let url = URL(string: kEndpointPostComent)
         else { return }
+        var urlRequest = URLRequest(url: url)
+        urlRequest.httpMethod = "POST"
+        urlRequest.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        urlRequest.httpBody = "SIGNALID=\(signalID)&MEDIAMETAID=\(mediaID)&TEXT=\(comment)".data(using: .utf8)
+        let requestString = "SIGNALID=\(signalID)&MEDIAMETAID=\(mediaID)&TEXT=\(comment)"
         
-        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-            if let error = error {
-                DispatchQueue.main.async {
-                    self.presenter?.postingCommentFail(error: error)
+        let task = URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
+            if let httpResponse = response as? HTTPURLResponse {
+                if httpResponse.statusCode < 300 {
+                    DispatchQueue.main.async {
+                        self.presenter?.postingCommentSuccess()
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        self.presenter?.postingCommentFail(error: NSError(domain: "com.vinci", code: httpResponse.statusCode, userInfo: nil))
+                    }
                 }
             } else {
                 DispatchQueue.main.async {
-                    self.presenter?.postingCommentSuccess()
+                    self.presenter?.postingCommentFail(error: NSError(domain: "com.vinci", code: 1, userInfo: nil))
                 }
             }
         }
         task.resume()
     }
     
-    func likeOrUnlikeMedia(mediaID: String, like: Bool) {
+    static func likeOrUnlikeMedia(mediaID: String, completion: ((Bool) -> Void)?) {
         let signalID = TSAccountManager.sharedInstance().getOrGenerateRegistrationId()
         guard
-            let mediaID = self.presenter?.mediaID,
             let url = URL(string: kEndpointLikeMedia + "?SIGNALID=\(signalID)&MEDIAMETAID=\(mediaID)")
             else { return }
         
@@ -64,25 +74,26 @@ class VinciChallengeWatchMediaInteractor: VinciChallengeWatchMediaInteractorProt
         urlRequest.httpBody = "SIGNALID=\(signalID)&MEDIAMETAID=\(mediaID)".data(using: .utf8)
         urlRequest.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
         let task = URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
-            guard
-                let data = data
-                else { return }
-            if let error = error {
-                self.presenter?.likeOrUnlikeMediaFail(error: error)
-            } else {
-                do {
-//                    let json = try JSONSerialization.jsonObject(with: data, options: []) as! [AnyHashable:Any]
-//                    let likes = (json["LIKES"] as? NSNumber)?.intValue
-                    DispatchQueue.main.async {
-//                        self.presenter?.media?.likes = likes!
-                        self.presenter?.likeOrUnlikeMediaSuccess(like: true)
-                    }
+            if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode < 300 {
+                DispatchQueue.main.async {
+                    completion?(true)
                 }
-                catch {
-                    self.presenter?.likeOrUnlikeMediaFail(error: error)
+            } else {
+                DispatchQueue.main.async {
+                    completion?(false)
                 }
             }
         }
         task.resume()
+    }
+    
+    func likeOrUnlikeMedia(mediaID: String) {
+        VinciChallengeWatchMediaInteractor.likeOrUnlikeMedia(mediaID: mediaID) { (completed) in
+            if completed {
+                self.presenter?.likeOrUnlikeMediaSuccess()
+            } else {
+                self.presenter?.likeOrUnlikeMediaFail(error: NSError(domain: "com.vinci", code: 1, userInfo: nil))
+            }
+        }
     }
 }

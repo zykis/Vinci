@@ -38,11 +38,11 @@ class VinciChallengeWatchMediaPresenter: VinciChallengeWatchMediaPresenterProtoc
         self.view?.postingCommentFail(error: error)
     }
     
-    func likeOrUnlikeMedia(like: Bool) {
-        self.interactor?.likeOrUnlikeMedia(mediaID: self.mediaID!, like: like)
+    func likeOrUnlikeMedia() {
+        self.interactor?.likeOrUnlikeMedia(mediaID: self.mediaID!)
     }
     
-    func likeOrUnlikeMediaSuccess(like: Bool) {
+    func likeOrUnlikeMediaSuccess() {
         self.view?.likeOrUnlikeMediaSuccess()
     }
     

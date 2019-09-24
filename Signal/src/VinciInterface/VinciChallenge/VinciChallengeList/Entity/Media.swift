@@ -44,6 +44,8 @@ class Media: Decodable {
         self.description = try container.decodeIfPresent(String.self, forKey: .description)
         self.likes = try container.decodeIfPresent(Int.self, forKey: .likes) ?? 0
         self.userLike = try container.decodeIfPresent(Bool.self, forKey: .userLike) ?? false
+        self.comments = try container.decodeIfPresent(Int.self, forKey: .comments) ?? 0
+        self.reposts = try container.decodeIfPresent(Int.self, forKey: .reposts) ?? 0
     }
     
     enum CodingKeys: String, CodingKey {
@@ -51,5 +53,7 @@ class Media: Decodable {
         case description = "DESCR"
         case likes = "LIKES"
         case userLike = "USERLIKE"
+        case comments = "COMMENTS"
+        case reposts = "REPOSTS"
     }
 }
