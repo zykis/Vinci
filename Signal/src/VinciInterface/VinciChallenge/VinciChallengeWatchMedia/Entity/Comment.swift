@@ -44,6 +44,8 @@ class Comment: Decodable {
         
         self.id = try container.decode(String.self, forKey: .id)
         self.text = try container.decode(String.self, forKey: .text)
+        self.userLike = try container.decode(Bool.self, forKey: .userLike)
+        self.likes = try container.decode(Int.self, forKey: .likes)
         
         let dateString = try container.decode(String.self, forKey: .posted)
         self.posted = Date.fromIso8601Representation(isoRepresentation: dateString)
@@ -53,5 +55,24 @@ class Comment: Decodable {
         case id = "ID"
         case text = "TEXT"
         case posted = "DATE"
+        case userLike = "USERLIKE"
+        case likes = "LIKES"
+    }
+}
+
+
+class CommentsForMedia: Decodable {
+    var count: Int
+    var comments: [Comment]
+    
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.count = try container.decode(Int.self, forKey: .count)
+        self.comments = try container.decode([Comment].self, forKey: .comments)
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case count = "TOTALCOUNT"
+        case comments = "COMMENTS"
     }
 }

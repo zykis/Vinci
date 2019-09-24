@@ -11,7 +11,7 @@
 		<key>OSXVersion</key>
 		<string>10.15</string>
 		<key>WebRTCCommit</key>
-		<string>d81f4cc6a63d62abcf63e39fea0dd53575cc2756 comments for media added</string>
+		<string>5fb4ef2d6689ff2a71eaaa448f76a84ef4d39881 fixed media presentation animation</string>
 	</dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>

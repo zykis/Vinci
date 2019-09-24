@@ -76,9 +76,11 @@ extension VinciChallengeCommentsViewController {
                     else { return }
                 let decoder = JSONDecoder()
                 do {
-                    let comments: [Comment] = try decoder.decode([Comment].self, from: data)
-                    self.comments = comments
+                    let commentsForMedia: CommentsForMedia = try decoder.decode(CommentsForMedia.self, from: data)
+                    
                     DispatchQueue.main.async {
+                        self.totalCommentsLabel.text = "\(commentsForMedia.count) comments"
+                        self.comments = commentsForMedia.comments
                         completion?()
                     }
                 }

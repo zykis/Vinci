@@ -10,11 +10,11 @@ let kUnlikedImage = "icon_like_black_empty_60"
 let kMargin: CGFloat = 8.0
 let kAvatarImageSize: CGFloat = 36.0
 let kLikeButtonSize: CGFloat = 24.0
-let kEndpointLikeOrUnlikeComment = "likeComment"
+let kEndpointLikeOrUnlikeComment = kHost + "likeComment"
 
 class VinciChallengeCommentCell: UITableViewCell {
     var commentID: String? {
-        return self.comment?.id ?? nil
+        return self.comment?.id
     }
     var comment: Comment?
     
@@ -49,8 +49,9 @@ class VinciChallengeCommentCell: UITableViewCell {
     private var likeButton: VinciAnimatableButton = {
         let lb = VinciAnimatableButton()
         lb.setImage(UIImage(named: kUnlikedImage), for: .normal)
-        lb.imageView?.contentMode = .scaleAspectFill
-        lb.addTarget(self, action: #selector(VinciChallengeCommentCell.likePressed), for: .touchUpInside)
+        lb.imageView?.contentMode = .scaleAspectFit
+//        lb.addTarget(self, action: #selector(VinciChallengeCommentCell.likePressed), for: .touchUpInside)
+        // FIXME: Why doesnt work here?
         return lb
     }()
     
@@ -109,6 +110,7 @@ class VinciChallengeCommentCell: UITableViewCell {
         self.likeButton.rightAnchor.constraint(equalTo: cv.rightAnchor, constant: -kMargin * 2).isActive = true
         self.likeButton.widthAnchor.constraint(equalToConstant: kLikeButtonSize).isActive = true
         self.likeButton.heightAnchor.constraint(equalTo: self.likeButton.widthAnchor, multiplier: 1.0).isActive = true
+        self.likeButton.addTarget(self, action: #selector(VinciChallengeCommentCell.likePressed), for: .touchUpInside)
         
         self.likesLabel.translatesAutoresizingMaskIntoConstraints = false
         self.likesLabel.centerXAnchor.constraint(equalTo: self.likeButton.centerXAnchor).isActive = true
@@ -122,6 +124,8 @@ class VinciChallengeCommentCell: UITableViewCell {
     @objc func likePressed() {
         if let commentID = self.commentID {
             self.likeOrUnlikeComment(commentID: commentID, completion: nil)
+        } else {
+            fatalError("cant get comment ID")
         }
     }
     
@@ -133,7 +137,7 @@ class VinciChallengeCommentCell: UITableViewCell {
         
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = "POST"
-        urlRequest.httpBody = "SIGNALID=\(signalID)&COMMENTID=\(commentID)".data(using: .utf8)
+        urlRequest.httpBody = "SIGNALID=\(signalID)&MEDIACOMMENTID=\(commentID)".data(using: .utf8)
         urlRequest.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
         let task = URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
             guard let data = data
