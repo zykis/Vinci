@@ -54,6 +54,8 @@ class VinciChallengeWatchMediaPresenter: VinciChallengeWatchMediaPresenterProtoc
     }
     
     func fetchComments() {
+        self._totalCommentsCount = 0
+        self.comments = []
         self.interactor?.fetchComments(mediaID: self.mediaID!)
     }
     

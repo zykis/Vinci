@@ -11,7 +11,7 @@
 		<key>OSXVersion</key>
 		<string>10.15</string>
 		<key>WebRTCCommit</key>
-		<string>9cce41d447ab4fdc0978588e24505ad0f5c627c5 added topChallenges on main screen</string>
+		<string>ebba78f6e62acb4a405e40bdd8b8ffd30236bf6e CommentsViewController remade as CommentView</string>
 	</dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>

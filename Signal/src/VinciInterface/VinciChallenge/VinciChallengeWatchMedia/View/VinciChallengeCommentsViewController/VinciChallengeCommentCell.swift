@@ -169,7 +169,10 @@ class VinciChallengeCommentCell: UITableViewCell {
         self.postedLabel.text = comment.posted
     }
     
+    
     override func prepareForReuse() {
+        super.prepareForReuse()
+        
         self.avatarImageView.image = nil
         self.usernameLabel.text = nil
         self.commentLabel.text = nil

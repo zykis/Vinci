@@ -9,6 +9,7 @@ let kMinTextViewHeight = 36.0
 let kSeparatorBottomConstraintValue: CGFloat = 59.0
 let kAnimationHideDuration = 0.2
 let kCommentHeightRatio: CGFloat = 0.6
+let kPlaceholderColor = UIColor(white: 1.0, alpha: 0.54)
 
 class VinciChallengeWatchMediaViewController: VinciViewController {
     var presenter: VinciChallengeWatchMediaPresenterProtocol?
@@ -22,9 +23,24 @@ class VinciChallengeWatchMediaViewController: VinciViewController {
     private var isCommentsViewPresented: Bool = false {
         didSet {
             if self.isCommentsViewPresented {
-                self.presentCommentsView()
+                // FIXME: code T_T
+                view.bringSubview(toFront: commentTextField)
+                UIView.animate(withDuration: 0.2, animations: {
+                    self.commentTextField.backgroundColor = .white
+                }) { (_) in
+                    self.commentTextField.attributedPlaceholder = NSAttributedString(string: self.commentTextField.placeholder!,
+                                                                                     attributes: [NSAttributedStringKey.foregroundColor: UIColor.lightGray])
+                }
+                presentCommentsView()
             } else {
-                self.hideCommentsView()
+                UIView.animate(withDuration: 0.2, animations: {
+                    self.commentTextField.backgroundColor = .clear
+                }) { (_) in
+                    self.commentTextField.attributedPlaceholder = NSAttributedString(string: self.commentTextField.placeholder!,
+                                                                                     attributes: [NSAttributedStringKey.foregroundColor: kPlaceholderColor])
+                }
+                view.bringSubview(toFront: commentsView)
+                hideCommentsView()
             }
         }
     }
@@ -126,7 +142,8 @@ class VinciChallengeWatchMediaViewController: VinciViewController {
         else { return }
         self.inputAccessoryTextView?.becomeFirstResponder()
         UIView.animate(withDuration: animationDuration, delay: 0, options: .curveEaseOut, animations: {
-            self.bottomConstraint.constant = keyboardHeight
+//            self.bottomConstraint.constant = keyboardHeight
+//            self.commentsTopAnimatableConstraint?.constant -= keyboardHeight
             self.navigationBarTopConstraint.constant = -keyboardHeight
             self.view.layoutIfNeeded()
         }, completion: nil)
@@ -134,10 +151,12 @@ class VinciChallengeWatchMediaViewController: VinciViewController {
     
     @objc func keyboardWillHide(notification: Notification) {
         guard
+            let keyboardHeight = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? CGRect)?.height,
             let animationDuration = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? Double
         else { return }
         UIView.animate(withDuration: animationDuration, delay: 0, options: .curveEaseOut, animations: {
-            self.bottomConstraint.constant = kSeparatorBottomConstraintValue
+//            self.bottomConstraint.constant = kSeparatorBottomConstraintValue
+//            self.commentsTopAnimatableConstraint?.constant += keyboardHeight
             self.navigationBarTopConstraint.constant = 0
             self.view.layoutIfNeeded()
         }, completion: nil)
@@ -242,9 +261,8 @@ extension VinciChallengeWatchMediaViewController {
         commentsView.viewController = self
         
         self.addInputAccessoryView()
-        let placeholderColor = UIColor(white: 1.0, alpha: 0.54)
         self.commentTextField.attributedPlaceholder = NSAttributedString(string: self.commentTextField.placeholder!,
-                                                                         attributes: [NSAttributedStringKey.foregroundColor: placeholderColor])
+                                                                         attributes: [NSAttributedStringKey.foregroundColor: kPlaceholderColor])
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(VinciChallengeWatchMediaViewController.keyboardWillShow(notification:)),
                                                name: .UIKeyboardWillShow,
@@ -275,7 +293,7 @@ extension VinciChallengeWatchMediaViewController {
         super.viewWillLayoutSubviews()
         
         print("WILLLAYOUTSUBVIEWCALLED")
-        
+        // FIXME: Multiple addition of same constraints
         commentsView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: view.bounds.height, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: view.bounds.height * kCommentHeightRatio + commentsView.layer.cornerRadius, enableInsets: false)
     }
 }
@@ -321,6 +339,11 @@ extension VinciChallengeWatchMediaViewController: VinciChallengeWatchMediaViewPr
         // Dismissing keyboard
         self.inputAccessoryTextView?.resignFirstResponder()
         self.commentTextField.endEditing(true)
+        // Fetch new comments, if comment view is open
+        if isCommentsViewPresented {
+            self.presenter?.fetchComments()
+            self.commentsView.reloadData()
+        }
     }
     
     func fetchCommentsSuccess() {
