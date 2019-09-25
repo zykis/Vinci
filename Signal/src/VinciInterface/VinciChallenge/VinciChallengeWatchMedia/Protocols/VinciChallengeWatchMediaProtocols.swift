@@ -12,6 +12,7 @@ protocol VinciChallengeWatchMediaViewProtocol: class {
     func postingCommentFail(error: Error)
     func likeOrUnlikeMediaSuccess()
     func likeOrUnlikeMediaFail(error: Error)
+    func fetchCommentsSuccess()
 }
 
 
@@ -23,16 +24,20 @@ protocol VinciChallengeWatchMediaPresenterProtocol: class {
     var mediaID: String? {get set}
     var media: Media? {get set}
     
-    func startFetchMedia(mediaID: String)
-    func startPostingComment(comment: String)
+    func fetchMedia(mediaID: String)
+    func postComment(comment: String)
     func likeOrUnlikeMedia()
-    
+    func fetchComments()
     func fetchMediaSuccess(media: Media)
     func fetchMediaFail(error: Error)
     func postingCommentSuccess()
     func postingCommentFail(error: Error)
     func likeOrUnlikeMediaSuccess()
     func likeOrUnlikeMediaFail(error: Error)
+    func fetchCommentsSuccess(comments: [Comment], totalCommentsCount: Int)
+    func totalCommentsCount() -> Int
+    func commentsCount() -> Int
+    func comment(at: Int) -> Comment?
 }
 
 
@@ -42,6 +47,7 @@ protocol VinciChallengeWatchMediaInteractorProtocol {
     func fetchMedia(mediaID: String)
     func postComment(comment: String)
     func likeOrUnlikeMedia(mediaID: String)
+    func fetchComments(mediaID: String)
 }
 
 

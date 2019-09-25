@@ -8,8 +8,9 @@ import UIKit
 let kMinTextViewHeight = 36.0
 let kSeparatorBottomConstraintValue: CGFloat = 59.0
 let kAnimationHideDuration = 0.2
+let kCommentHeightRatio: CGFloat = 0.6
 
-class VinciChallengeWatchMediaViewController: VinciViewController, VinciChallengeWatchMediaViewProtocol {
+class VinciChallengeWatchMediaViewController: VinciViewController {
     var presenter: VinciChallengeWatchMediaPresenterProtocol?
     
     var overlayView: UIView = {
@@ -18,24 +19,34 @@ class VinciChallengeWatchMediaViewController: VinciViewController, VinciChalleng
         return v
     }()
     
-    private var commentsVC: VinciChallengeCommentsViewController = {
-        let vc = VinciChallengeCommentsViewController(nibName: nil, bundle: nil)
-        return vc
-    }()
-    
-    private var isCommentsOpen: Bool = false {
+    private var isCommentsViewPresented: Bool = false {
         didSet {
-            if self.isCommentsOpen {
-                self.present(commentsVC, animated: true, completion: nil)
+            if self.isCommentsViewPresented {
+                self.presentCommentsView()
             } else {
-                self.commentsVC.dismiss(animated: true, completion: nil)
+                self.hideCommentsView()
             }
         }
     }
+
+    private var commentsTopAnimatableConstraint: NSLayoutConstraint? {
+        return view.constraints.first(where: { (c) -> Bool in
+            return ((c.firstItem as? VinciChallengeCommentsView == commentsView && c.secondItem as? UIView == view) ||
+                (c.firstItem as? UIView == view && c.secondItem as? VinciChallengeCommentsView == commentsView))
+                && c.firstAttribute == .top && c.secondAttribute == .top
+                && c.isActive == true
+        })
+    }
+    
     private let likedImage = UIImage(named: "icon_like_white_60")!
     private let unlikedImage = UIImage(named: "icon_like_white_empty_60")!
     private weak var inputAccessoryTextView: UITextView?
     private var isUiHidden: Bool = false
+    
+    private var commentsView: VinciChallengeCommentsView = {
+        let cv = VinciChallengeCommentsView()
+        return cv
+    }()
     
     @IBOutlet var navigationBar: UINavigationBar!
     @IBOutlet var mediaImageView: UIImageView!
@@ -63,9 +74,8 @@ class VinciChallengeWatchMediaViewController: VinciViewController, VinciChalleng
     
     @IBAction func sendButtonPressed(_ sender: UIButton) {
         if let comment = self.inputAccessoryTextView?.text {
-            // Sending comment
             sender.isEnabled = false
-            self.presenter?.startPostingComment(comment: comment)
+            self.presenter?.postComment(comment: comment)
         }
     }
     
@@ -79,35 +89,15 @@ class VinciChallengeWatchMediaViewController: VinciViewController, VinciChalleng
         newMedia.userLike = newLiked
         
         // chaning locally, while waiting server response
-        self.update(media: newMedia)
+        self.likeLabel.text = "\(newLikes)"
+        self.likeButton.setImage(newLiked ? likedImage : unlikedImage, for: .normal)
         
         self.presenter?.likeOrUnlikeMedia()
     }
     
     @IBAction func commentsPressed() {
-        self.isCommentsOpen = true
-    }
-    
-    func likeOrUnlikeMediaSuccess() {
-        self.presenter?.startFetchMedia(mediaID: (self.presenter?.mediaID)!)
-    }
-    
-    func likeOrUnlikeMediaFail(error: Error) {
-        self.presenter?.startFetchMedia(mediaID: (self.presenter?.mediaID)!)
-    }
-    
-    func postingCommentFail(error: Error) {
-        self.sendButton?.isEnabled = true
-    }
-    
-    func postingCommentSuccess() {
-        self.sendButton?.isEnabled = true
-        // Clearing text
-        self.inputAccessoryTextView?.text = nil
-        self.commentTextField.text = nil
-        // Dismissing keyboard
-        self.inputAccessoryTextView?.resignFirstResponder()
-        self.commentTextField.endEditing(true)
+        isCommentsViewPresented = true
+        self.presenter?.fetchComments()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -116,6 +106,8 @@ class VinciChallengeWatchMediaViewController: VinciViewController, VinciChalleng
                 if (self.inputAccessoryTextView!.isFirstResponder) {
                     self.inputAccessoryTextView?.resignFirstResponder()
                     self.commentTextField.endEditing(true)
+                } else if isCommentsViewPresented {
+                    isCommentsViewPresented = false
                 } else {
                     if self.isUiHidden {
                         self.showUI()
@@ -142,7 +134,6 @@ class VinciChallengeWatchMediaViewController: VinciViewController, VinciChalleng
     
     @objc func keyboardWillHide(notification: Notification) {
         guard
-//            let keyboardHeight = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? CGRect)?.height,
             let animationDuration = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? Double
         else { return }
         UIView.animate(withDuration: animationDuration, delay: 0, options: .curveEaseOut, animations: {
@@ -188,59 +179,20 @@ class VinciChallengeWatchMediaViewController: VinciViewController, VinciChalleng
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        self.view.addSubview(self.overlayView)
-        self.overlayView.translatesAutoresizingMaskIntoConstraints = false
-        self.overlayView.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
-        self.overlayView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
-        self.overlayView.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
-        self.overlayView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
-        
-        self.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        self.navigationBar.isTranslucent = true
-        self.setNeedsStatusBarAppearanceUpdate()
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Setting up CommentsViewController
-        self.commentsVC.modalPresentationStyle = .custom
-        self.commentsVC.mediaID = self.presenter?.mediaID
-        self.commentsVC.transitioningDelegate = self
-
-        self.addInputAccessoryView()
-        let placeholderColor = UIColor(white: 1.0, alpha: 0.54)
-        self.commentTextField.attributedPlaceholder = NSAttributedString(string: self.commentTextField.placeholder!,
-                                                                         attributes: [NSAttributedStringKey.foregroundColor: placeholderColor])
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(VinciChallengeWatchMediaViewController.keyboardWillShow(notification:)),
-                                               name: .UIKeyboardWillShow,
-                                               object: nil)
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(VinciChallengeWatchMediaViewController.keyboardWillHide(notification:)),
-                                               name: .UIKeyboardWillHide,
-                                               object: nil)
-        self.presenter?.startFetchMedia(mediaID: (self.presenter?.mediaID)!)
-    }
-    
-    func update(media: Media) {
-        if let mediaUrl = URL(string: media.url) {
-            self.mediaImageView.downloadAndSetupImage(with: mediaUrl, completion: nil)
+    private func presentCommentsView() {
+        if let tc = commentsTopAnimatableConstraint {
+            UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseInOut, animations: {
+                tc.constant = self.view.bounds.height * (1.0 - kCommentHeightRatio)
+                self.view.layoutIfNeeded()
+            }, completion: nil)
         }
-        self.likeLabel.text = "\(media.likes)"
-        self.likeButton.setImage(media.userLike ? likedImage : unlikedImage, for: .normal)
-        self.commentsLabel.text = "\(media.comments)"
-        self.repostsLabel.text = "\(media.reposts)"
-        self.descriptionTextView.text = media.description
     }
-    
-    func hideOverlay() {
-        UIView.animate(withDuration: 0.15, animations: {
-            self.overlayView.alpha = 0.0
-        }) { (_) in
-            self.overlayView.isHidden = true
+    private func hideCommentsView() {
+        if let tc = commentsTopAnimatableConstraint {
+            UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseInOut, animations: {
+                tc.constant = self.view.bounds.height
+                self.view.layoutIfNeeded()
+            }, completion: nil)
         }
     }
     
@@ -274,7 +226,112 @@ class VinciChallengeWatchMediaViewController: VinciViewController, VinciChalleng
         sendButton.leftAnchor.constraint(equalTo: inputTextView.rightAnchor, constant: 4.0).isActive = true
         sendButton.topAnchor.constraint(equalTo: toolbar.topAnchor, constant: 4.0).isActive = true
         
+        
         self.commentTextField.inputAccessoryView = toolbar
+    }
+}
+
+
+// MARK: Lifecycle
+extension VinciChallengeWatchMediaViewController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        view.addSubview(commentsView)
+        commentsView.delegate = self
+        commentsView.viewController = self
+        
+        self.addInputAccessoryView()
+        let placeholderColor = UIColor(white: 1.0, alpha: 0.54)
+        self.commentTextField.attributedPlaceholder = NSAttributedString(string: self.commentTextField.placeholder!,
+                                                                         attributes: [NSAttributedStringKey.foregroundColor: placeholderColor])
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(VinciChallengeWatchMediaViewController.keyboardWillShow(notification:)),
+                                               name: .UIKeyboardWillShow,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(VinciChallengeWatchMediaViewController.keyboardWillHide(notification:)),
+                                               name: .UIKeyboardWillHide,
+                                               object: nil)
+        self.presenter?.fetchMedia(mediaID: (self.presenter?.mediaID)!)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.view.addSubview(self.overlayView)
+        self.overlayView.translatesAutoresizingMaskIntoConstraints = false
+        self.overlayView.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
+        self.overlayView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
+        self.overlayView.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
+        self.overlayView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+        
+        self.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationBar.isTranslucent = true
+        self.setNeedsStatusBarAppearanceUpdate()
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        
+        print("WILLLAYOUTSUBVIEWCALLED")
+        
+        commentsView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: view.bounds.height, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: view.bounds.height * kCommentHeightRatio + commentsView.layer.cornerRadius, enableInsets: false)
+    }
+}
+
+
+extension VinciChallengeWatchMediaViewController: VinciChallengeWatchMediaViewProtocol {
+    func update(media: Media) {
+        if let mediaUrl = URL(string: media.url) {
+            self.mediaImageView.downloadAndSetupImage(with: mediaUrl, completion: nil)
+        }
+        self.likeLabel.text = "\(media.likes)"
+        self.likeButton.setImage(media.userLike ? likedImage : unlikedImage, for: .normal)
+        self.commentsLabel.text = "\(media.comments)"
+        self.repostsLabel.text = "\(media.reposts)"
+        self.descriptionTextView.text = media.description
+    }
+    
+    func hideOverlay() {
+        UIView.animate(withDuration: 0.15, animations: {
+            self.overlayView.alpha = 0.0
+        }) { (_) in
+            self.overlayView.isHidden = true
+        }
+    }
+    
+    func likeOrUnlikeMediaSuccess() {
+        self.presenter?.fetchMedia(mediaID: (self.presenter?.mediaID)!)
+    }
+    
+    func likeOrUnlikeMediaFail(error: Error) {
+        self.presenter?.fetchMedia(mediaID: (self.presenter?.mediaID)!)
+    }
+    
+    func postingCommentFail(error: Error) {
+        self.sendButton?.isEnabled = true
+    }
+    
+    func postingCommentSuccess() {
+        self.sendButton?.isEnabled = true
+        // Clearing text
+        self.inputAccessoryTextView?.text = nil
+        self.commentTextField.text = nil
+        // Dismissing keyboard
+        self.inputAccessoryTextView?.resignFirstResponder()
+        self.commentTextField.endEditing(true)
+    }
+    
+    func fetchCommentsSuccess() {
+        commentsView.reloadData()
+    }
+}
+
+
+extension VinciChallengeWatchMediaViewController: VinciChallengeCommentsViewProtocol {
+    func closeButtonTapped() {
+        isCommentsViewPresented = false
     }
 }
 
@@ -292,28 +349,4 @@ extension VinciChallengeWatchMediaViewController: ConversationInputTextViewDeleg
 
 
 extension VinciChallengeWatchMediaViewController: ConversationTextViewToolbarDelegate {
-}
-
-
-extension VinciChallengeWatchMediaViewController: UIViewControllerTransitioningDelegate {
-    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
-        return HalfSizePresentationController(presentedViewController: presented, presenting: presenting)
-    }
-}
-
-
-class HalfSizePresentationController: UIPresentationController {
-    private let cornerRadius: CGFloat = 16.0
-    
-    override init(presentedViewController: UIViewController, presenting: UIViewController?) {
-        super.init(presentedViewController: presentedViewController, presenting: presenting)
-        presentedViewController.view.layer.cornerRadius = self.cornerRadius
-    }
-    
-    override var frameOfPresentedViewInContainerView: CGRect {
-        return CGRect(x: 0.0,
-                      y: self.containerView!.bounds.height * (1.0 / 3.0),
-                      width: self.containerView!.bounds.width,
-                      height: self.containerView!.bounds.height * (2.0 / 3.0) + self.cornerRadius / 2.0)
-    }
 }

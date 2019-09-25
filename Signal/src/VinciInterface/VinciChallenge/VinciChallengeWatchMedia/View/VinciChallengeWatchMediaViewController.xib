@@ -88,7 +88,7 @@
                                     </constraints>
                                     <state key="normal" image="icon_comments_white_60.png"/>
                                     <connections>
-                                        <action selector="commentsPressed" destination="-1" eventType="touchUpInside" id="zdu-ve-wTV"/>
+                                        <action selector="commentsPressed" destination="-1" eventType="touchUpInside" id="Qtz-Tq-fhE"/>
                                     </connections>
                                 </button>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9999" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yhl-oh-wIp">

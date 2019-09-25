@@ -5,6 +5,8 @@
 import Foundation
 
 
+let kEndpointGetMediaComments = kHost + "getMediaComments"
+
 class VinciChallengeWatchMediaInteractor: VinciChallengeWatchMediaInteractorProtocol {
     var presenter: VinciChallengeWatchMediaPresenterProtocol?
     
@@ -41,7 +43,6 @@ class VinciChallengeWatchMediaInteractor: VinciChallengeWatchMediaInteractorProt
         urlRequest.httpMethod = "POST"
         urlRequest.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
         urlRequest.httpBody = "SIGNALID=\(signalID)&MEDIAMETAID=\(mediaID)&TEXT=\(comment)".data(using: .utf8)
-        let requestString = "SIGNALID=\(signalID)&MEDIAMETAID=\(mediaID)&TEXT=\(comment)"
         
         let task = URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
             if let httpResponse = response as? HTTPURLResponse {
@@ -94,6 +95,29 @@ class VinciChallengeWatchMediaInteractor: VinciChallengeWatchMediaInteractorProt
             } else {
                 self.presenter?.likeOrUnlikeMediaFail(error: NSError(domain: "com.vinci", code: 1, userInfo: nil))
             }
+        }
+    }
+    
+    func fetchComments(mediaID: String) {
+        let signalID = TSAccountManager.sharedInstance().getOrGenerateRegistrationId()
+        let urlString = kEndpointGetMediaComments + "?SIGNALID=\(signalID)&MEDIAMETAID=\(mediaID)&LIMIT=20&OFFSET=0"
+        if let url = URL(string: urlString) {
+            let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+                guard let data = data
+                    else { return }
+                let decoder = JSONDecoder()
+                do {
+                    let commentsForMedia: CommentsForMedia = try decoder.decode(CommentsForMedia.self, from: data)
+                    
+                    DispatchQueue.main.async {
+                        self.presenter?.fetchCommentsSuccess(comments: commentsForMedia.comments, totalCommentsCount: commentsForMedia.count)
+                    }
+                }
+                catch {
+                    print(error)
+                }
+            }
+            task.resume()
         }
     }
 }

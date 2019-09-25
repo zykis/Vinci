@@ -10,7 +10,7 @@ class VinciAnimatableButton: UIButton {
     }
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        UIView.animate(withDuration: 0.5,
+        UIView.animate(withDuration: 0.15,
                        delay: 0,
                        usingSpringWithDamping: 0.2,
                        initialSpringVelocity: 6.0,
@@ -23,7 +23,7 @@ class VinciAnimatableButton: UIButton {
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        UIView.animate(withDuration: 0.5,
+        UIView.animate(withDuration: 0.15,
                        delay: 0,
                        usingSpringWithDamping: 0.2,
                        initialSpringVelocity: 6.0,

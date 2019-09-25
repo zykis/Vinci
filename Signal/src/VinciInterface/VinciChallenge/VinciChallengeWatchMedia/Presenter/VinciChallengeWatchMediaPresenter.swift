@@ -12,8 +12,10 @@ class VinciChallengeWatchMediaPresenter: VinciChallengeWatchMediaPresenterProtoc
     
     var media: Media?
     var mediaID: String?
+    var comments: [Comment] = []
+    var _totalCommentsCount: Int = 0
     
-    func startFetchMedia(mediaID: String) {
+    func fetchMedia(mediaID: String) {
         self.interactor?.fetchMedia(mediaID: mediaID)
     }
     
@@ -27,7 +29,7 @@ class VinciChallengeWatchMediaPresenter: VinciChallengeWatchMediaPresenterProtoc
         print(error)
     }
     
-    func startPostingComment(comment: String) {
+    func postComment(comment: String) {
         self.interactor?.postComment(comment: comment)
     }
     
@@ -49,5 +51,30 @@ class VinciChallengeWatchMediaPresenter: VinciChallengeWatchMediaPresenterProtoc
     
     func likeOrUnlikeMediaFail(error: Error) {
         self.view?.likeOrUnlikeMediaFail(error: error)
+    }
+    
+    func fetchComments() {
+        self.interactor?.fetchComments(mediaID: self.mediaID!)
+    }
+    
+    func fetchCommentsSuccess(comments: [Comment], totalCommentsCount: Int) {
+        self.comments = comments
+        self._totalCommentsCount = totalCommentsCount
+        self.view?.fetchCommentsSuccess()
+    }
+    
+    func totalCommentsCount() -> Int {
+        return _totalCommentsCount
+    }
+    
+    func commentsCount() -> Int {
+        return comments.count
+    }
+    
+    func comment(at: Int) -> Comment? {
+        if comments.indices.contains(at) {
+            return comments[at]
+        }
+        return nil
     }
 }

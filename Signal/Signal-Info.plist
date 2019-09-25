@@ -11,7 +11,7 @@
 		<key>OSXVersion</key>
 		<string>10.15</string>
 		<key>WebRTCCommit</key>
-		<string>8a206415c8d807304766a7a9d4aa40a31d99f7c4 Media finished</string>
+		<string>9cce41d447ab4fdc0978588e24505ad0f5c627c5 added topChallenges on main screen</string>
 	</dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>

@@ -13,10 +13,7 @@ let kLikeButtonSize: CGFloat = 24.0
 let kEndpointLikeOrUnlikeComment = kHost + "likeComment"
 
 class VinciChallengeCommentCell: UITableViewCell {
-    var commentID: String? {
-        return self.comment?.id
-    }
-    var comment: Comment?
+    var commentID: String?
     
     private var avatarImageView: UIImageView = {
         let iv = UIImageView()
@@ -122,6 +119,7 @@ class VinciChallengeCommentCell: UITableViewCell {
     }
     
     @objc func likePressed() {
+        // FIXME: remove commentID, add behavior to presenter
         if let commentID = self.commentID {
             self.likeOrUnlikeComment(commentID: commentID, completion: nil)
         } else {
@@ -148,9 +146,9 @@ class VinciChallengeCommentCell: UITableViewCell {
                 let userLike: Bool = json!["USERLIKE"] as! Bool
                 let likes: Int = json!["LIKES"] as! Int
                 DispatchQueue.main.async {
-                    self.comment?.userLike = userLike
-                    self.comment?.likes = likes
-                    self.setup(comment: (self.comment?.presenter())!)
+                    // FIXME: code dublicate
+                    self.likesLabel.text = "\(likes)"
+                    self.likeButton.setImage(UIImage(named: userLike ? kLikedImage : kUnlikedImage), for: .normal)
                 }
             } catch {
                 print(error)
