@@ -34,8 +34,6 @@ import UIKit
         //        self.contentView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
         
         self.contentView.layer.cornerRadius = self.layer.cornerRadius
-        print("CORNER RADIUS: \(self.layer.cornerRadius)")
-        print("CORNER RADIUS SUBVIEW: \(self.contentView.layer.cornerRadius)")
     }
     
     @IBInspectable var cornerRadius: Double {

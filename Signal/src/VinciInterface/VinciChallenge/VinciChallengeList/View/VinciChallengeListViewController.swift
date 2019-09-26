@@ -131,7 +131,9 @@ extension VinciChallengeListViewController: UITableViewDataSource {
             let cell: VinciChallengeExtendedCell = self.tableView.dequeueReusableCell(withIdentifier: kVinciChallengeExtendedCellReuseIdentifier) as! VinciChallengeExtendedCell
             // FIXME: cell.prepareForReuse not getting called
             cell.cleanUp()
+            // FIXME: cell не должен предполагать родителя определённого класса
             cell.viewContoller = self
+            cell.delegate = self
             if let challenge = self.presenter?.challenge(at: indexPath) {
                 cell.setup(with: challenge)
             }
@@ -162,6 +164,14 @@ extension VinciChallengeListViewController: VinciChallengeMediaTappedProtocol {
         let destVC: VinciChallengeWatchMediaViewController = VinciChallengeWatchMediaRouter.createModule()
         destVC.presenter!.mediaID = media.id
         self.navigationController?.delegate = self
+        self.navigationController?.pushViewController(destVC, animated: true)
+    }
+}
+
+
+extension VinciChallengeListViewController: VinciChallengeMoveToChallengeProtocol {
+    func moveToChallenge(challengeID: String) {
+        let destVC = VinciChallengeGameRouter.createModule()
         self.navigationController?.pushViewController(destVC, animated: true)
     }
 }

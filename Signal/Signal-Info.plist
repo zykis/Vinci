@@ -11,7 +11,7 @@
 		<key>OSXVersion</key>
 		<string>10.15</string>
 		<key>WebRTCCommit</key>
-		<string>ebba78f6e62acb4a405e40bdd8b8ffd30236bf6e CommentsViewController remade as CommentView</string>
+		<string>9962bd7e669cc293849c04fd68ca6d42faf94b99 Brought commentTextField on top of commentary section. Some minor UI fixes</string>
 	</dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>

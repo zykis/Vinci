@@ -39,9 +39,11 @@ class Challenge: Decodable {
         
         self.reward = try container.decode(Double.self, forKey: .reward)
         
-        let location = try container.decode([Double].self, forKey: .location)
-        self.latitude = location.first
-        self.longitude = location.last
+//        let location = try container.decode([Double].self, forKey: .location)
+//        self.latitude = location.first
+//        self.longitude = location.last
+        self.latitude = try container.decode(Double.self, forKey: .latitude)
+        self.longitude = try container.decode(Double.self, forKey: .longitude)
         
         self.tags = try container.decode([String].self, forKey: .tags)
         self.likes = try container.decode(Int.self, forKey: .likes)
@@ -81,6 +83,8 @@ class Challenge: Decodable {
         case expirationDate = "FINAL"
         case reward = "REWARD"
         case location = "LOC"
+        case latitude = "LAT"
+        case longitude = "LON"
         case tags = "TAGS"
         case likes = "LIKES"
         case medias = "MEDIA"

@@ -47,6 +47,17 @@
 		175F25202333910700FED9EC /* icon_comments_white_60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 175F251D2333910600FED9EC /* icon_comments_white_60@2x.png */; };
 		175F25212333910700FED9EC /* icon_like_white_60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 175F251E2333910600FED9EC /* icon_like_white_60@2x.png */; };
 		175F2523233391D100FED9EC /* icon_favourite_white_empty_60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 175F2522233391D000FED9EC /* icon_favourite_white_empty_60@2x.png */; };
+		175F8D4A233B9AE600E5644C /* VinciChallengeGameProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175F8D49233B9AE600E5644C /* VinciChallengeGameProtocols.swift */; };
+		175F8D4C233B9B4900E5644C /* VinciChallengeGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175F8D4B233B9B4900E5644C /* VinciChallengeGameViewController.swift */; };
+		175F8D4E233B9B8500E5644C /* VinciChallengeGameInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175F8D4D233B9B8500E5644C /* VinciChallengeGameInteractor.swift */; };
+		175F8D50233B9B9400E5644C /* VinciChallengeGamePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175F8D4F233B9B9400E5644C /* VinciChallengeGamePresenter.swift */; };
+		175F8D52233B9BB000E5644C /* VinciChallengeGameRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175F8D51233B9BB000E5644C /* VinciChallengeGameRouter.swift */; };
+		175F8D54233BB30600E5644C /* VinciChallengeGameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 175F8D53233BB30600E5644C /* VinciChallengeGameViewController.xib */; };
+		175F8D56233BB4AC00E5644C /* game_background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 175F8D55233BB4AC00E5644C /* game_background.jpg */; };
+		175F8D5B233BBAD900E5644C /* icon_diamon_white_40@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 175F8D57233BBAD700E5644C /* icon_diamon_white_40@3x.png */; };
+		175F8D5C233BBAD900E5644C /* icon_diamon_white_40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 175F8D58233BBAD800E5644C /* icon_diamon_white_40@2x.png */; };
+		175F8D5D233BBAD900E5644C /* icon_location_white_40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 175F8D59233BBAD800E5644C /* icon_location_white_40@2x.png */; };
+		175F8D5E233BBAD900E5644C /* icon_location_white_40@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 175F8D5A233BBAD800E5644C /* icon_location_white_40@3x.png */; };
 		17940A8823394DDF0064434D /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17940A8723394DDF0064434D /* Comment.swift */; };
 		17940A8A233958C00064434D /* VinciChallengeCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17940A89233958C00064434D /* VinciChallengeCommentCell.swift */; };
 		17940A9123397E5E0064434D /* icon_like_black_60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 17940A8D23397E5D0064434D /* icon_like_black_60@2x.png */; };
@@ -773,6 +784,17 @@
 		175F251D2333910600FED9EC /* icon_comments_white_60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_comments_white_60@2x.png"; sourceTree = "<group>"; };
 		175F251E2333910600FED9EC /* icon_like_white_60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_like_white_60@2x.png"; sourceTree = "<group>"; };
 		175F2522233391D000FED9EC /* icon_favourite_white_empty_60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_favourite_white_empty_60@2x.png"; sourceTree = "<group>"; };
+		175F8D49233B9AE600E5644C /* VinciChallengeGameProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinciChallengeGameProtocols.swift; sourceTree = "<group>"; };
+		175F8D4B233B9B4900E5644C /* VinciChallengeGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinciChallengeGameViewController.swift; sourceTree = "<group>"; };
+		175F8D4D233B9B8500E5644C /* VinciChallengeGameInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinciChallengeGameInteractor.swift; sourceTree = "<group>"; };
+		175F8D4F233B9B9400E5644C /* VinciChallengeGamePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinciChallengeGamePresenter.swift; sourceTree = "<group>"; };
+		175F8D51233B9BB000E5644C /* VinciChallengeGameRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinciChallengeGameRouter.swift; sourceTree = "<group>"; };
+		175F8D53233BB30600E5644C /* VinciChallengeGameViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VinciChallengeGameViewController.xib; sourceTree = "<group>"; };
+		175F8D55233BB4AC00E5644C /* game_background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = game_background.jpg; sourceTree = "<group>"; };
+		175F8D57233BBAD700E5644C /* icon_diamon_white_40@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_diamon_white_40@3x.png"; sourceTree = "<group>"; };
+		175F8D58233BBAD800E5644C /* icon_diamon_white_40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_diamon_white_40@2x.png"; sourceTree = "<group>"; };
+		175F8D59233BBAD800E5644C /* icon_location_white_40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_location_white_40@2x.png"; sourceTree = "<group>"; };
+		175F8D5A233BBAD800E5644C /* icon_location_white_40@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_location_white_40@3x.png"; sourceTree = "<group>"; };
 		17940A8723394DDF0064434D /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		17940A89233958C00064434D /* VinciChallengeCommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VinciChallengeCommentCell.swift; path = ../VinciChallengeCommentsViewController/VinciChallengeCommentCell.swift; sourceTree = "<group>"; };
 		17940A8D23397E5D0064434D /* icon_like_black_60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_like_black_60@2x.png"; sourceTree = "<group>"; };
@@ -1749,6 +1771,67 @@
 				17C120BF232FBE3F00A38A87 /* Router */,
 			);
 			path = VinciChallengeAccount;
+			sourceTree = "<group>";
+		};
+		17F4E0DB233B9A250040A971 /* VinciChallengeGame */ = {
+			isa = PBXGroup;
+			children = (
+				17F4E0E1233B9A5F0040A971 /* Protocols */,
+				17F4E0E0233B9A540040A971 /* View */,
+				17F4E0DF233B9A510040A971 /* Interactor */,
+				17F4E0DE233B9A4E0040A971 /* Presenter */,
+				17F4E0DD233B9A430040A971 /* Entity */,
+				17F4E0DC233B9A3B0040A971 /* Router */,
+			);
+			path = VinciChallengeGame;
+			sourceTree = "<group>";
+		};
+		17F4E0DC233B9A3B0040A971 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				175F8D51233B9BB000E5644C /* VinciChallengeGameRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		17F4E0DD233B9A430040A971 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		17F4E0DE233B9A4E0040A971 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				175F8D4F233B9B9400E5644C /* VinciChallengeGamePresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		17F4E0DF233B9A510040A971 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				175F8D4D233B9B8500E5644C /* VinciChallengeGameInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		17F4E0E0233B9A540040A971 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				175F8D4B233B9B4900E5644C /* VinciChallengeGameViewController.swift */,
+				175F8D53233BB30600E5644C /* VinciChallengeGameViewController.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		17F4E0E1233B9A5F0040A971 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				175F8D49233B9AE600E5644C /* VinciChallengeGameProtocols.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		34074F54203D0722004596AE /* Sounds */ = {
@@ -2850,6 +2933,11 @@
 		B633C4FD1A1D190B0059AC12 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				175F8D58233BBAD800E5644C /* icon_diamon_white_40@2x.png */,
+				175F8D57233BBAD700E5644C /* icon_diamon_white_40@3x.png */,
+				175F8D59233BBAD800E5644C /* icon_location_white_40@2x.png */,
+				175F8D5A233BBAD800E5644C /* icon_location_white_40@3x.png */,
+				175F8D55233BB4AC00E5644C /* game_background.jpg */,
 				17940A962339E9480064434D /* icon_close_black_40@2x.png */,
 				17940A952339E9480064434D /* icon_close_black_40@3x.png */,
 				17940A8D23397E5D0064434D /* icon_like_black_60@2x.png */,
@@ -3084,6 +3172,7 @@
 		CB89972822E299BB00D07D94 /* VinciChallenge */ = {
 			isa = PBXGroup;
 			children = (
+				17F4E0DB233B9A250040A971 /* VinciChallengeGame */,
 				591E657D2327B0C900B7484E /* VinciChallengeList */,
 				17C49A49232FBD5B006334E1 /* VinciChallengeAccount */,
 				172D0DC92332883900A4725E /* VinciChallengeWatchMedia */,
@@ -3521,6 +3610,7 @@
 				A5509ECA1A69AB8B00ABA4BC /* Main.storyboard in Resources */,
 				8DADFD42230C85BE00EC2F8C /* SF-Pro-Text-Regular.otf in Resources */,
 				AD83FF421A73426500B5C81A /* audio_play_button.png in Resources */,
+				175F8D5B233BBAD900E5644C /* icon_diamon_white_40@3x.png in Resources */,
 				34330A5C1E787A9800DF2FB9 /* dripicons-v2.ttf in Resources */,
 				B633C5C41A1D190B0059AC12 /* mute_on@2x.png in Resources */,
 				B633C5CE1A1D190B0059AC12 /* quit@2x.png in Resources */,
@@ -3534,6 +3624,7 @@
 				17057F6E232FF33B001A0D6A /* Icon-App-40x40@3x.png in Resources */,
 				FC5CDF391A3393DD00B47253 /* error_white@2x.png in Resources */,
 				172D0DAF23312D0300A4725E /* icon_favourite_filled_32@2x.png in Resources */,
+				175F8D56233BB4AC00E5644C /* game_background.jpg in Resources */,
 				17940A972339E9480064434D /* icon_close_black_40@3x.png in Resources */,
 				B633C5D21A1D190B0059AC12 /* savephoto@2x.png in Resources */,
 				172D0DBF23313BBC00A4725E /* icon_gamerules@3x.png in Resources */,
@@ -3547,6 +3638,7 @@
 				175F25202333910700FED9EC /* icon_comments_white_60@2x.png in Resources */,
 				34C3C78F2040A4F70000134C /* sonarping.mp3 in Resources */,
 				AD83FF431A73426500B5C81A /* audio_play_button@2x.png in Resources */,
+				175F8D5E233BBAD900E5644C /* icon_location_white_40@3x.png in Resources */,
 				172D0DAD23312D0300A4725E /* icon_like_16@3x.png in Resources */,
 				34661FB820C1C0D60056EDD6 /* message_sent.aiff in Resources */,
 				17940A9423397E5E0064434D /* icon_like_black_empty_60@2x.png in Resources */,
@@ -3575,6 +3667,8 @@
 				AD83FF451A73426500B5C81A /* audio_pause_button@2x.png in Resources */,
 				45A2F005204473A3002E978A /* NewMessage.aifc in Resources */,
 				8DADFD43230C85C200EC2F8C /* SF-Pro-Text-Semibold.otf in Resources */,
+				175F8D54233BB30600E5644C /* VinciChallengeGameViewController.xib in Resources */,
+				175F8D5C233BBAD900E5644C /* icon_diamon_white_40@2x.png in Resources */,
 				45B74A882044AAB600CD42F8 /* aurora.aifc in Resources */,
 				45B74A742044AAB600CD42F8 /* aurora-quiet.aifc in Resources */,
 				175F25212333910700FED9EC /* icon_like_white_60@2x.png in Resources */,
@@ -3585,6 +3679,7 @@
 				17C120C5232FC0F700A38A87 /* VinciChallengeAccountViewController.xib in Resources */,
 				172D0DAC23312D0300A4725E /* icon_diamon_16@3x.png in Resources */,
 				45B74A782044AAB600CD42F8 /* bamboo-quiet.aifc in Resources */,
+				175F8D5D233BBAD900E5644C /* icon_location_white_40@2x.png in Resources */,
 				45B74A7B2044AAB600CD42F8 /* chord.aifc in Resources */,
 				45B74A812044AAB600CD42F8 /* chord-quiet.aifc in Resources */,
 				172D0DA123311C5B00A4725E /* icon_account@3x.png in Resources */,
@@ -4036,6 +4131,7 @@
 				34DBF007206C3CB200025978 /* OWSBubbleShapeView.m in Sources */,
 				34D1F0BA1F8800D90066283D /* OWSAudioMessageView.m in Sources */,
 				34D8C02B1ED3685800188D7C /* DebugUIContacts.m in Sources */,
+				175F8D52233B9BB000E5644C /* VinciChallengeGameRouter.swift in Sources */,
 				4C1885D2218F8E1C00B67051 /* PhotoGridViewCell.swift in Sources */,
 				45C9DEB81DF4E35A0065CA84 /* WebRTCCallMessageHandler.swift in Sources */,
 				17C120CB232FCF4F00A38A87 /* VinciChallengeAccountInteractor.swift in Sources */,
@@ -4064,6 +4160,7 @@
 				340FC8C7204DE64D007AEB0F /* OWSBackupAPI.swift in Sources */,
 				172D0DB82331387F00A4725E /* VinciChallengeAccountCell.swift in Sources */,
 				343A65981FC4CFE7000477A1 /* ConversationScrollButton.m in Sources */,
+				175F8D4C233B9B4900E5644C /* VinciChallengeGameViewController.swift in Sources */,
 				34386A51207D0C01009F5D9C /* HomeViewController.m in Sources */,
 				34D1F0A91F867BFC0066283D /* ConversationViewCell.m in Sources */,
 				4505C2BF1E648EA300CEBF41 /* ExperienceUpgrade.swift in Sources */,
@@ -4201,6 +4298,7 @@
 				340FC8B1204DAC8D007AEB0F /* BlockListViewController.m in Sources */,
 				45B5360E206DD8BB00D61655 /* UIResponder+OWS.swift in Sources */,
 				8D18BD0D22F3282B00DB9340 /* VinciGroupMembersViewController.swift in Sources */,
+				175F8D4A233B9AE600E5644C /* VinciChallengeGameProtocols.swift in Sources */,
 				45F659821E1BE77000444429 /* NonCallKitCallUIAdaptee.swift in Sources */,
 				17BDA629233B4DE3004EEA05 /* UIView + anchor.swift in Sources */,
 				45AE48511E0732D6004D96C2 /* TurnServerInfo.swift in Sources */,
@@ -4217,6 +4315,7 @@
 				4C1885D0218D0EA800B67051 /* ImagePickerController.swift in Sources */,
 				45F32C232057297A00A300D5 /* MediaPageViewController.swift in Sources */,
 				8DADFD2D230C78C000EC2F8C /* VinciEmptyChatsViewCell.swift in Sources */,
+				175F8D50233B9B9400E5644C /* VinciChallengeGamePresenter.swift in Sources */,
 				340FC8A7204DAC8D007AEB0F /* RegistrationViewController.m in Sources */,
 				452C468F1E427E200087B011 /* OutboundCallInitiator.swift in Sources */,
 				34D2CCDA2062E7D000CB1A14 /* OWSScreenLockUI.m in Sources */,
@@ -4266,6 +4365,7 @@
 				340FC8B9204DAC8D007AEB0F /* UpdateGroupViewController.m in Sources */,
 				4574A5D61DD6704700C6B692 /* CallService.swift in Sources */,
 				340FC8A8204DAC8D007AEB0F /* CodeVerificationViewController.m in Sources */,
+				175F8D4E233B9B8500E5644C /* VinciChallengeGameInteractor.swift in Sources */,
 				3461299C1FD1EA9E00532771 /* NotificationsManager.m in Sources */,
 				4521C3C01F59F3BA00B4C582 /* TextFieldHelper.swift in Sources */,
 				8D1E7E67231D0272004104CC /* VNNewCallViewController.swift in Sources */,

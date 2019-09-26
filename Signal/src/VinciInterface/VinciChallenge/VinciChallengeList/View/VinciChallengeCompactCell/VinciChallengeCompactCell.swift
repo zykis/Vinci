@@ -13,11 +13,23 @@ let kEndpointFavourChallenge = kHost + "favChallenge"
 let kFavouriteImage = "icon_favourite_filled_32"
 let kUnfavouriteImage = "icon_favourite_empty_32"
 
+
+protocol VinciChallengeMoveToChallengeProtocol {
+    func moveToChallenge(challengeID: String)
+}
+
+
 class VinciChallengeCompactCell: UITableViewCell {
     private var challengeID: String? {
         return self.challenge?.id
     }
     private var challenge: Challenge?
+    var delegate: VinciChallengeMoveToChallengeProtocol?
+    
+    private let tapGestureRecognizer: UITapGestureRecognizer = {
+        let gr = UITapGestureRecognizer()
+        return gr
+    }()
     
     var compactCellView: UIView!
     var compactCellViewBottomConstraint: NSLayoutConstraint?
@@ -31,10 +43,18 @@ class VinciChallengeCompactCell: UITableViewCell {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.addCompactCellView()
+        
+        tapGestureRecognizer.addTarget(self, action: #selector(VinciChallengeCompactCell.moveToGame))
+        compactCellView.addGestureRecognizer(tapGestureRecognizer)
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) not implemented")
+    }
+    
+    @objc func moveToGame() {
+        print("moving to game with id: \(challengeID ?? "nil")")
+        delegate?.moveToChallenge(challengeID: challengeID!)
     }
     
     func addCompactCellView() {
