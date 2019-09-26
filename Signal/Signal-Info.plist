@@ -11,7 +11,7 @@
 		<key>OSXVersion</key>
 		<string>10.15</string>
 		<key>WebRTCCommit</key>
-		<string>9962bd7e669cc293849c04fd68ca6d42faf94b99 Brought commentTextField on top of commentary section. Some minor UI fixes</string>
+		<string>752d1cdbbcac027acbde2a351ee60633d6702b88 VinciChallengeGame module created</string>
 	</dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
@@ -120,6 +120,8 @@
 	<string>Signal uses your contacts to find users you know. We do not store your contacts on the server.</string>
 	<key>NSFaceIDUsageDescription</key>
 	<string>Signal's Screen Lock uses Face ID.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Vinci uses location to position nearest challenges.</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Signal needs access to your microphone to make and receive phone calls and record voice messages.</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		17057F6B232FF1F6001A0D6A /* avatar.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 17057F6A232FF1F5001A0D6A /* avatar.jpg */; };
 		17057F6E232FF33B001A0D6A /* Icon-App-40x40@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 17057F6C232FF33A001A0D6A /* Icon-App-40x40@3x.png */; };
 		17057F6F232FF33B001A0D6A /* Icon-App-40x40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 17057F6D232FF33B001A0D6A /* Icon-App-40x40@2x.png */; };
 		1712A72B2338FADD00574D84 /* ExpandAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1712A72A2338FADD00574D84 /* ExpandAnimator.swift */; };
@@ -58,6 +57,7 @@
 		175F8D5C233BBAD900E5644C /* icon_diamon_white_40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 175F8D58233BBAD800E5644C /* icon_diamon_white_40@2x.png */; };
 		175F8D5D233BBAD900E5644C /* icon_location_white_40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 175F8D59233BBAD800E5644C /* icon_location_white_40@2x.png */; };
 		175F8D5E233BBAD900E5644C /* icon_location_white_40@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 175F8D5A233BBAD800E5644C /* icon_location_white_40@3x.png */; };
+		1762B52B233CE9BD00CF2554 /* CLLocation + representation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1762B52A233CE9BD00CF2554 /* CLLocation + representation.swift */; };
 		17940A8823394DDF0064434D /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17940A8723394DDF0064434D /* Comment.swift */; };
 		17940A8A233958C00064434D /* VinciChallengeCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17940A89233958C00064434D /* VinciChallengeCommentCell.swift */; };
 		17940A9123397E5E0064434D /* icon_like_black_60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 17940A8D23397E5D0064434D /* icon_like_black_60@2x.png */; };
@@ -795,6 +795,7 @@
 		175F8D58233BBAD800E5644C /* icon_diamon_white_40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_diamon_white_40@2x.png"; sourceTree = "<group>"; };
 		175F8D59233BBAD800E5644C /* icon_location_white_40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_location_white_40@2x.png"; sourceTree = "<group>"; };
 		175F8D5A233BBAD800E5644C /* icon_location_white_40@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_location_white_40@3x.png"; sourceTree = "<group>"; };
+		1762B52A233CE9BD00CF2554 /* CLLocation + representation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocation + representation.swift"; sourceTree = "<group>"; };
 		17940A8723394DDF0064434D /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		17940A89233958C00064434D /* VinciChallengeCommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VinciChallengeCommentCell.swift; path = ../VinciChallengeCommentsViewController/VinciChallengeCommentCell.swift; sourceTree = "<group>"; };
 		17940A8D23397E5D0064434D /* icon_like_black_60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_like_black_60@2x.png"; sourceTree = "<group>"; };
@@ -2713,6 +2714,7 @@
 				591E65932327F05200B7484E /* UIImageView + download.swift */,
 				591E659B2328E85C00B7484E /* Date + representation.swift */,
 				17BDA628233B4DE3004EEA05 /* UIView + anchor.swift */,
+				1762B52A233CE9BD00CF2554 /* CLLocation + representation.swift */,
 			);
 			path = Extentions;
 			sourceTree = "<group>";
@@ -3614,7 +3616,6 @@
 				34330A5C1E787A9800DF2FB9 /* dripicons-v2.ttf in Resources */,
 				B633C5C41A1D190B0059AC12 /* mute_on@2x.png in Resources */,
 				B633C5CE1A1D190B0059AC12 /* quit@2x.png in Resources */,
-				17057F6B232FF1F6001A0D6A /* avatar.jpg in Resources */,
 				AD83FF441A73426500B5C81A /* audio_pause_button.png in Resources */,
 				172D0D9E23311C5B00A4725E /* icon_like_empty@3x.png in Resources */,
 				B6F509971AA53F760068F56A /* Localizable.strings in Resources */,
@@ -4140,6 +4141,7 @@
 				8D1818EE22F1960F008DAA14 /* VinciWelcomeViewController.swift in Sources */,
 				8D117DDA22FB2C9C00176F06 /* VinciNewCallViewController.swift in Sources */,
 				34D99C931F2937CC00D284D6 /* OWSAnalytics.swift in Sources */,
+				1762B52B233CE9BD00CF2554 /* CLLocation + representation.swift in Sources */,
 				340FC8B8204DAC8D007AEB0F /* AddToGroupViewController.m in Sources */,
 				341F2C0F1F2B8AE700D07D6B /* DebugUIMisc.m in Sources */,
 				8D05DD00231FA3150059954D /* VinciInputTextBar.swift in Sources */,

@@ -16,7 +16,7 @@ protocol VinciChallengeMediaTappedProtocol {
     func mediaTapped(media: Media, mediaFrame: CGRect, cell: VinciChallengeExtendedCell, image: UIImage?)
 }
 
-class VinciChallengeListViewController: VinciViewController, VinciChallengeListViewProtocol {
+class VinciChallengeListViewController: VinciViewController {
     var presenter: VinciChallengeListPresenterProtocol? = VinciChallengeListPresenter()
     
     @IBOutlet var tableView: UITableView!
@@ -36,14 +36,6 @@ class VinciChallengeListViewController: VinciViewController, VinciChallengeListV
         self.tableView.delegate = self
         self.tableView.dataSource = self
     }
-        
-    func updateChallengeList() {
-        self.tableView.reloadData()
-    }
-    
-    func updateTopChallengeList() {
-        self.tableView.reloadSections(IndexSet(integer: 1), with: .none)
-    }
     
     func animateTitlePositionChange() {
         self.gamesTopConstraint.constant = self.navigationBar.bounds.height / 2.0 - self.gamesLabel.bounds.height / 2.0
@@ -54,16 +46,6 @@ class VinciChallengeListViewController: VinciViewController, VinciChallengeListV
             self.gamesLabel.transform = CGAffineTransform(scaleX: 0.65, y: 0.65)
             self.view.layoutIfNeeded()
         }
-    }
-    
-    @IBAction func pushToAccount() {
-        let accountVC = VinciChallengeAccountRouter.createModule()
-        self.navigationController?.pushViewController(accountVC, animated: true)
-    }
-    
-    @IBAction func presentSettings() {
-        let navigationController:OWSNavigationController = AppSettingsViewController.inModalNavigationController()
-        present(navigationController, animated: true, completion: nil)
     }
 }
 
@@ -78,6 +60,32 @@ extension VinciChallengeListViewController {
         
         print("PHONE NUMBER: \(TSAccountManager.sharedInstance().localNumber() ?? "")")
         print("REGISTRATION ID: \(TSAccountManager.sharedInstance().getOrGenerateRegistrationId())")
+    }
+}
+
+
+// MARK: User input
+extension VinciChallengeListViewController {
+    @IBAction func pushToAccount() {
+        let accountVC = VinciChallengeAccountRouter.createModule()
+        self.navigationController?.pushViewController(accountVC, animated: true)
+    }
+    
+    @IBAction func presentSettings() {
+        let navigationController:OWSNavigationController = AppSettingsViewController.inModalNavigationController()
+        present(navigationController, animated: true, completion: nil)
+    }
+}
+
+
+extension VinciChallengeListViewController: VinciChallengeListViewProtocol {
+    func updateChallengeList() {
+        self.tableView.reloadData()
+//        self.tableView.reloadSections(IndexSet([2]), with: .none)
+    }
+    
+    func updateTopChallengeList() {
+        self.tableView.reloadSections(IndexSet([1]), with: .none)
     }
 }
 

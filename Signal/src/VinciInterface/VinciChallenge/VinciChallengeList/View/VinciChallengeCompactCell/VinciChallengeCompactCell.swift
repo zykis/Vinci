@@ -54,7 +54,9 @@ class VinciChallengeCompactCell: UITableViewCell {
     
     @objc func moveToGame() {
         print("moving to game with id: \(challengeID ?? "nil")")
-        delegate?.moveToChallenge(challengeID: challengeID!)
+        if let challengeID = challengeID {
+            delegate?.moveToChallenge(challengeID: challengeID)
+        }
     }
     
     func addCompactCellView() {
@@ -78,12 +80,15 @@ class VinciChallengeCompactCell: UITableViewCell {
         self.iconImageView.clipsToBounds = true
         self.iconImageView.layer.borderColor = UIColor(white: 0.0, alpha: 0.2).cgColor
         self.iconImageView.layer.borderWidth = 0.5
+        self.iconImageView.contentMode = .scaleAspectFill
     }
     
     @objc func favouriteButtonPressed() {
-        let newFavourite: Bool = !self.challenge!.favourite
-        self.favouriteButton.setImage(UIImage(named: newFavourite ? kFavouriteImage : kUnfavouriteImage), for: .normal)
-        self.favourChallenge()
+        if let challenge = self.challenge {
+            let newFavourite: Bool = !challenge.favourite
+            self.favouriteButton.setImage(UIImage(named: newFavourite ? kFavouriteImage : kUnfavouriteImage), for: .normal)
+            self.favourChallenge()
+        }
     }
     
     func favourChallenge() {
@@ -143,6 +148,9 @@ class VinciChallengeCompactCell: UITableViewCell {
         let amount: Double = challenge.likes > 1_000_000 ? Double(challenge.likes) / 1_000_000.0 : challenge.likes >= 1_000 ? Double(challenge.likes) / 1_000.0 : Double(challenge.likes)
         let formatType = amount >= 1_000 ? "%.1f" : "%i"
         self.likesLabel.text = String.init(format: formatType + amountAbbreviation, amount < 1_000 ? Int(amount) : amount)
+        if let avatarUrl = challenge.avatarUrl, let url = URL(string: avatarUrl) {
+            self.iconImageView.downloadAndSetupImage(with: url, completion: nil)
+        }
     }
     
     override func prepareForReuse() {

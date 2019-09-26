@@ -3,16 +3,18 @@
 // 
 
 import UIKit
+import CoreLocation
 
 
-enum State {
+enum GameState {
     case new
+    case saving
     case existing
 }
 
 
-protocol Statable {
-    func setup(state: State)
+protocol GameStatable {
+    func setup(state: GameState)
 }
 
 
@@ -25,16 +27,25 @@ class VinciChallengeGameViewController: VinciViewController {
         return ip
     }()
     
+    private let locationManager: CLLocationManager = {
+        let lm = CLLocationManager()
+        lm.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        return lm
+    }()
+    
     @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var titleTextField: UITextField!
-    @IBOutlet weak var priceTextField: UITextField!
-    @IBOutlet weak var priceStackView: UIStackView!
-    @IBOutlet weak var locationTextField: UITextField!
+    @IBOutlet weak var rewardTextField: UITextField!
+    @IBOutlet weak var rewardStackView: UIStackView!
+    @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var locationStackView: UIStackView!
     @IBOutlet weak var startLabel: UILabel!
+    @IBOutlet weak var startStackView: UIStackView!
     @IBOutlet weak var endLabel: UILabel!
+    @IBOutlet weak var endStackView: UIStackView!
     @IBOutlet weak var resultsLabel: UILabel!
+    @IBOutlet weak var resultsStackView: UIStackView!
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -49,6 +60,13 @@ extension VinciChallengeGameViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        rewardStackView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(VinciChallengeGameViewController.rewardPressed)))
+        locationStackView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(VinciChallengeGameViewController.locationPressed)))
+        startStackView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(VinciChallengeGameViewController.startDatePressed)))
+        endStackView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(VinciChallengeGameViewController.endDatePressed)))
+        resultsStackView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(VinciChallengeGameViewController.resultsDatePressed)))
+        
+        locationManager.delegate = self
         imagePicker.delegate = self
     }
     
@@ -60,6 +78,14 @@ extension VinciChallengeGameViewController {
         titleTextField.attributedPlaceholder = NSAttributedString(string: titleTextField.placeholder!,
                                                                   attributes: [NSAttributedStringKey.foregroundColor: UIColor.white])
         setNeedsStatusBarAppearanceUpdate()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.requestWhenInUseAuthorization()
+        }
     }
 }
 
@@ -126,12 +152,36 @@ extension VinciChallengeGameViewController: UIImagePickerControllerDelegate {
 }
 
 
-extension VinciChallengeGameViewController: Statable {
-    func setup(state: State) {
+extension VinciChallengeGameViewController: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.first, locationLabel != nil {
+            location.representation { (representation) in
+                DispatchQueue.main.async {
+                    self.locationLabel.text = representation
+                }
+            }
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == .authorizedWhenInUse || status == .authorizedAlways {
+            locationManager.startUpdatingLocation()
+        }
+    }
+}
+
+
+extension VinciChallengeGameViewController: GameStatable {
+    func setup(state: GameState) {
         switch(state) {
         case .new:
+            return
             // setup new challenge
+        case .saving:
+            return
+            // animate saving
         case .existing:
+            return
             // load and setup existing challenge
         }
     }

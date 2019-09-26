@@ -4,8 +4,10 @@
 
 import Foundation
 
+let kEndpointGetAvatar = kHost + "getAvatar"
+
 class Challenge: Decodable {
-    var id: String?
+    var id: String
     var title: String
     var description: String?
     var startDate: Date
@@ -18,6 +20,10 @@ class Challenge: Decodable {
     var tags: [String] = []
     var likes: Int = 0
     var favourite: Bool = false
+    var avatarUrl: String? {
+        let signalID = TSAccountManager.sharedInstance().getOrGenerateRegistrationId()
+        return kEndpointGetAvatar + "?CHID=\(self.id)&SIGNALID=\(signalID)"
+    }
     var medias: [Media] = []
     
     required init(from decoder: Decoder) throws {
@@ -39,9 +45,6 @@ class Challenge: Decodable {
         
         self.reward = try container.decode(Double.self, forKey: .reward)
         
-//        let location = try container.decode([Double].self, forKey: .location)
-//        self.latitude = location.first
-//        self.longitude = location.last
         self.latitude = try container.decode(Double.self, forKey: .latitude)
         self.longitude = try container.decode(Double.self, forKey: .longitude)
         
@@ -50,28 +53,12 @@ class Challenge: Decodable {
         
         self.favourite = try container.decode(Bool.self, forKey: .favourite)
         
-//        self.medias = try container.decode([Media].self, forKey: .medias)
-        
         if  let mediaIDs = try container.decodeIfPresent([String].self, forKey: .medias) {
             for mediaID in mediaIDs {
                 let media = Media(id: mediaID)
                 self.medias.append(media)
             }
         }
-    }
-    
-    init(title: String, reward: Double, startDate: Date = Date()) {
-        self.title = title
-        self.reward = reward
-        self.startDate = startDate
-        self.expirationDate = Date(timeInterval: 7 * 24 * 60 * 60, since: startDate)
-    }
-    
-    convenience init(title: String, reward: Double, startDate: Date, expirationDate: Date, description: String, iconUrl: String) {
-        self.init(title: title, reward: reward, startDate: startDate)
-        self.expirationDate = expirationDate
-        self.description = description
-        self.iconUrl = iconUrl
     }
     
     enum CodingKeys: String, CodingKey {
