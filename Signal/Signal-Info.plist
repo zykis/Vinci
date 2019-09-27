@@ -11,7 +11,7 @@
 		<key>OSXVersion</key>
 		<string>10.15</string>
 		<key>WebRTCCommit</key>
-		<string>23325ac2b53202e5be9f6ff122fdb4f5c676018e Added location and imagepicker. Fixed 2 crashes in VinciChallengeListViewController</string>
+		<string>0c8ec4ef82fc30ce263e2febb5e5fc9d37f57f07 Fixed problem with double reloading Vinci Challenge List</string>
 	</dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>

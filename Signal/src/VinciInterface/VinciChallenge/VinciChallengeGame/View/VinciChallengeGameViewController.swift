@@ -85,8 +85,7 @@ extension VinciChallengeGameViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        rewardStackView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(VinciChallengeGameViewController.rewardPressed)))
-        locationStackView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(VinciChallengeGameViewController.locationPressed)))
+        rewardTextField.keyboardType = .numberPad
         
         startTextField.inputView = datePicker
         addInputAccessoryView(for: startTextField, with: #selector(VinciChallengeGameViewController.startDatePicked))
@@ -95,6 +94,7 @@ extension VinciChallengeGameViewController {
         resultsTextField.inputView = datePicker
         addInputAccessoryView(for: resultsTextField, with: #selector(VinciChallengeGameViewController.resultsDatePicked))
         
+        descriptionTextView.delegate = self
         locationManager.delegate = self
         imagePicker.delegate = self
     }
@@ -106,9 +106,9 @@ extension VinciChallengeGameViewController {
         navigationBar.isTranslucent = true
         
         rewardTextField.attributedPlaceholder = NSAttributedString(string: rewardTextField.placeholder!,
-                                                                   attributes: [NSAttributedStringKey.foregroundColor: UIColor.white])
+                                                                   attributes: [NSAttributedStringKey.foregroundColor: UIColor(white: 1.0, alpha: 0.54)])
         titleTextField.attributedPlaceholder = NSAttributedString(string: titleTextField.placeholder!,
-                                                                  attributes: [NSAttributedStringKey.foregroundColor: UIColor.white])
+                                                                  attributes: [NSAttributedStringKey.foregroundColor: UIColor(white: 1.0, alpha: 0.54)])
         setNeedsStatusBarAppearanceUpdate()
     }
     
@@ -168,16 +168,6 @@ extension VinciChallengeGameViewController {
                 })
             }
         }
-        
-        
-    }
-    
-    @objc func rewardPressed() {
-        
-    }
-    
-    @objc func locationPressed() {
-        
     }
     
     @objc func startDatePicked() {
@@ -208,6 +198,27 @@ extension VinciChallengeGameViewController: UINavigationControllerDelegate {
 
 extension VinciChallengeGameViewController: VinciChallengeGameViewProtocol {
 
+}
+
+
+extension VinciChallengeGameViewController: UITextViewDelegate {
+    var kPlaceholderText: String {
+        return "You can describe task and rules of the game here"
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.text == kPlaceholderText {
+            textView.text = ""
+            textView.textColor = .black
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.count == 0 {
+            textView.text = kPlaceholderText
+            textView.textColor = .lightGray
+        }
+    }
 }
 
 
