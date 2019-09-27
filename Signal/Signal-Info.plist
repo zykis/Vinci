@@ -11,7 +11,7 @@
 		<key>OSXVersion</key>
 		<string>10.15</string>
 		<key>WebRTCCommit</key>
-		<string>752d1cdbbcac027acbde2a351ee60633d6702b88 VinciChallengeGame module created</string>
+		<string>23325ac2b53202e5be9f6ff122fdb4f5c676018e Added location and imagepicker. Fixed 2 crashes in VinciChallengeListViewController</string>
 	</dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>

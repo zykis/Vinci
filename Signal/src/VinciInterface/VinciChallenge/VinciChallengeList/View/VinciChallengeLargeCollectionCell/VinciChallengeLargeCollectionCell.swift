@@ -9,6 +9,7 @@ let kLargeCollectionCellHeight: CGFloat = 128.0
 
 class VinciChallengeLargeCollectionCell: UITableViewCell {
     var topChallenges: [Challenge] = []
+    weak var viewController: VinciChallengeListViewController?
     var collectionView: UICollectionView! = UICollectionView(frame: CGRect(x: 0,
                                                                            y: 0,
                                                                            width: 500.0,
@@ -56,8 +57,15 @@ class VinciChallengeLargeCollectionCell: UITableViewCell {
 }
 
 
-extension VinciChallengeListViewController: UICollectionViewDelegate {
-    
+extension VinciChallengeLargeCollectionCell: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let vc = self.viewController {
+            // FIXME: unwanted dependencies
+            if topChallenges.indices.contains(indexPath.row) {
+                vc.moveToChallenge(challengeID: topChallenges[indexPath.row].id)
+            }
+        }
+    }
 }
 
 

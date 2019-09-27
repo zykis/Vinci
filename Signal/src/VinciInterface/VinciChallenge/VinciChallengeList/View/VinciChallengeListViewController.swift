@@ -19,8 +19,8 @@ protocol VinciChallengeMediaTappedProtocol {
 class VinciChallengeListViewController: VinciViewController {
     var presenter: VinciChallengeListPresenterProtocol? = VinciChallengeListPresenter()
     
+    private let dispatchGroup = DispatchGroup()
     @IBOutlet var tableView: UITableView!
-    
     @IBOutlet var navigationBar: UINavigationBar!
     @IBOutlet var gamesLabel: UILabel!
     @IBOutlet var gamesTopConstraint: NSLayoutConstraint!
@@ -55,6 +55,13 @@ extension VinciChallengeListViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupTableView()
+        
+        dispatchGroup.enter()
+        dispatchGroup.enter()
+        dispatchGroup.notify(queue: .main) {
+            self.tableView.reloadData()
+        }
+        
         self.presenter?.startFetchingChallenges()
         self.presenter?.startFetchingTopChallenges()
         
@@ -80,12 +87,11 @@ extension VinciChallengeListViewController {
 
 extension VinciChallengeListViewController: VinciChallengeListViewProtocol {
     func updateChallengeList() {
-        self.tableView.reloadData()
-//        self.tableView.reloadSections(IndexSet([2]), with: .none)
+        dispatchGroup.leave()
     }
     
     func updateTopChallengeList() {
-        self.tableView.reloadSections(IndexSet([1]), with: .none)
+        dispatchGroup.leave()
     }
 }
 
@@ -133,6 +139,7 @@ extension VinciChallengeListViewController: UITableViewDataSource {
             return cell
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: kVinciChallengeLargeCollectionCellReuseIdentifier)! as! VinciChallengeLargeCollectionCell
+            cell.viewController = self
             cell.setup(topChallenges: (self.presenter?.getTopChallenges())!)
             return cell
         case 2:
