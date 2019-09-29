@@ -186,7 +186,8 @@ extension VinciChallengeListViewController: VinciChallengeMediaTappedProtocol {
 
 extension VinciChallengeListViewController: VinciChallengeMoveToChallengeProtocol {
     func moveToChallenge(challengeID: String) {
-        let destVC = VinciChallengeGameRouter.createModule()
+        let destVC = VinciChallengeGameRouter.createModule(gameState: .existing)
+        destVC.challengeID = challengeID
         self.navigationController?.pushViewController(destVC, animated: true)
     }
 }

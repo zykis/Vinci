@@ -224,7 +224,7 @@
                     <rect key="frame" x="0.0" y="452" width="414" height="354"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a8e-NH-U8X" customClass="VinciButton" customModule="Vinci" customModuleProvider="target">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a8e-NH-U8X">
                     <rect key="frame" x="20" y="814" width="374" height="48"/>
                     <color key="backgroundColor" red="0.80784313725490198" green="0.70196078431372544" blue="0.42352941176470588" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>

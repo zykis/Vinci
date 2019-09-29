@@ -68,7 +68,6 @@ class VinciChallengeAccountViewController: VinciViewController, VinciChallengeAc
 }
 
 
-
 extension VinciChallengeAccountViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60.0

@@ -43,6 +43,10 @@ target 'Signal' do
   end
 end
 
+target 'Vinci' do
+  pod 'RxSwift'
+end
+
 target 'SignalShareExtension' do
   shared_pods
 end

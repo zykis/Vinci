@@ -5,7 +5,7 @@
 import UIKit
 
 
-@IBDesignable class VinciCard: UIView {
+class VinciCard: UIView {
     @IBInspectable @IBOutlet var contentView: UIView!
     
     override init(frame: CGRect) {

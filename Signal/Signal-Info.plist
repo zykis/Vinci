@@ -7,11 +7,11 @@
 		<key>CarthageVersion</key>
 		<string>0.33.0</string>
 		<key>CocoapodsVersion</key>
-		<string>1.7.5</string>
+		<string>1.8.0</string>
 		<key>OSXVersion</key>
 		<string>10.15</string>
 		<key>WebRTCCommit</key>
-		<string>0c8ec4ef82fc30ce263e2febb5e5fc9d37f57f07 Fixed problem with double reloading Vinci Challenge List</string>
+		<string>281c71c52028978f4e1fe8ed326b2618f36773c8 added placeholder to textview</string>
 	</dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>

@@ -7,8 +7,8 @@ import UIKit
 
 
 class VinciChallengeGameRouter: NSObject, VinciChallengeGameRouterProtocol {
-    @objc static func createModule() -> VinciChallengeGameViewController {
-        let view = VinciChallengeGameViewController(nibName: nil, bundle: nil)
+    static func createModule(gameState: GameState) -> VinciChallengeGameViewController {
+        let view = VinciChallengeGameViewController(gameState: gameState, nibName: nil, bundle: nil)
         let presenter: VinciChallengeGamePresenterProtocol = VinciChallengeGamePresenter()
         var interactor: VinciChallengeGameInteractorProtocol = VinciChallengeGameInteractor()
         let router: VinciChallengeGameRouterProtocol = VinciChallengeGameRouter()
