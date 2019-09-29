@@ -11,7 +11,7 @@
 		<key>OSXVersion</key>
 		<string>10.15</string>
 		<key>WebRTCCommit</key>
-		<string>281c71c52028978f4e1fe8ed326b2618f36773c8 added placeholder to textview</string>
+		<string>91eb5125c1bf39aa14718922f6501c345547f1ad basic implementation for challenge view</string>
 	</dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>

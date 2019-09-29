@@ -252,13 +252,13 @@
                     </subviews>
                 </stackView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lkr-LZ-xKI" customClass="VinciAnimatableButton" customModule="Vinci" customModuleProvider="target">
-                    <rect key="frame" x="16" y="796.5" width="382" height="57.5"/>
+                    <rect key="frame" x="16" y="777" width="382" height="77"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="width" secondItem="Lkr-LZ-xKI" secondAttribute="height" multiplier="398:60" id="dia-2j-8n8"/>
+                        <constraint firstAttribute="width" secondItem="Lkr-LZ-xKI" secondAttribute="height" multiplier="398:80" id="dia-2j-8n8"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                    <inset key="imageEdgeInsets" minX="24" minY="24" maxX="24" maxY="24"/>
+                    <inset key="imageEdgeInsets" minX="16" minY="16" maxX="16" maxY="16"/>
                     <state key="normal" title="Save Game">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>

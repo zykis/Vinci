@@ -10,20 +10,40 @@ let kVinciChallengeAccountCellXibName = "VinciChallengeAccountCell"
 class VinciChallengeAccountViewController: VinciViewController, VinciChallengeAccountViewProtocol {
     var presenter: VinciChallengeAccountPresenterProtocol?
     
-    @IBOutlet var avatar: UIImageView!
     private var avatarMask: CAShapeLayer = CAShapeLayer()
-    @IBOutlet var navigationBar: UINavigationBar!
     
+    @IBOutlet var avatar: UIImageView!
+    @IBOutlet var navigationBar: UINavigationBar!
     @IBOutlet var winsLabel: UILabel!
     @IBOutlet var votesLabel: UILabel!
     @IBOutlet var incomeLabel: UILabel!
-    
     @IBOutlet var tableView: UITableView!
+    @IBOutlet weak var newGameButton: UIButton!
+    
+    @IBAction func newGamePressed() {
+        let destVC = VinciChallengeGameRouter.createModule(gameState: .new)
+        self.navigationController?.pushViewController(destVC, animated: true)
+    }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
     
+    @IBAction func pop() {
+        self.navigationController?.popViewController(animated: true)
+    }
+     
+    func setupTableView() {
+        let nib = UINib(nibName: kVinciChallengeAccountCellXibName, bundle: nil)
+        self.tableView.register(nib, forCellReuseIdentifier: kVinciChallengeAccountCellReuseIdentifier)
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+    }
+}
+
+
+// Lifecycle
+extension VinciChallengeAccountViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupTableView()
@@ -53,17 +73,7 @@ class VinciChallengeAccountViewController: VinciViewController, VinciChallengeAc
         t.m11 = 1.2
         t.m22 = 1.2
         self.avatarMask.transform = t
-    }
-    
-    @IBAction func pop() {
-        self.navigationController?.popViewController(animated: true)
-    }
-     
-    func setupTableView() {
-        let nib = UINib(nibName: kVinciChallengeAccountCellXibName, bundle: nil)
-        self.tableView.register(nib, forCellReuseIdentifier: kVinciChallengeAccountCellReuseIdentifier)
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
+        
     }
 }
 

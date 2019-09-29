@@ -81,6 +81,7 @@ class VinciChallengeGameViewController: VinciViewController {
     }()
     
     private var saveButtonEnabled: Bool {
+        return true
         guard
             rewardTextField.text?.isEmpty == false,
             titleTextField.text?.isEmpty == false,
@@ -160,6 +161,7 @@ extension VinciChallengeGameViewController {
         super.viewDidLoad()
         // FIXME: Use RxSwift
         saveGameButton.isEnabled = saveButtonEnabled
+        saveGameButton.translatesAutoresizingMaskIntoConstraints = false
         
         rewardTextField.keyboardType = .numberPad
         
@@ -206,6 +208,10 @@ extension VinciChallengeGameViewController {
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         
         if gameState == .existing {
             initialSetup(state: .existing)
@@ -241,24 +247,38 @@ extension VinciChallengeGameViewController {
     @IBAction func saveGamePressed() {
         if gameState == .existing {
             return
-        }
-        if let sb = self.saveGameButton {
-            let newBounds = CGRect(x: 0,
-                                   y: 0,
-                                   width: sb.bounds.height,
-                                   height: sb.bounds.height)
-            self.activityIndicatorView = UIActivityIndicatorView(frame: newBounds)
-            self.activityIndicatorView!.alpha = 0.0
-            sb.addSubview(self.activityIndicatorView!)
+        } else {
+            let height = saveGameButton.bounds.height
+            saveGameButtonLeadingConstraint.isActive = false
+            saveGameButtonTrailingConstraint.isActive = false
+            saveGameButtonHeightConstraint.isActive = false
             
-            UIView.animate(withDuration: 0.25, delay: 0.0, options: .curveEaseInOut, animations: {
-                sb.bounds = newBounds
-                sb.setTitleColor(.clear, for: .normal)
-            }) { (_) in
-                self.activityIndicatorView!.startAnimating()
-                UIView.animate(withDuration: 0.4, animations: {
+            self.activityIndicatorView = UIActivityIndicatorView(frame: CGRect(x: 0,
+                                                                               y: 0,
+                                                                               width: height,
+                                                                               height: height))
+            self.activityIndicatorView!.alpha = 0.0
+            saveGameButton.addSubview(self.activityIndicatorView!)
+            self.activityIndicatorView!.startAnimating()
+            
+            if let sb = self.saveGameButton {
+                UIView.animate(withDuration: 0.25, delay: 0.0, options: .curveEaseInOut, animations: {
+                    
+                    sb.heightAnchor.constraint(equalToConstant: height).isActive = true
+                    sb.widthAnchor.constraint(equalToConstant: height).isActive = true
+                    sb.setTitleColor(.clear, for: .normal)
+                    
+                    sb.layer.borderColor = UIColor.lightGray.cgColor
+                    sb.layer.borderWidth = 4.0
+                    sb.transform = CGAffineTransform.identity.scaledBy(x: 1.2, y: 1.2)
+                    self.saveGameButtonBottomConstraint.constant = kSaveGameButtonBottomConstraintConstantExisting
                     self.activityIndicatorView!.alpha = 1.0
-                })
+                    
+                    self.view.layoutIfNeeded()
+                }) { (_) in
+                    self.subviewHeightConstraint.constant = self.view.bounds.height * 0.8
+                    self.view.layoutIfNeeded()
+                }
             }
         }
     }
@@ -400,10 +420,8 @@ extension VinciChallengeGameViewController: GameStatable {
             saveGameButtonTrailingConstraint.isActive = false
             saveGameButtonBottomConstraint.constant = kSaveGameButtonBottomConstraintConstantExisting
             saveGameButtonHeightConstraint.isActive = false
-            saveGameButton.bounds = CGRect(x: 0,
-                                           y: 0,
-                                           width: height,
-                                           height: height)
+            saveGameButton.heightAnchor.constraint(equalToConstant: height).isActive = true
+            saveGameButton.widthAnchor.constraint(equalToConstant: height).isActive = true
             saveGameButton.layer.borderColor = UIColor.lightGray.cgColor
             saveGameButton.layer.borderWidth = 4.0
             saveGameButton.setTitle("", for: .normal)
