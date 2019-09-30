@@ -56,6 +56,13 @@ extension VinciChallengeListViewController {
         super.viewDidLoad()
         self.setupTableView()
         
+        print("PHONE NUMBER: \(TSAccountManager.sharedInstance().localNumber() ?? "")")
+        print("REGISTRATION ID: \(TSAccountManager.sharedInstance().getOrGenerateRegistrationId())")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         dispatchGroup.enter()
         dispatchGroup.enter()
         dispatchGroup.notify(queue: .main) {
@@ -64,9 +71,6 @@ extension VinciChallengeListViewController {
         
         self.presenter?.startFetchingChallenges()
         self.presenter?.startFetchingTopChallenges()
-        
-        print("PHONE NUMBER: \(TSAccountManager.sharedInstance().localNumber() ?? "")")
-        print("REGISTRATION ID: \(TSAccountManager.sharedInstance().getOrGenerateRegistrationId())")
     }
 }
 

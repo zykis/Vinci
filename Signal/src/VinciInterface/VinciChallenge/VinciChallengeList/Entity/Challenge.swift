@@ -61,6 +61,22 @@ class Challenge: Decodable {
         }
     }
     
+    init(id: String, title: String, description: String?, start: Date, end: Date?, expiration: Date?, reward: Double, latitude: Double?, longitude: Double?, tags: [String] = []) {
+        self.id = id
+        self.title = title
+        self.description = description
+        self.startDate = start
+        self.endDate = end
+        self.expirationDate = expiration
+        self.reward = reward
+        self.latitude = latitude
+        self.longitude = longitude
+        self.tags = tags
+        self.likes = 0
+        self.favourite = false
+        self.medias = []
+    }
+    
     enum CodingKeys: String, CodingKey {
         case id = "ID"
         case title = "NAME"

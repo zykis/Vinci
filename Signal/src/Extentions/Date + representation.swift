@@ -49,4 +49,11 @@ extension Date {
         }
         return date
     }
+    
+    func iso8601Representation() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
+        let dateString = formatter.string(from: self)
+        return dateString
+    }
 }

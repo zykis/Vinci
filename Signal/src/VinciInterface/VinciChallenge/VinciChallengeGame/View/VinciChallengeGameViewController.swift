@@ -47,13 +47,17 @@ class VinciChallengeGameViewController: VinciViewController {
     @IBOutlet weak var resultsStackView: UIStackView!
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var subview: UIView!
     
     private var activityIndicatorView: UIActivityIndicatorView?
-    @IBOutlet weak var subviewHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var saveGameButtonBottomConstraint: NSLayoutConstraint!
+    @IBOutlet var subviewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet var saveGameButtonBottomConstraint: NSLayoutConstraint!
     @IBOutlet var saveGameButtonLeadingConstraint: NSLayoutConstraint!
     @IBOutlet var saveGameButtonTrailingConstraint: NSLayoutConstraint!
     @IBOutlet var saveGameButtonHeightConstraint: NSLayoutConstraint!
+    
+    private var _lat: Double?
+    private var _lon: Double?
     
     let imagePicker: UIImagePickerController = {
         let ip = UIImagePickerController()
@@ -81,7 +85,6 @@ class VinciChallengeGameViewController: VinciViewController {
     }()
     
     private var saveButtonEnabled: Bool {
-        return true
         guard
             rewardTextField.text?.isEmpty == false,
             titleTextField.text?.isEmpty == false,
@@ -121,6 +124,24 @@ class VinciChallengeGameViewController: VinciViewController {
         toolbar.setItems([doneButton,spaceButton,cancelButton], animated: false)
         
         textField.inputAccessoryView = toolbar
+    }
+    
+    private func createChallenge() -> Challenge? {
+        guard
+        let title = titleTextField.text,
+        let description = descriptionTextView.text,
+        let sd = startTextField.text,
+        let startDate = dateFormatter.date(from: sd),
+        let ed = endTextField.text,
+        let endDate = dateFormatter.date(from: ed),
+        let rd = resultsTextField.text,
+        let expirationDate = dateFormatter.date(from: rd),
+        let rw = rewardTextField.text,
+        let reward = Double(rw)
+            else { return nil }
+        
+        let challenge: Challenge = Challenge(id: "", title: title, description: description, start: startDate, end: endDate, expiration: expirationDate, reward: reward, latitude: self._lat, longitude: self._lon, tags: [])
+        return challenge
     }
     
     private func disableControls() {
@@ -185,7 +206,10 @@ extension VinciChallengeGameViewController {
         
         // fetching challenge if loading existing one
         if gameState == .existing, let challengeID = challengeID {
-            presenter?.fetchChallenge(challengeID: challengeID)
+            presenter?.fetchChallenge(challengeID: challengeID, completion: { (challenge) in
+                self.update(with: challenge)
+                self.collectionView.reloadData()
+            })
         }
         
         navigationBar.setBackgroundImage(UIImage(), for: .default)
@@ -262,7 +286,7 @@ extension VinciChallengeGameViewController {
             self.activityIndicatorView!.startAnimating()
             
             if let sb = self.saveGameButton {
-                UIView.animate(withDuration: 0.25, delay: 0.0, options: .curveEaseInOut, animations: {
+                UIView.animate(withDuration: 0.15, delay: 0.0, options: .curveEaseInOut, animations: {
                     
                     sb.heightAnchor.constraint(equalToConstant: height).isActive = true
                     sb.widthAnchor.constraint(equalToConstant: height).isActive = true
@@ -274,10 +298,33 @@ extension VinciChallengeGameViewController {
                     self.saveGameButtonBottomConstraint.constant = kSaveGameButtonBottomConstraintConstantExisting
                     self.activityIndicatorView!.alpha = 1.0
                     
+                    self.subviewHeightConstraint.constant = self.view.bounds.height * kExpandedSubviewHeightMultiplier
+                    
+                    self.view.setNeedsLayout()
                     self.view.layoutIfNeeded()
                 }) { (_) in
-                    self.subviewHeightConstraint.constant = self.view.bounds.height * 0.8
-                    self.view.layoutIfNeeded()
+                    if let ch = self.createChallenge() {
+                        self.disableControls()
+                        self.presenter?.createChallenge(challenge: ch, completion: { (challengeID) in
+                            let imageData = UIImageJPEGRepresentation(self.avatarImageView!.image!, 0.5)!
+                            (self.presenter?.uploadAvatar(imageData: imageData,
+                                                          challengeID: challengeID,
+                                                          latitude: ch.latitude,
+                                                          longitude: ch.longitude,
+                                                          completion: {
+                                                            self.presenter?.fetchChallenge(challengeID: challengeID, completion: { (challenge) in
+                                                                self.activityIndicatorView?.removeFromSuperview()
+                                                                UIView.animate(withDuration: 0.25, animations: {
+                                                                    self.gameState = .existing
+                                                                    self.view.setNeedsLayout()
+                                                                    self.view.layoutIfNeeded()
+                                                                }, completion: { (_) in
+                                                                    self.update(with: challenge)
+                                                                })
+                                                            })
+                            }))!
+                        })
+                    }
                 }
             }
         }
@@ -357,8 +404,10 @@ extension VinciChallengeGameViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.first, locationLabel != nil {
             location.representation { (representation) in
-                if self.gameState == .existing {
+                if self.gameState == .new {
                     DispatchQueue.main.async {
+                        self._lat = location.coordinate.latitude
+                        self._lon = location.coordinate.longitude
                         self.locationLabel.text = representation
                     }
                 }
@@ -375,32 +424,29 @@ extension VinciChallengeGameViewController: CLLocationManagerDelegate {
 
 
 extension VinciChallengeGameViewController: VinciChallengeGameViewProtocol {
-    func fetchChallengeSuccess(challenge: Challenge) {
-        // animate loading button onto plus button
-        if gameState == .new {
-            if let ai = activityIndicatorView {
-                UIView.animate(withDuration: 2.0, animations: {
-                    self.saveGameButtonBottomConstraint.constant = kSaveGameButtonBottomConstraintConstantExisting
-                    self.subviewHeightConstraint.constant = kExpandedSubviewHeightMultiplier * self.view.bounds.height
-                    self.view.layoutIfNeeded()
-                    ai.alpha = 0.0
-                }) { (_) in
-                    ai.removeFromSuperview()
-                    self.gameState = .existing
-                    self.update(with: self.presenter!.challenge!)
-                }
-            }
-        } else {
-            update(with: challenge)
-            collectionView.reloadData()
-        }
-    }
-    
-    func createChallengeSuccess() {
-        if let challengeID = challengeID {
-            presenter?.fetchChallenge(challengeID: challengeID)
-        }
-    }
+//    func fetchChallengeSuccess(challenge: Challenge) {
+//        // animate loading button onto plus button
+//        if gameState == .new {
+//            if let ai = activityIndicatorView {
+//                UIView.animate(withDuration: 2.0, animations: {
+//                    self.saveGameButtonBottomConstraint.constant = kSaveGameButtonBottomConstraintConstantExisting
+//                    self.subviewHeightConstraint.constant = kExpandedSubviewHeightMultiplier * self.view.bounds.height
+//                    self.view.layoutIfNeeded()
+//                    ai.alpha = 0.0
+//                }) { (_) in
+//                    ai.removeFromSuperview()
+//                    self.gameState = .existing
+//                    self.update(with: self.presenter!.challenge!)
+//                }
+//            }
+//        } else {
+//            // Call only after creatioin
+////            self.presenter?.uploadAvatar(imageData: UIImageJPEGRepresentation(avatarImageView.image!, 1.0)!, challengeID: challengeID!)
+//
+//            update(with: challenge)
+//            collectionView.reloadData()
+//        }
+//    }
 }
 
 

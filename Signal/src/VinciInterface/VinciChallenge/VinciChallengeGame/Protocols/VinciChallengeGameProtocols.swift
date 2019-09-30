@@ -6,8 +6,6 @@ import Foundation
 
 
 protocol VinciChallengeGameViewProtocol: class {
-    func createChallengeSuccess()
-    func fetchChallengeSuccess(challenge: Challenge)
 }
 
 
@@ -18,12 +16,10 @@ protocol VinciChallengeGamePresenterProtocol: class {
     
     var challenge: Challenge? {get set}
     
-    func createChallenge(challenge: Challenge)
-    func createChallengeSuccess(challengeID: String)
-    func createChallengeFail(error: Error)
+    func createChallenge(challenge: Challenge, completion: @escaping (String) -> Void)
+    func uploadAvatar(imageData: Data, challengeID: String, latitude: Double?, longitude: Double?, completion: @escaping () -> Void)
     
-    func fetchChallenge(challengeID: String)
-    func fetchChallengeSuccess(challenge: Challenge)
+    func fetchChallenge(challengeID: String, completion: @escaping (Challenge) -> Void)
     func fetchChallengeFail(error: Error)
 }
 
@@ -31,8 +27,9 @@ protocol VinciChallengeGamePresenterProtocol: class {
 protocol VinciChallengeGameInteractorProtocol {
     var presenter: VinciChallengeGamePresenterProtocol? {get set}
     
-    func createChallenge(challenge: Challenge)
-    func fetchChallenge(challengeID: String)
+    func upload(imageData: Data, for challengeID: String, latitude: Double?, longitude: Double?, completion: @escaping () -> Void)
+    func createChallenge(challenge: Challenge, completion: @escaping (String) -> Void)
+    func fetchChallenge(challengeID: String, completion: @escaping (Challenge) -> Void)
 }
 
 

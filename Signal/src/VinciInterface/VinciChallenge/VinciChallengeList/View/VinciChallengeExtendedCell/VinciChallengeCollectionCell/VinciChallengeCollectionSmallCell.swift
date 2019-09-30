@@ -28,7 +28,7 @@ class VinciChallengeCollectionSmallCell: UICollectionViewCell {
         self.imageView.image = nil
         self.challenge = challenge
         // FIXME: Load an avatar instead of 1st Media
-        if let firstMedia = challenge.medias.first, let url = URL(string: firstMedia.url) {
+        if let avatarUrl = challenge.avatarUrl, let url = URL(string: avatarUrl) {
             self.imageView.downloadAndSetupImage(with: url, completion: nil)
         }
     }

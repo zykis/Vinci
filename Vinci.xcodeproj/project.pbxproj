@@ -58,6 +58,7 @@
 		175F8D5D233BBAD900E5644C /* icon_location_white_40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 175F8D59233BBAD800E5644C /* icon_location_white_40@2x.png */; };
 		175F8D5E233BBAD900E5644C /* icon_location_white_40@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 175F8D5A233BBAD800E5644C /* icon_location_white_40@3x.png */; };
 		1762B52B233CE9BD00CF2554 /* CLLocation + representation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1762B52A233CE9BD00CF2554 /* CLLocation + representation.swift */; };
+		177C12FA23415ABB00FE219C /* URLRequest + formdata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177C12F923415ABB00FE219C /* URLRequest + formdata.swift */; };
 		17940A8823394DDF0064434D /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17940A8723394DDF0064434D /* Comment.swift */; };
 		17940A8A233958C00064434D /* VinciChallengeCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17940A89233958C00064434D /* VinciChallengeCommentCell.swift */; };
 		17940A9123397E5E0064434D /* icon_like_black_60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 17940A8D23397E5D0064434D /* icon_like_black_60@2x.png */; };
@@ -798,6 +799,7 @@
 		175F8D59233BBAD800E5644C /* icon_location_white_40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_location_white_40@2x.png"; sourceTree = "<group>"; };
 		175F8D5A233BBAD800E5644C /* icon_location_white_40@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_location_white_40@3x.png"; sourceTree = "<group>"; };
 		1762B52A233CE9BD00CF2554 /* CLLocation + representation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocation + representation.swift"; sourceTree = "<group>"; };
+		177C12F923415ABB00FE219C /* URLRequest + formdata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLRequest + formdata.swift"; sourceTree = "<group>"; };
 		17940A8723394DDF0064434D /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		17940A89233958C00064434D /* VinciChallengeCommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VinciChallengeCommentCell.swift; path = ../VinciChallengeCommentsViewController/VinciChallengeCommentCell.swift; sourceTree = "<group>"; };
 		17940A8D23397E5D0064434D /* icon_like_black_60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_like_black_60@2x.png"; sourceTree = "<group>"; };
@@ -2719,6 +2721,7 @@
 				591E659B2328E85C00B7484E /* Date + representation.swift */,
 				17BDA628233B4DE3004EEA05 /* UIView + anchor.swift */,
 				1762B52A233CE9BD00CF2554 /* CLLocation + representation.swift */,
+				177C12F923415ABB00FE219C /* URLRequest + formdata.swift */,
 			);
 			path = Extentions;
 			sourceTree = "<group>";
@@ -4393,6 +4396,7 @@
 				34C4E2572118957600BEA353 /* OWSWebRTCDataProtos.pb.swift in Sources */,
 				346B66311F4E29B200E5122F /* CropScaleImageViewController.swift in Sources */,
 				8D1E7E65231CFA13004104CC /* VNContactsSearchResultsController.swift in Sources */,
+				177C12FA23415ABB00FE219C /* URLRequest + formdata.swift in Sources */,
 				45E5A6991F61E6DE001E4A8A /* MarqueeLabel.swift in Sources */,
 				34A910601FFEB114000C4745 /* OWSBackup.m in Sources */,
 				34D1F0B01F867BFC0066283D /* OWSSystemMessageCell.m in Sources */,
