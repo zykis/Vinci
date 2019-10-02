@@ -11,7 +11,7 @@
 		<key>OSXVersion</key>
 		<string>10.15</string>
 		<key>WebRTCCommit</key>
-		<string>3ed7a706afdb6ca73e1281e20e5c1f3311e337d0 Added animation of saving game</string>
+		<string>ed69262343fdabfe6e11c6ce41ea04495a7bebcd Added TextView with placeholder</string>
 	</dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>

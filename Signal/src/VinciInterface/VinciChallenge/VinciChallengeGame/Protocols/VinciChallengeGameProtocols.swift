@@ -18,6 +18,7 @@ protocol VinciChallengeGamePresenterProtocol: class {
     
     func createChallenge(challenge: Challenge, completion: @escaping (String) -> Void)
     func uploadAvatar(imageData: Data, challengeID: String, latitude: Double?, longitude: Double?, completion: @escaping () -> Void)
+    func uploadMedia(imageData: Data, challengeID: String, commentsEnabled: Bool, description: String, completion: @escaping () -> Void)
     
     func fetchChallenge(challengeID: String, completion: @escaping (Challenge) -> Void)
     func fetchChallengeFail(error: Error)

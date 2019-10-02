@@ -2,6 +2,8 @@
 //  Copyright (c) 2018 Open Whisper Systems. All rights reserved.
 //
 
+import Contacts
+
 @objc(OWSFakeContactsManager)
 class FakeContactsManager: NSObject, ContactsManagerProtocol {
     func displayName(forPhoneIdentifier recipientId: String?) -> String {

@@ -13,7 +13,7 @@ let kRowSpacing: CGFloat = 8.0
 let kRowHeightExtendedCell: CGFloat = (kRowHeightCompactCell - kCellMargin) + kCollectionCellMargin + kCellCollectionViewHeight + kCollectionCellMargin
 
 protocol VinciChallengeMediaTappedProtocol {
-    func mediaTapped(media: Media, mediaFrame: CGRect, cell: VinciChallengeExtendedCell, image: UIImage?)
+    func mediaTapped(media: Media, mediaFrame: CGRect, image: UIImage?)
 }
 
 class VinciChallengeListViewController: VinciViewController {
@@ -175,8 +175,9 @@ extension VinciChallengeListViewController: UITableViewDataSource {
 
 
 extension VinciChallengeListViewController: VinciChallengeMediaTappedProtocol {
-    func mediaTapped(media: Media, mediaFrame: CGRect, cell: VinciChallengeExtendedCell, image: UIImage?) {
-        let relatedToTable = cell.contentView.convert(mediaFrame, to: self.tableView)
+    func mediaTapped(media: Media, mediaFrame: CGRect, image: UIImage?) {
+        // get extended cell
+        let relatedToTable = mediaFrame
         self.selectedImageFrame = self.tableView.convert(relatedToTable, to: self.tableView.superview)
         self.selectedImage = image
         

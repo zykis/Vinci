@@ -83,10 +83,11 @@ extension VinciChallengeExtendedCell: UICollectionViewDelegate {
         else { return }
         let attributes = collectionView.layoutAttributesForItem(at: indexPath)
         let cellFrame = attributes!.frame
-        let targetFrame = collectionView.convert(cellFrame, to: collectionView.superview)
+        let cellFrameToExtendedCellFrame = collectionView.convert(cellFrame, to: collectionView.superview)
         let collectionCell = collectionView.cellForItem(at: indexPath) as! VinciChallengeCollectionSmallCell
         let image = collectionCell.imageView.image
-        self.viewContoller?.mediaTapped(media: challenge.medias[indexPath.row], mediaFrame: targetFrame, cell: self, image: image)
+        let targetFrame = contentView.convert(cellFrameToExtendedCellFrame, to: self.superview)
+        self.viewContoller?.mediaTapped(media: challenge.medias[indexPath.row], mediaFrame: targetFrame, image: image)
     }
 }
 

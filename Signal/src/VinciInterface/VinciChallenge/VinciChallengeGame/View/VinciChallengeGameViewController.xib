@@ -18,6 +18,7 @@
                 <outlet property="descriptionTextView" destination="SDc-x6-3eF" id="TyZ-JV-hR0"/>
                 <outlet property="endStackView" destination="teA-sf-EcB" id="7eH-vP-CoD"/>
                 <outlet property="endTextField" destination="8Sx-zw-Qq5" id="gPV-TB-fyg"/>
+                <outlet property="favouriteButton" destination="jZb-Rc-P4a" id="MLZ-Yr-Wkz"/>
                 <outlet property="locationLabel" destination="nIp-iJ-Sft" id="Wgl-W3-WPe"/>
                 <outlet property="locationStackView" destination="jOF-3W-jOz" id="ocM-3g-JZ7"/>
                 <outlet property="navigationBar" destination="DRc-Jc-doj" id="4eX-IM-qvV"/>
@@ -96,25 +97,25 @@
                     </subviews>
                 </stackView>
                 <stackView opaque="NO" contentMode="scaleToFill" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="bcf-nQ-pws">
-                    <rect key="frame" x="8" y="453.5" width="184" height="24"/>
+                    <rect key="frame" x="8" y="453.5" width="236.5" height="24"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RTz-8g-HQy">
-                            <rect key="frame" x="0.0" y="0.0" width="83" height="24"/>
+                            <rect key="frame" x="0.0" y="0.0" width="122" height="24"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_diamon_white_40.png" translatesAutoresizingMaskIntoConstraints="NO" id="i5f-Yw-ndf">
-                                    <rect key="frame" x="0.0" y="0.0" width="16" height="24"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="55" height="24"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="24" id="QOc-gJ-Ql5"/>
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dW2-XC-raz">
-                                    <rect key="frame" x="16" y="0.0" width="11" height="24"/>
+                                    <rect key="frame" x="55" y="0.0" width="11" height="24"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="00000" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Yzj-ih-lRv">
-                                    <rect key="frame" x="27" y="0.0" width="56" height="24"/>
+                                    <rect key="frame" x="66" y="0.0" width="56" height="24"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="56" id="17Z-cL-BSW"/>
                                     </constraints>
@@ -125,16 +126,16 @@
                             </subviews>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="jOF-3W-jOz">
-                            <rect key="frame" x="107" y="0.0" width="77" height="24"/>
+                            <rect key="frame" x="146" y="0.0" width="90.5" height="24"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_location_white_40.png" translatesAutoresizingMaskIntoConstraints="NO" id="Xqk-Hs-Jwn">
-                                    <rect key="frame" x="0.0" y="0.0" width="16" height="24"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="29.5" height="24"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="24" id="oMZ-8i-laN"/>
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nIp-iJ-Sft">
-                                    <rect key="frame" x="18" y="0.0" width="59" height="24"/>
+                                    <rect key="frame" x="31.5" y="0.0" width="59" height="24"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
@@ -267,6 +268,17 @@
                         <action selector="saveGamePressed" destination="-1" eventType="touchUpInside" id="viO-Io-aKd"/>
                     </connections>
                 </button>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jZb-Rc-P4a" customClass="VinciAnimatableButton" customModule="Vinci" customModuleProvider="target">
+                    <rect key="frame" x="365" y="408.5" width="29" height="32"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="jZb-Rc-P4a" secondAttribute="height" multiplier="9:10" id="H0V-Ol-mRf"/>
+                        <constraint firstAttribute="height" constant="32" id="esN-JL-ZSI"/>
+                    </constraints>
+                    <state key="normal" image="icon_favourite_white_empty_60.png"/>
+                    <connections>
+                        <action selector="favouriteButtonPressed" destination="-1" eventType="touchUpInside" id="KP8-pi-iwa"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
@@ -274,6 +286,7 @@
                 <constraint firstItem="Rfz-kq-KYW" firstAttribute="bottom" secondItem="Lkr-LZ-xKI" secondAttribute="bottom" constant="8" id="4jU-vW-7iJ"/>
                 <constraint firstItem="Rfz-kq-KYW" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="bcf-nQ-pws" secondAttribute="trailing" constant="20" id="8hR-Vb-S0q"/>
                 <constraint firstAttribute="bottom" secondItem="8AO-jl-MdZ" secondAttribute="bottom" id="9SH-Td-Kwg"/>
+                <constraint firstItem="jZb-Rc-P4a" firstAttribute="trailing" secondItem="KZ8-TA-bk4" secondAttribute="trailing" id="BfA-PE-9Mq"/>
                 <constraint firstItem="0XI-Jz-jMQ" firstAttribute="centerY" secondItem="KZ8-TA-bk4" secondAttribute="centerY" id="BwS-yU-dgI"/>
                 <constraint firstItem="SDc-x6-3eF" firstAttribute="top" secondItem="KZ8-TA-bk4" secondAttribute="bottom" constant="8" id="Cqq-jw-6Qc"/>
                 <constraint firstItem="Rfz-kq-KYW" firstAttribute="trailing" secondItem="Lkr-LZ-xKI" secondAttribute="trailing" priority="999" constant="16" id="F5b-9L-0u5"/>
@@ -294,6 +307,7 @@
                 <constraint firstItem="KZ8-TA-bk4" firstAttribute="centerX" secondItem="QBd-zX-Vto" secondAttribute="centerX" id="fZO-Ni-JWu"/>
                 <constraint firstAttribute="bottom" secondItem="QBd-zX-Vto" secondAttribute="bottom" id="jUt-zm-E43"/>
                 <constraint firstItem="0XI-Jz-jMQ" firstAttribute="leading" secondItem="KZ8-TA-bk4" secondAttribute="leading" constant="10" id="k0k-o1-WaQ"/>
+                <constraint firstItem="jZb-Rc-P4a" firstAttribute="centerY" secondItem="E4z-9j-Fwn" secondAttribute="centerY" id="km4-zJ-K4r"/>
                 <constraint firstItem="8AO-jl-MdZ" firstAttribute="trailing" secondItem="Rfz-kq-KYW" secondAttribute="trailing" id="mFS-hK-sei"/>
                 <constraint firstItem="KZ8-TA-bk4" firstAttribute="centerY" secondItem="8AO-jl-MdZ" secondAttribute="top" id="nkd-Uz-OG9"/>
                 <constraint firstItem="5mP-dN-uv9" firstAttribute="top" secondItem="DRc-Jc-doj" secondAttribute="bottom" id="pb8-3v-HvS"/>
@@ -314,6 +328,7 @@
         <image name="backArrowIcon" width="12.5" height="21.5"/>
         <image name="game_background.jpg" width="828" height="1792"/>
         <image name="icon_diamon_white_40.png" width="55" height="40"/>
+        <image name="icon_favourite_white_empty_60.png" width="54" height="60"/>
         <image name="icon_location_white_40.png" width="29.5" height="40"/>
     </resources>
 </document>

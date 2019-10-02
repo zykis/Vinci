@@ -9,7 +9,6 @@ let VinciChallengeCompactCellViewNibName = "VinciChallengeCompactCellView"
 let VinciChallengeCompactCellReuseIdentifier = "VinciChallengeCompactCellRI"
 let kCellMargin: CGFloat = 4.0
 let kSecondsInDay: Double = 24 * 60 * 60
-let kEndpointFavourChallenge = kHost + "favChallenge"
 let kFavouriteImage = "icon_favourite_filled_32"
 let kUnfavouriteImage = "icon_favourite_empty_32"
 

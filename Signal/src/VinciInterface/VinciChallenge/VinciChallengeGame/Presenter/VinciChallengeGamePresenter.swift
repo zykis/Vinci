@@ -23,6 +23,7 @@ class VinciChallengeGamePresenter: VinciChallengeGamePresenterProtocol {
     
     func fetchChallenge(challengeID: String, completion: @escaping (Challenge) -> Void) {
         self.interactor?.fetchChallenge(challengeID: challengeID, completion: { (challenge) in
+            self.challenge = challenge
             completion(challenge)
         })
     }
@@ -36,5 +37,11 @@ class VinciChallengeGamePresenter: VinciChallengeGamePresenterProtocol {
     
     func uploadAvatarFail(error: Error) {
         print(error)
+    }
+    
+    func uploadMedia(imageData: Data, challengeID: String, commentsEnabled: Bool, description: String, completion: @escaping () -> Void) {
+        if let ch = challenge {
+            ChallengeAPIManager.shared.uploadMedia(challengeID: challengeID, name: "whatever", description: description, latitude: ch.latitude, longitude: ch.longitude, mediaData: imageData, completion: completion)
+        }
     }
 }

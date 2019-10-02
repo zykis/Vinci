@@ -18,8 +18,10 @@ protocol GameStatable {
 
 
 let kPlusImage = "icon_plus_white_64"
+let kFavouriteImageWhite = "icon_favourite_white_40"
+let kUnfavouriteImageWhite = "icon_favourite_white_empty_60"
 let kSaveGameButtonBottomConstraintConstantExisting: CGFloat = 28.0
-let kExpandedSubviewHeightMultiplier: CGFloat = 0.6
+let kExpandedSubviewHeightMultiplier: CGFloat = 0.65
 let kCompactSubviewHeightMultiplier: CGFloat = 0.4
 let kCollectionCellReuseIdentifier = "kCollectionCellRI"
 
@@ -31,6 +33,7 @@ class VinciChallengeGameViewController: VinciViewController {
     var challengeID: String?
     
     @IBOutlet weak var changePhotoButton: UIButton!
+    @IBOutlet weak var favouriteButton: VinciAnimatableButton!
     @IBOutlet weak var saveGameButton: UIButton!
     @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var avatarImageView: UIImageView!
@@ -48,6 +51,7 @@ class VinciChallengeGameViewController: VinciViewController {
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var subview: UIView!
+    @IBOutlet weak var inputAccessoryTextView: UIView?
     
     private var activityIndicatorView: UIActivityIndicatorView?
     @IBOutlet var subviewHeightConstraint: NSLayoutConstraint!
@@ -55,6 +59,9 @@ class VinciChallengeGameViewController: VinciViewController {
     @IBOutlet var saveGameButtonLeadingConstraint: NSLayoutConstraint!
     @IBOutlet var saveGameButtonTrailingConstraint: NSLayoutConstraint!
     @IBOutlet var saveGameButtonHeightConstraint: NSLayoutConstraint!
+    
+    private var selectedImageFrame: CGRect?
+    private var selectedImage: UIImage?
     
     private var _lat: Double?
     private var _lon: Double?
@@ -126,6 +133,36 @@ class VinciChallengeGameViewController: VinciViewController {
         textField.inputAccessoryView = toolbar
     }
     
+    private func addInputAccessoryTextView() {
+        let toolbar = UIView(frame: CGRect(x: 0.0,
+                                           y: 0.0,
+                                           width: self.view.bounds.width,
+                                           height: 44.0))
+        toolbar.translatesAutoresizingMaskIntoConstraints = false
+        toolbar.backgroundColor = .white
+        let inputTextView = ConversationInputTextView()
+        self.inputAccessoryTextView = inputTextView
+        toolbar.addSubview(inputTextView)
+        inputTextView.layer.cornerRadius = CGFloat(kMinTextViewHeight / 2.0)
+        inputTextView.translatesAutoresizingMaskIntoConstraints = false
+        inputTextView.leftAnchor.constraint(equalTo: toolbar.leftAnchor, constant: 4.0).isActive = true
+        inputTextView.topAnchor.constraint(equalTo: toolbar.topAnchor, constant: 4.0).isActive = true
+        inputTextView.bottomAnchor.constraint(equalTo: toolbar.bottomAnchor, constant: -4.0).isActive = true
+        inputTextView.inputTextViewDelegate = self
+        inputTextView.textViewToolbarDelegate = self
+        
+        let doneButton = UIButton(type: .custom)
+        doneButton.addTarget(inputTextView, action: #selector(ConversationInputTextView.resignFirstResponder), for: .touchUpInside)
+        doneButton.translatesAutoresizingMaskIntoConstraints = false
+        toolbar.addSubview(doneButton)
+        
+        doneButton.rightAnchor.constraint(equalTo: toolbar.rightAnchor, constant: -4.0).isActive = true
+        doneButton.leftAnchor.constraint(equalTo: inputTextView.rightAnchor, constant: 4.0).isActive = true
+        doneButton.topAnchor.constraint(equalTo: toolbar.topAnchor, constant: 4.0).isActive = true
+        
+        self.descriptionTextView.inputAccessoryView = toolbar
+    }
+    
     private func createChallenge() -> Challenge? {
         guard
         let title = titleTextField.text,
@@ -144,16 +181,26 @@ class VinciChallengeGameViewController: VinciViewController {
         return challenge
     }
     
-    private func disableControls() {
-        locationManager.stopUpdatingLocation()
-        titleTextField.isEnabled = false
-        rewardTextField.isEnabled = false
-        changePhotoButton.isHidden = true
-        startTextField.isEnabled = false
-        endTextField.isEnabled = false
-        resultsTextField.isEnabled = false
-        descriptionTextView.isEditable = false
-        saveGameButton.isEnabled = true
+    private func updateControls(for gameState: GameState) {
+        if gameState == .new {
+            descriptionTextView.text = kPlaceholderText
+            descriptionTextView.textColor = .lightGray
+            
+            startTextField.text = dateFormatter.string(from: Date())
+            endTextField.text = dateFormatter.string(from: Date().addingTimeInterval(7 * 24 * 60 * 60))
+            resultsTextField.text = dateFormatter.string(from: Date().addingTimeInterval(8 * 24 * 60 * 60))
+        } else if gameState == .existing {
+            locationManager.stopUpdatingLocation()
+            titleTextField.isEnabled = false
+            rewardTextField.isEnabled = false
+            changePhotoButton.isHidden = true
+            startTextField.isEnabled = false
+            endTextField.isEnabled = false
+            resultsTextField.isEnabled = false
+            descriptionTextView.isEditable = false
+            favouriteButton.isHidden = false
+            saveGameButton.isEnabled = true
+        }
     }
     
     func update(with challenge: Challenge) {
@@ -163,6 +210,10 @@ class VinciChallengeGameViewController: VinciViewController {
         startTextField.text = dateFormatter.string(from: challenge.startDate)
         endTextField.text = dateFormatter.string(from: challenge.endDate!)
         resultsTextField.text = dateFormatter.string(from: challenge.expirationDate!)
+        if let avatarUrl = challenge.avatarUrl, let url = URL(string: avatarUrl) {
+            avatarImageView.downloadAndSetupImage(with: url, completion: nil)
+        }
+        favouriteButton.setImage(UIImage(named: challenge.favourite ? kFavouriteImage : kUnfavouriteImage), for: .normal)
         
         if let lat = challenge.latitude, let lon = challenge.longitude {
             let location = CLLocation(latitude: lat, longitude: lon)
@@ -180,11 +231,14 @@ class VinciChallengeGameViewController: VinciViewController {
 extension VinciChallengeGameViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
+        updateControls(for: gameState)
+        
         // FIXME: Use RxSwift
         saveGameButton.isEnabled = saveButtonEnabled
         saveGameButton.translatesAutoresizingMaskIntoConstraints = false
         
         rewardTextField.keyboardType = .numberPad
+        rewardTextField.delegate = self
         
         startTextField.inputView = datePicker
         addInputAccessoryView(for: startTextField, with: #selector(VinciChallengeGameViewController.startDatePicked))
@@ -268,9 +322,21 @@ extension VinciChallengeGameViewController {
         }
     }
     
+    @IBAction func favouriteButtonPressed() {
+        if let ch = self.presenter?.challenge {
+            let newFav = !ch.favourite
+            self.favouriteButton.setImage(UIImage(named: newFav ? kFavouriteImage : kUnfavouriteImage), for: .normal)
+            ChallengeAPIManager.shared.favourChallenge(challengeID: ch.id) { (newFavourite) in
+                self.favouriteButton.setImage(UIImage(named: newFavourite ? kFavouriteImage : kUnfavouriteImage), for: .normal)
+            }
+        }
+    }
+    
     @IBAction func saveGamePressed() {
         if gameState == .existing {
-            return
+            if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum){
+                present(imagePicker, animated: true, completion: nil)
+            }
         } else {
             let height = saveGameButton.bounds.height
             saveGameButtonLeadingConstraint.isActive = false
@@ -304,9 +370,9 @@ extension VinciChallengeGameViewController {
                     self.view.layoutIfNeeded()
                 }) { (_) in
                     if let ch = self.createChallenge() {
-                        self.disableControls()
+                        self.updateControls(for: .existing)
                         self.presenter?.createChallenge(challenge: ch, completion: { (challengeID) in
-                            let imageData = UIImageJPEGRepresentation(self.avatarImageView!.image!, 0.5)!
+                            let imageData = UIImageJPEGRepresentation(self.avatarImageView!.image!, 0.3)!
                             (self.presenter?.uploadAvatar(imageData: imageData,
                                                           challengeID: challengeID,
                                                           latitude: ch.latitude,
@@ -359,11 +425,6 @@ extension VinciChallengeGameViewController {
 }
 
 
-extension VinciChallengeGameViewController: UINavigationControllerDelegate {
-    
-}
-
-
 extension VinciChallengeGameViewController: UITextViewDelegate {
     var kPlaceholderText: String {
         return "You can describe task and rules of the game here"
@@ -389,13 +450,45 @@ extension VinciChallengeGameViewController: UITextViewDelegate {
 
 extension VinciChallengeGameViewController: UIImagePickerControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        imagePicker.dismiss(animated: true) {
-            let image = info[UIImagePickerControllerOriginalImage] as! UIImage
-            self.avatarImageView.image = image
-            
-            // FIXME: Use RxSwift
-            self.saveGameButton.isEnabled = self.saveButtonEnabled
+        let image = info[UIImagePickerControllerOriginalImage] as! UIImage
+        if gameState == .new {
+            imagePicker.dismiss(animated: true) {
+                self.avatarImageView.image = image
+                
+                // FIXME: Use RxSwift
+                self.saveGameButton.isEnabled = self.saveButtonEnabled
+            }
+        } else {
+            imagePicker.dismiss(animated: true) {
+                let acceptedClosure: (Bool, String) -> Void = {(commentsOn, description) in
+                    let imageData = UIImageJPEGRepresentation(image, 0.4)!
+                    
+                    self.presenter?.uploadMedia(imageData: imageData,
+                                                challengeID: self.challengeID!,
+                                                commentsEnabled: commentsOn,
+                                                description: description,
+                                                completion: {
+                                                    self.presenter?.fetchChallenge(challengeID: self.challengeID!,
+                                                                                   completion: { (challenge) in
+                                                                                    self.collectionView.reloadData()
+                                                    })
+                    })
+                }
+                // show description, title, hashtags edit view
+                let mediaInfoVC = VinciChallengeMediaInfoViewController(nibName: nil, bundle: nil)
+                mediaInfoVC.image = image
+                mediaInfoVC.acceptedClosure = acceptedClosure
+                self.present(mediaInfoVC, animated: true, completion: nil)
+            }
         }
+    }
+}
+
+
+extension VinciChallengeGameViewController: UITextFieldDelegate {
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        // FIXME: Use RxSwift
+        saveGameButton.isEnabled = saveButtonEnabled
     }
 }
 
@@ -424,29 +517,6 @@ extension VinciChallengeGameViewController: CLLocationManagerDelegate {
 
 
 extension VinciChallengeGameViewController: VinciChallengeGameViewProtocol {
-//    func fetchChallengeSuccess(challenge: Challenge) {
-//        // animate loading button onto plus button
-//        if gameState == .new {
-//            if let ai = activityIndicatorView {
-//                UIView.animate(withDuration: 2.0, animations: {
-//                    self.saveGameButtonBottomConstraint.constant = kSaveGameButtonBottomConstraintConstantExisting
-//                    self.subviewHeightConstraint.constant = kExpandedSubviewHeightMultiplier * self.view.bounds.height
-//                    self.view.layoutIfNeeded()
-//                    ai.alpha = 0.0
-//                }) { (_) in
-//                    ai.removeFromSuperview()
-//                    self.gameState = .existing
-//                    self.update(with: self.presenter!.challenge!)
-//                }
-//            }
-//        } else {
-//            // Call only after creatioin
-////            self.presenter?.uploadAvatar(imageData: UIImageJPEGRepresentation(avatarImageView.image!, 1.0)!, challengeID: challengeID!)
-//
-//            update(with: challenge)
-//            collectionView.reloadData()
-//        }
-//    }
 }
 
 
@@ -458,7 +528,7 @@ extension VinciChallengeGameViewController: GameStatable {
             return
         case .existing:
             // block all controls
-            disableControls()
+            updateControls(for: .existing)
             
             // position subviews
             let height = saveGameButton.bounds.height
@@ -496,6 +566,7 @@ extension VinciChallengeGameViewController: UICollectionViewDataSource {
             challenge.medias.indices.contains(indexPath.row)
             else { return VinciChallengeCollectionSmallCell() }
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: kCollectionCellReuseIdentifier, for: indexPath) as! VinciChallengeCollectionSmallCell
+        cell.imageView.image = nil
         
         let mediaUrlString = challenge.medias[indexPath.row].url
         if let mediaUrl = URL(string: mediaUrlString) {
@@ -511,5 +582,67 @@ extension VinciChallengeGameViewController: UICollectionViewDelegateFlowLayout {
         let width: CGFloat = collectionView.bounds.width / 3.0 - (4.0 * 2.0)
         let height: CGFloat = width * 4.0 / 3.0
         return CGSize(width: width, height: height)
+    }
+}
+
+
+extension VinciChallengeGameViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard
+            let cell = collectionView.cellForItem(at: indexPath) as? VinciChallengeCollectionSmallCell,
+            let cellImage = cell.imageView.image,
+            self.presenter?.challenge?.medias.indices.contains(indexPath.row) == true
+            else { return }
+        
+        let attributes = collectionView.layoutAttributesForItem(at: indexPath)
+        let cellFrame = attributes!.frame
+        let relatedToCollectionViewFrame = cellFrame
+        let relatedToMainView = collectionView.convert(relatedToCollectionViewFrame, to: collectionView.superview)
+        let media = self.presenter!.challenge!.medias[indexPath.row]
+        
+        mediaTapped(media: media, mediaFrame: relatedToMainView, image: cellImage)
+    }
+}
+
+
+extension VinciChallengeGameViewController: VinciChallengeMediaTappedProtocol {
+    func mediaTapped(media: Media, mediaFrame: CGRect, image: UIImage?) {
+        selectedImageFrame = mediaFrame
+        selectedImage = image
+
+        let destVC: VinciChallengeWatchMediaViewController = VinciChallengeWatchMediaRouter.createModule()
+        destVC.presenter!.mediaID = media.id
+        navigationController?.delegate = self
+        navigationController?.pushViewController(destVC, animated: true)
+    }
+}
+
+
+extension VinciChallengeGameViewController: UINavigationControllerDelegate {
+    func navigationController(_ navigationController: UINavigationController,
+                              animationControllerFor operation: UINavigationControllerOperation,
+                              from fromVC: UIViewController,
+                              to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        if toVC is VinciChallengeWatchMediaViewController {
+            let expandAnimator = ExpandAnimator()
+            expandAnimator.originFrame = selectedImageFrame!
+            expandAnimator.originImage = selectedImage!
+            return expandAnimator
+        }
+        return nil
+    }
+}
+
+
+extension VinciChallengeGameViewController: ConversationInputTextViewDelegate {
+    func didPaste(_ attachment: SignalAttachment?) {
+    }
+    
+    func inputTextViewSendMessagePressed() {
+    }
+}
+
+extension VinciChallengeGameViewController: ConversationTextViewToolbarDelegate {
+    func textViewDidChange(_ textView: UITextView) {
     }
 }
