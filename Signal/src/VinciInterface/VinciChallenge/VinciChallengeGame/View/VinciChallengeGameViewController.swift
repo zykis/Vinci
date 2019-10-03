@@ -233,6 +233,8 @@ extension VinciChallengeGameViewController {
         super.viewDidLoad()
         updateControls(for: gameState)
         
+        navigationBar.shadowImage = UIImage()
+        
         // FIXME: Use RxSwift
         saveGameButton.isEnabled = saveButtonEnabled
         saveGameButton.translatesAutoresizingMaskIntoConstraints = false
@@ -325,7 +327,7 @@ extension VinciChallengeGameViewController {
     @IBAction func favouriteButtonPressed() {
         if let ch = self.presenter?.challenge {
             let newFav = !ch.favourite
-            self.favouriteButton.setImage(UIImage(named: newFav ? kFavouriteImage : kUnfavouriteImage), for: .normal)
+            self.favouriteButton.setImage(UIImage(named: newFav ? kFavouriteImageWhite : kUnfavouriteImageWhite), for: .normal)
             ChallengeAPIManager.shared.favourChallenge(challengeID: ch.id) { (newFavourite) in
                 self.favouriteButton.setImage(UIImage(named: newFavourite ? kFavouriteImage : kUnfavouriteImage), for: .normal)
             }

@@ -49,6 +49,12 @@ extension VinciChallengeAccountViewController {
         self.setupTableView()
         
         self.avatar.layer.mask = self.avatarMask
+        
+        ChallengeAPIManager.shared.fetchStatistics { (statistic) in
+            self.winsLabel.text = "\(statistic.wins)"
+            self.votesLabel.text = "\(statistic.totalLikes)"
+            self.incomeLabel.text = "$\(statistic.totalReward)"
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -90,7 +96,7 @@ extension VinciChallengeAccountViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let destVC = VinciChallengeStatisticsRouter.createModule()
+        let destVC = VinciChallengeStatisticsRouter.createModule(tabIndex: indexPath.row)
         navigationController?.pushViewController(destVC, animated: true)
     }
 }

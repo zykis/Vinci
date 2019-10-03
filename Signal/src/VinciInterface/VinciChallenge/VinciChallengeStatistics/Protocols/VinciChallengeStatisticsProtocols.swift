@@ -21,5 +21,5 @@ protocol VinciChallengeStatisticsInteractorProtocol {
 
 
 protocol VinciChallengeStatisticsRouterProtocol {
-    static func createModule() -> VinciChallengeStatisticsViewController
+    static func createModule(tabIndex: Int) -> VinciChallengeStatisticsViewController
 }

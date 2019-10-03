@@ -40,7 +40,7 @@ class VinciChallengeListViewController: VinciViewController {
     func animateTitlePositionChange() {
         self.gamesTopConstraint.constant = self.navigationBar.bounds.height / 2.0 - self.gamesLabel.bounds.height / 2.0
         self.gamesLeadingConstraint.constant = self.view.bounds.width / 2.0 - self.gamesLabel.bounds.width / 2.0
-        self.tableViewTopConstraint.constant = 8.0
+        self.tableViewTopConstraint.constant = 0.0
         
         UIView.animate(withDuration: 0.3) {
             self.gamesLabel.transform = CGAffineTransform(scaleX: 0.65, y: 0.65)
@@ -56,6 +56,7 @@ extension VinciChallengeListViewController {
         super.viewDidLoad()
         self.setupTableView()
         
+        navigationBar.shadowImage = UIImage()
         print("PHONE NUMBER: \(TSAccountManager.sharedInstance().localNumber() ?? "")")
         print("REGISTRATION ID: \(TSAccountManager.sharedInstance().getOrGenerateRegistrationId())")
     }
@@ -68,6 +69,10 @@ extension VinciChallengeListViewController {
         dispatchGroup.notify(queue: .main) {
             self.tableView.reloadData()
         }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
         self.presenter?.startFetchingChallenges()
         self.presenter?.startFetchingTopChallenges()
@@ -163,6 +168,9 @@ extension VinciChallengeListViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 0 {
+            return 0.0
+        }
         return kSectionMargin
     }
     

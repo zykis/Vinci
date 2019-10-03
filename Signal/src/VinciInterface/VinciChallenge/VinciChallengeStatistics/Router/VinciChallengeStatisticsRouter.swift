@@ -6,8 +6,8 @@ import Foundation
 
 
 class VinciChallengeStatisticsRouter: VinciChallengeStatisticsRouterProtocol {
-    static func createModule() -> VinciChallengeStatisticsViewController {
-        let view = VinciChallengeStatisticsViewController(nibName: nil, bundle: nil)
+    static func createModule(tabIndex: Int) -> VinciChallengeStatisticsViewController {
+        let view = VinciChallengeStatisticsViewController(tabIndex: tabIndex, nibName: nil, bundle: nil)
         let presenter: VinciChallengeStatisticsPresenterProtocol = VinciChallengeStatisticsPresenter()
         var interactor: VinciChallengeStatisticsInteractorProtocol = VinciChallengeStatisticsInteractor()
         let router: VinciChallengeStatisticsRouterProtocol = VinciChallengeStatisticsRouter()

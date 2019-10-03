@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,7 +15,6 @@
                 <outlet property="commentsButton" destination="8O3-V3-5i0" id="MMB-vu-X75"/>
                 <outlet property="commentsLabel" destination="Yhl-oh-wIp" id="vjp-G2-vaN"/>
                 <outlet property="descriptionTextView" destination="UYN-In-kTJ" id="0PL-NZ-f73"/>
-                <outlet property="favouriteImageView" destination="lvC-gb-oe3" id="M1N-5z-Oja"/>
                 <outlet property="leftStackView" destination="H85-Dp-TeA" id="rUE-OS-Z1K"/>
                 <outlet property="likeButton" destination="jDV-r7-InW" id="r72-Pq-sT9"/>
                 <outlet property="likeLabel" destination="vbH-y2-SQ0" id="cHl-nU-06W"/>
@@ -25,7 +22,6 @@
                 <outlet property="navigationBar" destination="kcb-Qs-ofc" id="C71-fw-Y36"/>
                 <outlet property="navigationBarTopConstraint" destination="OBA-Cf-ENH" id="ucn-mM-xSg"/>
                 <outlet property="nicknameLabel" destination="Cez-1W-3z3" id="GJh-NJ-h37"/>
-                <outlet property="repostsLabel" destination="uU9-mL-2ka" id="dwK-ml-bbg"/>
                 <outlet property="rightStackView" destination="Hg4-Bh-4Vp" id="hHa-tq-6B1"/>
                 <outlet property="separator" destination="Z5w-qE-P3B" id="DVQ-pD-RpR"/>
                 <outlet property="view" destination="lVp-Ec-M6s" id="SmA-jX-x4d"/>
@@ -53,10 +49,10 @@
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="Hg4-Bh-4Vp">
-                    <rect key="frame" x="349" y="562.5" width="45" height="231.5"/>
+                    <rect key="frame" x="344" y="567.5" width="50" height="226.5"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="FhP-eo-5Dr">
-                            <rect key="frame" x="0.0" y="0.0" width="45" height="62.5"/>
+                            <rect key="frame" x="5" y="0.0" width="45" height="62.5"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jDV-r7-InW" customClass="VinciAnimatableButton" customModule="Vinci" customModuleProvider="target">
                                     <rect key="frame" x="2.5" y="0.0" width="40" height="40"/>
@@ -78,7 +74,7 @@
                             </subviews>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="QEt-4L-sCc">
-                            <rect key="frame" x="0.0" y="84.5" width="45" height="62.5"/>
+                            <rect key="frame" x="5" y="84.5" width="45" height="62.5"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8O3-V3-5i0" customClass="VinciAnimatableButton" customModule="Vinci" customModuleProvider="target">
                                     <rect key="frame" x="2.5" y="0.0" width="40" height="40"/>
@@ -100,47 +96,24 @@
                             </subviews>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="cKy-0J-Ah6">
-                            <rect key="frame" x="0.0" y="169" width="45" height="62.5"/>
-                            <subviews>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_reposts_white_60.png" translatesAutoresizingMaskIntoConstraints="NO" id="myr-5q-kfq">
-                                    <rect key="frame" x="2.5" y="0.0" width="40" height="40"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" secondItem="myr-5q-kfq" secondAttribute="height" multiplier="1:1" id="bEn-Uf-Mdl"/>
-                                    </constraints>
-                                </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="89,5m" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uU9-mL-2ka">
-                                    <rect key="frame" x="0.0" y="42" width="45" height="20.5"/>
-                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                            </subviews>
+                            <rect key="frame" x="0.0" y="169" width="50" height="57.5"/>
                         </stackView>
                     </subviews>
-                    <constraints>
-                        <constraint firstItem="myr-5q-kfq" firstAttribute="width" secondItem="jDV-r7-InW" secondAttribute="width" id="Ggh-M5-EJc"/>
-                    </constraints>
                 </stackView>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="H85-Dp-TeA">
-                    <rect key="frame" x="20" y="562.5" width="305" height="231.5"/>
+                    <rect key="frame" x="20" y="567.5" width="300" height="226.5"/>
                     <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_favourite_white_empty_60.png" translatesAutoresizingMaskIntoConstraints="NO" id="lvC-gb-oe3">
-                            <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
-                            <constraints>
-                                <constraint firstAttribute="width" secondItem="lvC-gb-oe3" secondAttribute="height" multiplier="1:1" id="sBC-kS-Zdo"/>
-                            </constraints>
-                        </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@nickname" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cez-1W-3z3">
-                            <rect key="frame" x="0.0" y="42.5" width="112" height="26.5"/>
+                            <rect key="frame" x="0.0" y="0.0" width="112" height="26.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="22"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UYN-In-kTJ">
-                            <rect key="frame" x="0.0" y="71.5" width="289" height="160"/>
+                            <rect key="frame" x="0.0" y="46.5" width="284" height="180"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="160" id="M6Z-YK-BnU"/>
+                                <constraint firstAttribute="height" constant="180" id="M6Z-YK-BnU"/>
                             </constraints>
                             <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -186,7 +159,6 @@
                 <constraint firstAttribute="bottom" secondItem="Cfh-DN-NoE" secondAttribute="bottom" id="bWZ-PX-OzQ"/>
                 <constraint firstItem="Cfh-DN-NoE" firstAttribute="leading" secondItem="g0e-l5-mok" secondAttribute="leading" id="fVX-6h-0yu"/>
                 <constraint firstAttribute="trailing" secondItem="Z5w-qE-P3B" secondAttribute="trailing" id="ijI-VH-8p0"/>
-                <constraint firstItem="lvC-gb-oe3" firstAttribute="width" secondItem="jDV-r7-InW" secondAttribute="width" id="jyw-kb-YUf"/>
                 <constraint firstItem="FRA-sP-YGy" firstAttribute="top" secondItem="lVp-Ec-M6s" secondAttribute="top" id="rVc-ZA-rn6"/>
                 <constraint firstItem="H85-Dp-TeA" firstAttribute="leading" secondItem="g0e-l5-mok" secondAttribute="leading" constant="20" id="s0q-oU-yg3"/>
                 <constraint firstItem="Hg4-Bh-4Vp" firstAttribute="leading" secondItem="H85-Dp-TeA" secondAttribute="trailing" constant="24" id="s2b-Cs-w28"/>
@@ -199,8 +171,6 @@
     <resources>
         <image name="backArrowIcon" width="12.5" height="21.5"/>
         <image name="icon_comments_white_60.png" width="60" height="55"/>
-        <image name="icon_favourite_white_empty_60.png" width="54" height="60"/>
         <image name="icon_like_white_60.png" width="60" height="55"/>
-        <image name="icon_reposts_white_60.png" width="60" height="55"/>
     </resources>
 </document>

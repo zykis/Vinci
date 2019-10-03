@@ -256,6 +256,7 @@ extension VinciChallengeWatchMediaViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationBar.shadowImage = UIImage()
         view.addSubview(commentsView)
         commentsView.delegate = self
         commentsView.viewController = self
@@ -286,6 +287,7 @@ extension VinciChallengeWatchMediaViewController {
         
         self.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationBar.isTranslucent = true
+        self.view.bringSubview(toFront: navigationBar)
         self.setNeedsStatusBarAppearanceUpdate()
     }
     
@@ -307,7 +309,7 @@ extension VinciChallengeWatchMediaViewController: VinciChallengeWatchMediaViewPr
         self.likeLabel.text = "\(media.likes)"
         self.likeButton.setImage(media.userLike ? likedImage : unlikedImage, for: .normal)
         self.commentsLabel.text = "\(media.comments)"
-        self.repostsLabel.text = "\(media.reposts)"
+//        self.repostsLabel.text = "\(media.reposts)"
         self.descriptionTextView.text = media.description
     }
     
@@ -344,6 +346,8 @@ extension VinciChallengeWatchMediaViewController: VinciChallengeWatchMediaViewPr
             self.presenter?.fetchComments()
             self.commentsView.reloadData()
         }
+        
+        self.presenter?.fetchMedia(mediaID: (self.presenter?.mediaID)!)
     }
     
     func fetchCommentsSuccess() {

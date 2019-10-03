@@ -8,6 +8,20 @@ import UIKit
 class VinciChallengeStatisticsViewController: VinciViewController {
     var presenter: VinciChallengeStatisticsPresenterProtocol?
     
+    convenience init(tabIndex: Int = 0, nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        self.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        self.currentTabIndexInit = tabIndex
+    }
+    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) not implemented")
+    }
+    
+    private var currentTabIndexInit: Int = 0
     private var previousTabIndex: Int = 0
     private var currentTabIndex: Int = 0 {
         didSet {
@@ -92,22 +106,13 @@ extension VinciChallengeStatisticsViewController {
         
         setupTableView()
         
-        ChallengeAPIManager.shared.fetchChallenges(participant: nil, finished: nil, owner: nil, limit: 100, offset: 0) { (challenges, error) in
-            guard error == nil
-                else { return }
-            
-            if let challenges = challenges {
-                DispatchQueue.main.async {
-                    self.presenter?.challenges = challenges
-                    self.tableView.reloadData()
-                }
-            }
-        }
+        // FIXME: T_T
+        self.currentTabIndex = currentTabIndexInit
         
         ChallengeAPIManager.shared.fetchStatistics { (statistic) in
             self.winsLabel.text = "\(statistic.wins)"
             self.votesLabel.text = "\(statistic.totalLikes)"
-            self.incomeLabel.text = "\(statistic.totalReward)"
+            self.incomeLabel.text = "$\(statistic.totalReward)"
         }
     }
 }

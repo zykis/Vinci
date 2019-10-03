@@ -21,6 +21,10 @@ import UIKit
         super.viewDidDisappear(animated)
         self.isViewVisible = false
     }
+    
+    override var shouldAutorotate: Bool {
+        return false
+    }
 }
 
 extension SignalAccount {

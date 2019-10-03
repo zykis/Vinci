@@ -34,6 +34,21 @@ class VinciChallengeMediaInfoViewController: UIViewController {
             }
         }
     }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
+    func setupInputAccessoryView() {
+        let toolbar = UIToolbar(frame: CGRect(x: 0,
+                                              y: 0,
+                                              width: self.view.bounds.width,
+                                              height: 44.0))
+        let space = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let doneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(VinciChallengeMediaInfoViewController.dismissKeyboard))
+        toolbar.items = [space, doneButton]
+        self.descriptionTextView.inputAccessoryView = toolbar
+    }
 }
 
 
@@ -46,6 +61,7 @@ extension VinciChallengeMediaInfoViewController {
         }
         imageView.clipsToBounds = true
         
+        tableView.keyboardDismissMode = .interactive
         tableView.register(MediaInfoCommentsEnabledCell.self, forCellReuseIdentifier: kMediaInfoCommentsEnabledCellReuseIdentifier)
         tableView.register(UINib(nibName: "MediaInfoVisibilityCell", bundle: nil), forCellReuseIdentifier: kMediaInfoVisibilityCellReuseIdentifier)
         tableView.dataSource = self
@@ -53,6 +69,8 @@ extension VinciChallengeMediaInfoViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        
+        setupInputAccessoryView()
         
         imageView.layer.cornerRadius = imageView.bounds.height / 8.0
         postMediaButton.layer.cornerRadius = postMediaButton.bounds.height / 2.0

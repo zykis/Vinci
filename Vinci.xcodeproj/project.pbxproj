@@ -79,6 +79,8 @@
 		17940A9423397E5E0064434D /* icon_like_black_empty_60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 17940A9023397E5E0064434D /* icon_like_black_empty_60@2x.png */; };
 		17940A972339E9480064434D /* icon_close_black_40@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 17940A952339E9480064434D /* icon_close_black_40@3x.png */; };
 		17940A982339E9480064434D /* icon_close_black_40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 17940A962339E9480064434D /* icon_close_black_40@2x.png */; };
+		1796207C234633C900746BDD /* icon_profile_40@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1796207A234633C800746BDD /* icon_profile_40@3x.png */; };
+		1796207D234633C900746BDD /* icon_profile_40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1796207B234633C900746BDD /* icon_profile_40@2x.png */; };
 		17BDA627233B4AFF004EEA05 /* VinciChallengeCommentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BDA626233B4AFF004EEA05 /* VinciChallengeCommentsView.swift */; };
 		17BDA629233B4DE3004EEA05 /* UIView + anchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BDA628233B4DE3004EEA05 /* UIView + anchor.swift */; };
 		17BEFD95232A9DC90096ED75 /* StickyCollectionFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BEFD94232A9DC90096ED75 /* StickyCollectionFlowLayout.swift */; };
@@ -837,6 +839,8 @@
 		17940A9023397E5E0064434D /* icon_like_black_empty_60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_like_black_empty_60@2x.png"; sourceTree = "<group>"; };
 		17940A952339E9480064434D /* icon_close_black_40@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_close_black_40@3x.png"; sourceTree = "<group>"; };
 		17940A962339E9480064434D /* icon_close_black_40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_close_black_40@2x.png"; sourceTree = "<group>"; };
+		1796207A234633C800746BDD /* icon_profile_40@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_profile_40@3x.png"; sourceTree = "<group>"; };
+		1796207B234633C900746BDD /* icon_profile_40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_profile_40@2x.png"; sourceTree = "<group>"; };
 		17BDA626233B4AFF004EEA05 /* VinciChallengeCommentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VinciChallengeCommentsView.swift; path = ../VinciChallengeCommentsViewController/VinciChallengeCommentsView.swift; sourceTree = "<group>"; };
 		17BDA628233B4DE3004EEA05 /* UIView + anchor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + anchor.swift"; sourceTree = "<group>"; };
 		17BEFD94232A9DC90096ED75 /* StickyCollectionFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickyCollectionFlowLayout.swift; sourceTree = "<group>"; };
@@ -3067,6 +3071,8 @@
 		B633C4FD1A1D190B0059AC12 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				1796207B234633C900746BDD /* icon_profile_40@2x.png */,
+				1796207A234633C800746BDD /* icon_profile_40@3x.png */,
 				1769D5B62344B5B600EE6DBC /* icon_arrow_forward_gray_40@2x.png */,
 				1769D5B72344B5B600EE6DBC /* icon_arrow_forward_gray_40@3x.png */,
 				1769D5B22344B59D00EE6DBC /* icon_favourite_white_40@2x.png */,
@@ -3798,6 +3804,7 @@
 				1769D5B92344B5B700EE6DBC /* icon_arrow_forward_gray_40@3x.png in Resources */,
 				B633C58D1A1D190B0059AC12 /* contact_default_feed.png in Resources */,
 				B10C9B621A7049EC00ECA2BF /* play_icon@2x.png in Resources */,
+				1796207D234633C900746BDD /* icon_profile_40@2x.png in Resources */,
 				B633C5861A1D190B0059AC12 /* call@2x.png in Resources */,
 				B67EBF5D19194AC60084CCFD /* Settings.bundle in Resources */,
 				172D0DB023312D0300A4725E /* icon_diamon_16@2x.png in Resources */,
@@ -3845,6 +3852,7 @@
 				4C61819F219E1796009BD6B5 /* typing-animation-dark.gif in Resources */,
 				45B74A7C2044AAB600CD42F8 /* hello-quiet.aifc in Resources */,
 				45B74A792044AAB600CD42F8 /* input.aifc in Resources */,
+				1796207C234633C900746BDD /* icon_profile_40@3x.png in Resources */,
 				8DADFD41230C85BB00EC2F8C /* SF-Pro-Display-Bold.otf in Resources */,
 				45B74A8C2044AAB600CD42F8 /* input-quiet.aifc in Resources */,
 				591E65812327B47800B7484E /* VinciChallengeListViewController.xib in Resources */,
