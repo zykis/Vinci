@@ -22,8 +22,9 @@ class VinciChallengeStatisticsViewController: VinciViewController {
     }
     
     private var currentTabIndexInit: Int = 0
-    private var previousTabIndex: Int = 0
-    private var currentTabIndex: Int = 0 {
+    // FIXME: shouldnt be -1s
+    private var previousTabIndex: Int = -1
+    private var currentTabIndex: Int = -1 {
         didSet {
             if currentTabIndex == previousTabIndex {
                 return

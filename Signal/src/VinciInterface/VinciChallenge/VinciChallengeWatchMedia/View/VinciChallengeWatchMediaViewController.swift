@@ -24,9 +24,12 @@ class VinciChallengeWatchMediaViewController: VinciViewController {
         didSet {
             if self.isCommentsViewPresented {
                 // FIXME: code T_T
+                commentTextField.alpha = 0.0
+                commentTextField.isHidden = false
                 view.bringSubview(toFront: commentTextField)
                 UIView.animate(withDuration: 0.2, animations: {
                     self.commentTextField.backgroundColor = .white
+                    self.commentTextField.alpha = 1.0
                 }) { (_) in
                     self.commentTextField.attributedPlaceholder = NSAttributedString(string: self.commentTextField.placeholder!,
                                                                                      attributes: [NSAttributedStringKey.foregroundColor: UIColor.lightGray])
@@ -34,8 +37,10 @@ class VinciChallengeWatchMediaViewController: VinciViewController {
                 presentCommentsView()
             } else {
                 UIView.animate(withDuration: 0.2, animations: {
+                    self.commentTextField.alpha = 0.0
                     self.commentTextField.backgroundColor = .clear
                 }) { (_) in
+                    self.commentTextField.isHidden = true
                     self.commentTextField.attributedPlaceholder = NSAttributedString(string: self.commentTextField.placeholder!,
                                                                                      attributes: [NSAttributedStringKey.foregroundColor: kPlaceholderColor])
                 }
@@ -171,12 +176,12 @@ class VinciChallengeWatchMediaViewController: VinciViewController {
             self.leftStackView.alpha = 0.0
             self.rightStackView.alpha = 0.0
             self.commentTextField.alpha = 0.0
-            self.separator.alpha = 0.0
+//            self.separator.alpha = 0.0
         }) { (completed) in
             self.leftStackView.isHidden = true
             self.rightStackView.isHidden = true
             self.commentTextField.isHidden = true
-            self.separator.isHidden = true
+//            self.separator.isHidden = true
             
             self.isUiHidden = true
         }
@@ -185,14 +190,14 @@ class VinciChallengeWatchMediaViewController: VinciViewController {
     func showUI() {
         self.leftStackView.isHidden = false
         self.rightStackView.isHidden = false
-        self.commentTextField.isHidden = false
-        self.separator.isHidden = false
+//        self.commentTextField.isHidden = false
+//        self.separator.isHidden = false
         
         UIView.animate(withDuration: kAnimationHideDuration, animations: {
             self.leftStackView.alpha = 1.0
             self.rightStackView.alpha = 1.0
-            self.commentTextField.alpha = 1.0
-            self.separator.alpha = 1.0
+//            self.commentTextField.alpha = 1.0
+//            self.separator.alpha = 1.0
         }) { (completed) in
             self.isUiHidden = false
         }
