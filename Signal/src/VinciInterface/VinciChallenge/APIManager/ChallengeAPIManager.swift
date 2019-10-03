@@ -84,4 +84,53 @@ class ChallengeAPIManager {
         }
         task.resume()
     }
+    
+    func fetchChallenges(participant: Bool?, finished: Bool?, owner: Bool?, limit: Int, offset: Int, completion:(([Challenge]?, Error?) -> Void)?) {
+        let signalID = TSAccountManager.sharedInstance().getOrGenerateRegistrationId()
+        var parameters: [String: String] = [
+            "SIGNALID": "\(signalID)",
+            "LIMIT": "\(limit)",
+            "OFFSET": "\(offset)"
+        ]
+        if let participant = participant, participant == true {
+            parameters["PARTICIPANTID"] = "\(signalID)"
+        }
+        if let finished = finished {
+            parameters["FINISHED"] = finished ? "true" : "false"
+        }
+        if let owner = owner, owner == true {
+            parameters["OWNERID"] = "\(signalID)"
+        }
+        var urlString = kEndpointGetChallenges
+        if parameters.isEmpty == false {
+            urlString += "?"
+            for p in parameters {
+                urlString += p.key + "=" + p.value + "&"
+            }
+            urlString.removeLast()
+        }
+        
+        if let url = URL(string: urlString) {
+            let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+                guard let data = data else { return }
+                
+                let decoder = JSONDecoder()
+                do {
+                    let challenges: [Challenge] = try decoder.decode([Challenge].self, from: data)
+                    DispatchQueue.main.async {
+                        completion?(challenges, nil)
+                    }
+                } catch let error as NSError {
+                    DispatchQueue.main.async {
+                        completion?(nil, error)
+                    }
+                } catch {
+                    DispatchQueue.main.async {
+                        completion?(nil, error)
+                    }
+                }
+            }
+            task.resume()
+        }
+    }
 }

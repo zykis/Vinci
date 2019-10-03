@@ -12,6 +12,7 @@ let kSecondsInDay: Double = 24 * 60 * 60
 let kFavouriteImage = "icon_favourite_filled_32"
 let kUnfavouriteImage = "icon_favourite_empty_32"
 
+let kVinciChallengeCompactCellReuseIdentifier = "kVinciChallengeCompactCellRI"
 
 protocol VinciChallengeMoveToChallengeProtocol {
     func moveToChallenge(challengeID: String)
@@ -42,7 +43,7 @@ class VinciChallengeCompactCell: UITableViewCell {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.addCompactCellView()
-        
+        selectionStyle = .none
         tapGestureRecognizer.addTarget(self, action: #selector(VinciChallengeCompactCell.moveToGame))
         compactCellView.addGestureRecognizer(tapGestureRecognizer)
     }

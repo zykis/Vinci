@@ -40,7 +40,6 @@
 		172D0DC423313BBC00A4725E /* icon_interests@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 172D0DBE23313BBC00A4725E /* icon_interests@2x.png */; };
 		172D0DC62331470500A4725E /* VinciButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172D0DC52331470500A4725E /* VinciButton.swift */; };
 		172D0DC823315B9A00A4725E /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = 172D0DC723315B9A00A4725E /* Media.swift */; };
-		17313D5B2344C2C500397A08 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17313D5A2344C2C500397A08 /* Images.xcassets */; };
 		175934EF2334D10700F3EF02 /* VinciAnimatableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 175934EE2334D10700F3EF02 /* VinciAnimatableButton.swift */; };
 		175934F12334DF0100F3EF02 /* icon_like_white_empty_60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 175934F02334DF0000F3EF02 /* icon_like_white_empty_60@2x.png */; };
 		175F251F2333910700FED9EC /* icon_reposts_white_60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 175F251C2333910600FED9EC /* icon_reposts_white_60@2x.png */; };
@@ -58,6 +57,7 @@
 		175F8D5C233BBAD900E5644C /* icon_diamon_white_40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 175F8D58233BBAD800E5644C /* icon_diamon_white_40@2x.png */; };
 		175F8D5D233BBAD900E5644C /* icon_location_white_40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 175F8D59233BBAD800E5644C /* icon_location_white_40@2x.png */; };
 		175F8D5E233BBAD900E5644C /* icon_location_white_40@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 175F8D5A233BBAD800E5644C /* icon_location_white_40@3x.png */; };
+		176299EB2344E23B00AD9066 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 176299EA2344E23B00AD9066 /* Images.xcassets */; };
 		1762B52B233CE9BD00CF2554 /* CLLocation + representation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1762B52A233CE9BD00CF2554 /* CLLocation + representation.swift */; };
 		1767FDA523437C8900D7C95A /* MediaInfoCommentsEnabledCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1767FDA423437C8800D7C95A /* MediaInfoCommentsEnabledCell.swift */; };
 		1767FDA72343A86100D7C95A /* VinciTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1767FDA62343A86100D7C95A /* VinciTextView.swift */; };
@@ -90,6 +90,12 @@
 		17C120C9232FCEC600A38A87 /* VinciChallengeAccountRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C120C8232FCEC600A38A87 /* VinciChallengeAccountRouter.swift */; };
 		17C120CB232FCF4F00A38A87 /* VinciChallengeAccountInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C120CA232FCF4F00A38A87 /* VinciChallengeAccountInteractor.swift */; };
 		17C120CD232FCF8D00A38A87 /* VinciChallengeAccountPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C120CC232FCF8D00A38A87 /* VinciChallengeAccountPresenter.swift */; };
+		17D20A4B2344FFC9001A59EF /* VinciChallengeStatisticsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D20A4A2344FFC9001A59EF /* VinciChallengeStatisticsRouter.swift */; };
+		17D20A4D2344FFD8001A59EF /* VinciChallengeStatisticsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D20A4C2344FFD8001A59EF /* VinciChallengeStatisticsPresenter.swift */; };
+		17D20A4F2344FFE6001A59EF /* VinciChallengeStatisticsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D20A4E2344FFE6001A59EF /* VinciChallengeStatisticsInteractor.swift */; };
+		17D20A512344FFF8001A59EF /* VinciChallengeStatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D20A502344FFF8001A59EF /* VinciChallengeStatisticsViewController.swift */; };
+		17D20A532345000B001A59EF /* VinciChallengeStatisticsProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D20A522345000B001A59EF /* VinciChallengeStatisticsProtocols.swift */; };
+		17D20A5523450259001A59EF /* VinciChallengeStatisticsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17D20A5423450259001A59EF /* VinciChallengeStatisticsViewController.xib */; };
 		17E2A68E2340CF4D00D5461A /* icon_plus_white_64@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 17E2A68C2340CF4B00D5461A /* icon_plus_white_64@2x.png */; };
 		17E2A68F2340CF4D00D5461A /* avatar.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 17E2A68D2340CF4C00D5461A /* avatar.jpg */; };
 		2AE2882E4C2B96BFFF9EE27C /* Pods_SignalShareExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F94C85CB0B235DA37F68ED0 /* Pods_SignalShareExtension.framework */; };
@@ -791,7 +797,6 @@
 		172D0DBE23313BBC00A4725E /* icon_interests@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_interests@2x.png"; sourceTree = "<group>"; };
 		172D0DC52331470500A4725E /* VinciButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinciButton.swift; sourceTree = "<group>"; };
 		172D0DC723315B9A00A4725E /* Media.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
-		17313D5A2344C2C500397A08 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		175934EE2334D10700F3EF02 /* VinciAnimatableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinciAnimatableButton.swift; sourceTree = "<group>"; };
 		175934F02334DF0000F3EF02 /* icon_like_white_empty_60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_like_white_empty_60@2x.png"; sourceTree = "<group>"; };
 		175F251C2333910600FED9EC /* icon_reposts_white_60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_reposts_white_60@2x.png"; sourceTree = "<group>"; };
@@ -809,6 +814,7 @@
 		175F8D58233BBAD800E5644C /* icon_diamon_white_40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_diamon_white_40@2x.png"; sourceTree = "<group>"; };
 		175F8D59233BBAD800E5644C /* icon_location_white_40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_location_white_40@2x.png"; sourceTree = "<group>"; };
 		175F8D5A233BBAD800E5644C /* icon_location_white_40@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_location_white_40@3x.png"; sourceTree = "<group>"; };
+		176299EA2344E23B00AD9066 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		1762B52A233CE9BD00CF2554 /* CLLocation + representation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocation + representation.swift"; sourceTree = "<group>"; };
 		1767FDA423437C8800D7C95A /* MediaInfoCommentsEnabledCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaInfoCommentsEnabledCell.swift; sourceTree = "<group>"; };
 		1767FDA62343A86100D7C95A /* VinciTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinciTextView.swift; sourceTree = "<group>"; };
@@ -841,6 +847,12 @@
 		17C120C8232FCEC600A38A87 /* VinciChallengeAccountRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinciChallengeAccountRouter.swift; sourceTree = "<group>"; };
 		17C120CA232FCF4F00A38A87 /* VinciChallengeAccountInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinciChallengeAccountInteractor.swift; sourceTree = "<group>"; };
 		17C120CC232FCF8D00A38A87 /* VinciChallengeAccountPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinciChallengeAccountPresenter.swift; sourceTree = "<group>"; };
+		17D20A4A2344FFC9001A59EF /* VinciChallengeStatisticsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinciChallengeStatisticsRouter.swift; sourceTree = "<group>"; };
+		17D20A4C2344FFD8001A59EF /* VinciChallengeStatisticsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinciChallengeStatisticsPresenter.swift; sourceTree = "<group>"; };
+		17D20A4E2344FFE6001A59EF /* VinciChallengeStatisticsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinciChallengeStatisticsInteractor.swift; sourceTree = "<group>"; };
+		17D20A502344FFF8001A59EF /* VinciChallengeStatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinciChallengeStatisticsViewController.swift; sourceTree = "<group>"; };
+		17D20A522345000B001A59EF /* VinciChallengeStatisticsProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinciChallengeStatisticsProtocols.swift; sourceTree = "<group>"; };
+		17D20A5423450259001A59EF /* VinciChallengeStatisticsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VinciChallengeStatisticsViewController.xib; sourceTree = "<group>"; };
 		17E2A68C2340CF4B00D5461A /* icon_plus_white_64@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_plus_white_64@2x.png"; sourceTree = "<group>"; };
 		17E2A68D2340CF4C00D5461A /* avatar.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = avatar.jpg; sourceTree = "<group>"; };
 		1C93CF3971B64E8B6C1F9AC1 /* Pods-SignalShareExtension.test.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SignalShareExtension.test.xcconfig"; path = "Pods/Target Support Files/Pods-SignalShareExtension/Pods-SignalShareExtension.test.xcconfig"; sourceTree = "<group>"; };
@@ -1630,6 +1642,59 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1703594A2344FE9D007EA2CB /* VinciChallengeStatistics */ = {
+			isa = PBXGroup;
+			children = (
+				1703594C2344FED4007EA2CB /* Protocols */,
+				1703594F2344FEDB007EA2CB /* View */,
+				1703594E2344FED9007EA2CB /* Interactor */,
+				1703594D2344FED6007EA2CB /* Presenter */,
+				1703594B2344FECC007EA2CB /* Router */,
+			);
+			path = VinciChallengeStatistics;
+			sourceTree = "<group>";
+		};
+		1703594B2344FECC007EA2CB /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				17D20A4A2344FFC9001A59EF /* VinciChallengeStatisticsRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		1703594C2344FED4007EA2CB /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				17D20A522345000B001A59EF /* VinciChallengeStatisticsProtocols.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		1703594D2344FED6007EA2CB /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				17D20A4C2344FFD8001A59EF /* VinciChallengeStatisticsPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		1703594E2344FED9007EA2CB /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				17D20A4E2344FFE6001A59EF /* VinciChallengeStatisticsInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		1703594F2344FEDB007EA2CB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				17D20A502344FFF8001A59EF /* VinciChallengeStatisticsViewController.swift */,
+				17D20A5423450259001A59EF /* VinciChallengeStatisticsViewController.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		1712A7292338FABD00574D84 /* Animators */ = {
 			isa = PBXGroup;
 			children = (
@@ -1699,13 +1764,13 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		172D0DB42331372200A4725E /* New Group */ = {
+		172D0DB42331372200A4725E /* VinciChallengeAccountCell */ = {
 			isa = PBXGroup;
 			children = (
 				172D0DB52331374400A4725E /* VinciChallengeAccountCell.xib */,
 				172D0DB72331387F00A4725E /* VinciChallengeAccountCell.swift */,
 			);
-			path = "New Group";
+			path = VinciChallengeAccountCell;
 			sourceTree = "<group>";
 		};
 		172D0DC92332883900A4725E /* VinciChallengeWatchMedia */ = {
@@ -1721,12 +1786,12 @@
 			path = VinciChallengeWatchMedia;
 			sourceTree = "<group>";
 		};
-		177C12FB2342512400FE219C /* New Group */ = {
+		177C12FB2342512400FE219C /* APIManager */ = {
 			isa = PBXGroup;
 			children = (
 				177C12FC2342513A00FE219C /* ChallengeAPIManager.swift */,
 			);
-			path = "New Group";
+			path = APIManager;
 			sourceTree = "<group>";
 		};
 		177C130023435F4100FE219C /* VinciChallengeMediaInfo */ = {
@@ -1776,7 +1841,7 @@
 		17C120BB232FBE2400A38A87 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				172D0DB42331372200A4725E /* New Group */,
+				172D0DB42331372200A4725E /* VinciChallengeAccountCell */,
 				17057F6A232FF1F5001A0D6A /* avatar.jpg */,
 				17C120C2232FBF7100A38A87 /* VinciChallengeAccountViewController.swift */,
 				17C120C4232FC0F700A38A87 /* VinciChallengeAccountViewController.xib */,
@@ -3238,7 +3303,8 @@
 		CB89972822E299BB00D07D94 /* VinciChallenge */ = {
 			isa = PBXGroup;
 			children = (
-				177C12FB2342512400FE219C /* New Group */,
+				177C12FB2342512400FE219C /* APIManager */,
+				1703594A2344FE9D007EA2CB /* VinciChallengeStatistics */,
 				17F4E0DB233B9A250040A971 /* VinciChallengeGame */,
 				591E657D2327B0C900B7484E /* VinciChallengeList */,
 				17C49A49232FBD5B006334E1 /* VinciChallengeAccount */,
@@ -3316,7 +3382,7 @@
 		D221A093169C9E5E00537ABF /* Signal */ = {
 			isa = PBXGroup;
 			children = (
-				17313D5A2344C2C500397A08 /* Images.xcassets */,
+				176299EA2344E23B00AD9066 /* Images.xcassets */,
 				34330A581E7875FB00DF2FB9 /* Fonts */,
 				B633C4FD1A1D190B0059AC12 /* Images */,
 				B67EBF5C19194AC60084CCFD /* Settings.bundle */,
@@ -3561,7 +3627,7 @@
 					D221A088169C9E5E00537ABF = {
 						DevelopmentTeam = 225AS2YJCX;
 						LastSwiftMigration = 0930;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -3729,7 +3795,7 @@
 				17940A9223397E5E0064434D /* icon_like_black_60@3x.png in Resources */,
 				1722F4E12332B2E000EC575B /* VinciChallengeWatchMediaViewController.xib in Resources */,
 				34CF0787203E6B78005C4D61 /* busy_tone_ansi.caf in Resources */,
-				17313D5B2344C2C500397A08 /* Images.xcassets in Resources */,
+				176299EB2344E23B00AD9066 /* Images.xcassets in Resources */,
 				B10C9B5F1A7049EC00ECA2BF /* pause_icon.png in Resources */,
 				AD83FF471A73428300B5C81A /* audio_play_button_blue.png in Resources */,
 				34330A5E1E787BD800DF2FB9 /* ElegantIcons.ttf in Resources */,
@@ -3778,6 +3844,7 @@
 				45B74A842044AAB600CD42F8 /* popcorn.aifc in Resources */,
 				172D0DC423313BBC00A4725E /* icon_interests@2x.png in Resources */,
 				45B74A7D2044AAB600CD42F8 /* popcorn-quiet.aifc in Resources */,
+				17D20A5523450259001A59EF /* VinciChallengeStatisticsViewController.xib in Resources */,
 				172D0DB223312D0300A4725E /* icon_like_16@2x.png in Resources */,
 				45B74A822044AAB600CD42F8 /* pulse.aifc in Resources */,
 				34B6A90B218BA1D1007C4606 /* typing-animation.gif in Resources */,
@@ -3897,7 +3964,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\n# disabled for now. too many lint errors outside of the scope of this branch\n#(cd Signal && swiftlint)\n# never fail.\nexit 0\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+			shellScript = "if which swiftlint >/dev/null; then\n# disabled for now. too many lint errors outside of the scope of this branch\n#(cd Signal && swiftlint)\n# never fail.\nexit 0\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 		59C9DBA462715B5C999FFB02 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -4195,6 +4262,7 @@
 				34C4E2582118957600BEA353 /* WebRTCProto.swift in Sources */,
 				34D1F0BD1F8D108C0066283D /* AttachmentUploadView.m in Sources */,
 				591E65852327B8C200B7484E /* VinciChallengeListViewController.swift in Sources */,
+				17D20A4F2344FFE6001A59EF /* VinciChallengeStatisticsInteractor.swift in Sources */,
 				452EC6DF205E9E30000E787C /* MediaGalleryViewController.swift in Sources */,
 				8D117DEF2301B14600176F06 /* VinciSettingsViewController.swift in Sources */,
 				17C120C3232FBF7100A38A87 /* VinciChallengeAccountViewController.swift in Sources */,
@@ -4206,6 +4274,7 @@
 				34D8C02B1ED3685800188D7C /* DebugUIContacts.m in Sources */,
 				175F8D52233B9BB000E5644C /* VinciChallengeGameRouter.swift in Sources */,
 				4C1885D2218F8E1C00B67051 /* PhotoGridViewCell.swift in Sources */,
+				17D20A512344FFF8001A59EF /* VinciChallengeStatisticsViewController.swift in Sources */,
 				45C9DEB81DF4E35A0065CA84 /* WebRTCCallMessageHandler.swift in Sources */,
 				17C120CB232FCF4F00A38A87 /* VinciChallengeAccountInteractor.swift in Sources */,
 				34D1F0501F7D45A60066283D /* GifPickerCell.swift in Sources */,
@@ -4259,6 +4328,7 @@
 				8D18BCFF22F19B9500DB9340 /* VinciStrings.swift in Sources */,
 				4C2F454F214C00E1004871FF /* AvatarTableViewCell.swift in Sources */,
 				34A55F3720485465002CC6DE /* OWS2FARegistrationViewController.m in Sources */,
+				17D20A4B2344FFC9001A59EF /* VinciChallengeStatisticsRouter.swift in Sources */,
 				340FC8AD204DAC8D007AEB0F /* OWSLinkedDevicesTableViewController.m in Sources */,
 				340FC8AA204DAC8D007AEB0F /* NotificationSettingsViewController.m in Sources */,
 				8D18BD0922F2EFEB00DB9340 /* VinciInviteTabPanel.swift in Sources */,
@@ -4437,6 +4507,7 @@
 				4CB5F26920F7D060004D1B42 /* MessageActions.swift in Sources */,
 				17BEFD99232F8ECF0096ED75 /* VinciChallengeLargeCollectionCell.swift in Sources */,
 				17C120C7232FC2AD00A38A87 /* VinciCard.swift in Sources */,
+				17D20A4D2344FFD8001A59EF /* VinciChallengeStatisticsPresenter.swift in Sources */,
 				340FC8B5204DAC8D007AEB0F /* AboutTableViewController.m in Sources */,
 				17BDA627233B4AFF004EEA05 /* VinciChallengeCommentsView.swift in Sources */,
 				34BECE2B1F74C12700D7438D /* DebugUIStress.m in Sources */,
@@ -4460,6 +4531,7 @@
 				1722F4D72332AED300EC575B /* VinciChallengeWatchMediaRouter.swift in Sources */,
 				340FC8B3204DAC8D007AEB0F /* AppSettingsViewController.m in Sources */,
 				34C4E2572118957600BEA353 /* OWSWebRTCDataProtos.pb.swift in Sources */,
+				17D20A532345000B001A59EF /* VinciChallengeStatisticsProtocols.swift in Sources */,
 				346B66311F4E29B200E5122F /* CropScaleImageViewController.swift in Sources */,
 				8D1E7E65231CFA13004104CC /* VNContactsSearchResultsController.swift in Sources */,
 				177C12FA23415ABB00FE219C /* URLRequest + formdata.swift in Sources */,
@@ -4965,12 +5037,12 @@
 				CLANG_UNDEFINED_BEHAVIOR_SANITIZER_INTEGER = YES;
 				CLANG_UNDEFINED_BEHAVIOR_SANITIZER_NULLABILITY = YES;
 				CODE_SIGN_ENTITLEMENTS = Signal/Signal.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 225AS2YJCX;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
@@ -5008,7 +5080,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = id.vinci.messenger;
 				PRODUCT_NAME = Vinci;
 				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = ArtemZ;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = "Signal/src/Signal-Bridging-Header.h";
@@ -5033,12 +5105,12 @@
 				CLANG_ANALYZER_SECURITY_INSECUREAPI_STRCPY = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Signal/Signal.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 225AS2YJCX;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
@@ -5076,7 +5148,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = id.vinci.messenger;
 				PRODUCT_NAME = Vinci;
 				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = ArtemZ;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = "Signal/src/Signal-Bridging-Header.h";

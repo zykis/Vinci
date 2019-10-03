@@ -47,6 +47,7 @@ extension VinciChallengeAccountViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupTableView()
+        
         self.avatar.layer.mask = self.avatarMask
     }
     
@@ -73,14 +74,24 @@ extension VinciChallengeAccountViewController {
         t.m11 = 1.2
         t.m22 = 1.2
         self.avatarMask.transform = t
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         
+        self.newGameButton.layer.cornerRadius = newGameButton.bounds.height / 2.0
     }
 }
 
 
 extension VinciChallengeAccountViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60.0
+        return 48.0
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let destVC = VinciChallengeStatisticsRouter.createModule()
+        navigationController?.pushViewController(destVC, animated: true)
     }
 }
 

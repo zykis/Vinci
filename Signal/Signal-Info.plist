@@ -11,7 +11,7 @@
 		<key>OSXVersion</key>
 		<string>10.15</string>
 		<key>WebRTCCommit</key>
-		<string>ed69262343fdabfe6e11c6ce41ea04495a7bebcd Added TextView with placeholder</string>
+		<string>a4d0c6017e98ba046616bbc04c63417e394360c3 added few icons</string>
 	</dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
