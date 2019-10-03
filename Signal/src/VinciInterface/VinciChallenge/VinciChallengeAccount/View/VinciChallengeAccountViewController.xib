@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -178,14 +176,36 @@
                                         <constraint firstAttribute="height" constant="32" id="RTM-Fe-16a"/>
                                     </constraints>
                                 </stackView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VINCI ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lim-UR-jt5">
+                                    <rect key="frame" x="169" y="91.5" width="61" height="18"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                    <color key="textColor" red="0.82352941176470584" green="0.71764705882352942" blue="0.40392156862745099" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@nickname" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wUg-E7-EyR">
+                                    <rect key="frame" x="169" y="121.5" width="83" height="18"/>
+                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hi there! I am using Vinci" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C2e-Uy-k0q">
+                                    <rect key="frame" x="169" y="142" width="170" height="18"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="bottom" secondItem="Oz1-b3-jia" secondAttribute="bottom" constant="16" id="1Lf-kj-pbF"/>
+                                <constraint firstItem="C2e-Uy-k0q" firstAttribute="leading" secondItem="wUg-E7-EyR" secondAttribute="leading" id="4Ms-aC-2tk"/>
                                 <constraint firstItem="63y-S2-WX2" firstAttribute="height" secondItem="Lm2-2C-MqP" secondAttribute="height" multiplier="0.7" id="5mj-M5-pl8"/>
+                                <constraint firstItem="wUg-E7-EyR" firstAttribute="leading" secondItem="lim-UR-jt5" secondAttribute="leading" id="5vn-VF-urz"/>
                                 <constraint firstItem="PFc-uR-ICD" firstAttribute="leading" secondItem="Lm2-2C-MqP" secondAttribute="leading" constant="16" id="Aq6-Pc-qAb"/>
+                                <constraint firstItem="wUg-E7-EyR" firstAttribute="top" secondItem="lim-UR-jt5" secondAttribute="bottom" constant="12" id="LCO-6C-Xeb"/>
                                 <constraint firstAttribute="trailing" secondItem="9wo-yt-9z7" secondAttribute="trailing" constant="8" id="LHb-af-Lk3"/>
                                 <constraint firstItem="63y-S2-WX2" firstAttribute="leading" secondItem="Lm2-2C-MqP" secondAttribute="leading" id="LRm-xC-t01"/>
+                                <constraint firstItem="C2e-Uy-k0q" firstAttribute="top" secondItem="wUg-E7-EyR" secondAttribute="bottom" constant="2.5" id="MMo-OL-msl"/>
                                 <constraint firstAttribute="bottom" secondItem="PFc-uR-ICD" secondAttribute="bottom" constant="16" id="OJv-P9-qce"/>
                                 <constraint firstItem="63y-S2-WX2" firstAttribute="top" secondItem="Lm2-2C-MqP" secondAttribute="top" id="Pv3-EE-nGS"/>
                                 <constraint firstItem="63y-S2-WX2" firstAttribute="leading" secondItem="Lm2-2C-MqP" secondAttribute="leading" id="QOg-KI-vxS"/>
@@ -193,7 +213,9 @@
                                 <constraint firstItem="63y-S2-WX2" firstAttribute="top" secondItem="Lm2-2C-MqP" secondAttribute="top" id="l8V-f9-Btp"/>
                                 <constraint firstAttribute="bottom" secondItem="Wzx-BU-Fdw" secondAttribute="bottom" constant="16" id="mze-DB-75H"/>
                                 <constraint firstItem="9wo-yt-9z7" firstAttribute="top" secondItem="Lm2-2C-MqP" secondAttribute="top" constant="8" id="nhS-VI-xyY"/>
+                                <constraint firstItem="lim-UR-jt5" firstAttribute="centerY" secondItem="63y-S2-WX2" secondAttribute="centerY" id="qPu-I1-cvK"/>
                                 <constraint firstItem="Wzx-BU-Fdw" firstAttribute="centerX" secondItem="Lm2-2C-MqP" secondAttribute="centerX" id="tVs-38-SAP"/>
+                                <constraint firstItem="lim-UR-jt5" firstAttribute="leading" secondItem="63y-S2-WX2" secondAttribute="trailing" constant="18.5" id="xSg-Jb-i21"/>
                             </constraints>
                         </view>
                     </subviews>
@@ -229,14 +251,14 @@
                     </connections>
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vaN-C6-vNa">
-                    <rect key="frame" x="0.0" y="432" width="414" height="348"/>
+                    <rect key="frame" x="0.0" y="432" width="414" height="338.5"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a8e-NH-U8X">
-                    <rect key="frame" x="16" y="788" width="382" height="58"/>
+                    <rect key="frame" x="16" y="778.5" width="382" height="67.5"/>
                     <color key="backgroundColor" red="0.80784313725490198" green="0.70196078431372544" blue="0.42352941176470588" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="width" secondItem="a8e-NH-U8X" secondAttribute="height" multiplier="396:60" id="tup-Tb-fPp"/>
+                        <constraint firstAttribute="width" secondItem="a8e-NH-U8X" secondAttribute="height" multiplier="396:70" id="tup-Tb-fPp"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="22"/>
                     <state key="normal" title="New game"/>

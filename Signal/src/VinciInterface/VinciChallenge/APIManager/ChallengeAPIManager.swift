@@ -6,6 +6,7 @@ import Foundation
 
 let kEndpointUploadMedia = kHost + "uploadMedia"
 let kEndpointFavourChallenge = kHost + "favChallenge"
+let kEndpointGetStatistics = kHost + "getTotalStats"
 
 class ChallengeAPIManager {
     static let shared = ChallengeAPIManager()
@@ -85,7 +86,7 @@ class ChallengeAPIManager {
         task.resume()
     }
     
-    func fetchChallenges(participant: Bool?, finished: Bool?, owner: Bool?, limit: Int, offset: Int, completion:(([Challenge]?, Error?) -> Void)?) {
+    func fetchChallenges(participant: Bool?, finished: Bool?, owner: Bool?, favourite: Bool = false, limit: Int, offset: Int, completion:(([Challenge]?, Error?) -> Void)?) {
         let signalID = TSAccountManager.sharedInstance().getOrGenerateRegistrationId()
         var parameters: [String: String] = [
             "SIGNALID": "\(signalID)",
@@ -100,6 +101,9 @@ class ChallengeAPIManager {
         }
         if let owner = owner, owner == true {
             parameters["OWNERID"] = "\(signalID)"
+        }
+        if favourite == true {
+            parameters["USERFAV"] = "true"
         }
         var urlString = kEndpointGetChallenges
         if parameters.isEmpty == false {
@@ -128,6 +132,27 @@ class ChallengeAPIManager {
                     DispatchQueue.main.async {
                         completion?(nil, error)
                     }
+                }
+            }
+            task.resume()
+        }
+    }
+    
+    func fetchStatistics(completion: @escaping (Statistic) -> Void) {
+        let signalID = TSAccountManager.sharedInstance().getOrGenerateRegistrationId()
+        let urlString = kEndpointGetStatistics + "?SIGNALID=\(signalID)"
+        if let url = URL(string: urlString) {
+            let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+                guard let data = data
+                    else { return }
+                do {
+                    let decoder = JSONDecoder()
+                    let statistic = try decoder.decode(Statistic.self, from: data)
+                    DispatchQueue.main.async {
+                        completion(statistic)
+                    }
+                } catch {
+                    print(error)
                 }
             }
             task.resume()

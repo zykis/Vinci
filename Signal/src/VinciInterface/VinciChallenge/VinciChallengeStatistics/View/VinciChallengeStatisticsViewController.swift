@@ -8,7 +8,75 @@ import UIKit
 class VinciChallengeStatisticsViewController: VinciViewController {
     var presenter: VinciChallengeStatisticsPresenterProtocol?
     
+    private var previousTabIndex: Int = 0
+    private var currentTabIndex: Int = 0 {
+        didSet {
+            if currentTabIndex == previousTabIndex {
+                return
+            }
+            let previousButton = tabButton(by: previousTabIndex)
+            let currentButton = tabButton(by: currentTabIndex)
+            UIView.animate(withDuration: 0.15, delay: 0.0, options: .curveEaseInOut, animations: {
+                previousButton?.setTitleColor(.gray, for: .normal)
+                currentButton?.setTitleColor(.black, for: .normal)
+            }) { (_) in
+                
+                self.presenter?.challenges = []
+                self.tableView.reloadData()
+                
+//                let finished: Bool? = self.currentTabIndex == 0 ? false : self.currentTabIndex == 1 ? true : nil
+                let owner: Bool? = self.currentTabIndex == 2 ? true : nil
+                let favourite: Bool = self.currentTabIndex == 1
+                
+                self.previousTabIndex = self.currentTabIndex
+                ChallengeAPIManager.shared.fetchChallenges(participant: nil,
+                                                           finished: nil,
+                                                           owner: owner,
+                                                           favourite: favourite,
+                                                           limit: 100,
+                                                           offset: 0) { (challenges, error) in
+                    guard error == nil
+                        else { return }
+                    
+                    if let challenges = challenges {
+                        DispatchQueue.main.async {
+                            self.presenter?.challenges = challenges
+                            self.tableView.reloadData()
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    private func tabButton(by index: Int) -> UIButton? {
+        switch index {
+        case 0: return self.tab1Button
+        case 1: return self.tab2Button
+        case 2: return self.tab3Button
+        default: return nil
+        }
+    }
+    
+    @IBAction func nowPlayingPressed() {
+        self.currentTabIndex = 0
+    }
+    
+    @IBAction func finishedPressed() {
+        self.currentTabIndex = 1
+    }
+    
+    @IBAction func authorPressed() {
+        self.currentTabIndex = 2
+    }
+    
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var winsLabel: UILabel!
+    @IBOutlet weak var votesLabel: UILabel!
+    @IBOutlet weak var incomeLabel: UILabel!
+    @IBOutlet weak var tab1Button: UIButton!
+    @IBOutlet weak var tab2Button: UIButton!
+    @IBOutlet weak var tab3Button: UIButton!
     
     func setupTableView() {
         tableView.register(VinciChallengeCompactCell.self, forCellReuseIdentifier: kVinciChallengeCompactCellReuseIdentifier)
@@ -34,6 +102,12 @@ extension VinciChallengeStatisticsViewController {
                     self.tableView.reloadData()
                 }
             }
+        }
+        
+        ChallengeAPIManager.shared.fetchStatistics { (statistic) in
+            self.winsLabel.text = "\(statistic.wins)"
+            self.votesLabel.text = "\(statistic.totalLikes)"
+            self.incomeLabel.text = "\(statistic.totalReward)"
         }
     }
 }

@@ -11,7 +11,7 @@
 		<key>OSXVersion</key>
 		<string>10.15</string>
 		<key>WebRTCCommit</key>
-		<string>a4d0c6017e98ba046616bbc04c63417e394360c3 added few icons</string>
+		<string>137c34ac719b838d9f3c5043a8550e939f6b920e Added statistics page</string>
 	</dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>

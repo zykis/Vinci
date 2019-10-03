@@ -98,20 +98,20 @@ extension VinciChallengeAccountViewController: UITableViewDelegate {
 
 extension VinciChallengeAccountViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return 3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: VinciChallengeAccountCell = self.tableView.dequeueReusableCell(withIdentifier: kVinciChallengeAccountCellReuseIdentifier) as! VinciChallengeAccountCell
         switch indexPath.row {
+//        case 0:
+//            cell.setup(iconName: "icon_gamerules", title: "Game Rules")
         case 0:
-            cell.setup(iconName: "icon_gamerules", title: "Game Rules")
-        case 1:
             cell.setup(iconName: "icon_star", title: "Now Trending")
-        case 2:
+        case 1:
             cell.setup(iconName: "icon_interests", title: "My Interests")
-        case 3:
-            cell.setup(iconName: "", title: "Game Statistics")
+        case 2:
+            cell.setup(iconName: "icon_gamerules", title: "Author")
         default:
             cell.setup(iconName: "", title: "")
         }

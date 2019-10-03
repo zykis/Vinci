@@ -96,6 +96,7 @@
 		17D20A512344FFF8001A59EF /* VinciChallengeStatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D20A502344FFF8001A59EF /* VinciChallengeStatisticsViewController.swift */; };
 		17D20A532345000B001A59EF /* VinciChallengeStatisticsProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D20A522345000B001A59EF /* VinciChallengeStatisticsProtocols.swift */; };
 		17D20A5523450259001A59EF /* VinciChallengeStatisticsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 17D20A5423450259001A59EF /* VinciChallengeStatisticsViewController.xib */; };
+		17D20A582345E95C001A59EF /* Statistic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D20A572345E95C001A59EF /* Statistic.swift */; };
 		17E2A68E2340CF4D00D5461A /* icon_plus_white_64@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 17E2A68C2340CF4B00D5461A /* icon_plus_white_64@2x.png */; };
 		17E2A68F2340CF4D00D5461A /* avatar.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 17E2A68D2340CF4C00D5461A /* avatar.jpg */; };
 		2AE2882E4C2B96BFFF9EE27C /* Pods_SignalShareExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F94C85CB0B235DA37F68ED0 /* Pods_SignalShareExtension.framework */; };
@@ -853,6 +854,7 @@
 		17D20A502344FFF8001A59EF /* VinciChallengeStatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinciChallengeStatisticsViewController.swift; sourceTree = "<group>"; };
 		17D20A522345000B001A59EF /* VinciChallengeStatisticsProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinciChallengeStatisticsProtocols.swift; sourceTree = "<group>"; };
 		17D20A5423450259001A59EF /* VinciChallengeStatisticsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VinciChallengeStatisticsViewController.xib; sourceTree = "<group>"; };
+		17D20A572345E95C001A59EF /* Statistic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statistic.swift; sourceTree = "<group>"; };
 		17E2A68C2340CF4B00D5461A /* icon_plus_white_64@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_plus_white_64@2x.png"; sourceTree = "<group>"; };
 		17E2A68D2340CF4C00D5461A /* avatar.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = avatar.jpg; sourceTree = "<group>"; };
 		1C93CF3971B64E8B6C1F9AC1 /* Pods-SignalShareExtension.test.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SignalShareExtension.test.xcconfig"; path = "Pods/Target Support Files/Pods-SignalShareExtension/Pods-SignalShareExtension.test.xcconfig"; sourceTree = "<group>"; };
@@ -1649,6 +1651,7 @@
 				1703594F2344FEDB007EA2CB /* View */,
 				1703594E2344FED9007EA2CB /* Interactor */,
 				1703594D2344FED6007EA2CB /* Presenter */,
+				17D20A562345E93E001A59EF /* New Group */,
 				1703594B2344FECC007EA2CB /* Router */,
 			);
 			path = VinciChallengeStatistics;
@@ -1891,6 +1894,14 @@
 				17C120BF232FBE3F00A38A87 /* Router */,
 			);
 			path = VinciChallengeAccount;
+			sourceTree = "<group>";
+		};
+		17D20A562345E93E001A59EF /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				17D20A572345E95C001A59EF /* Statistic.swift */,
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 		17F4E0DB233B9A250040A971 /* VinciChallengeGame */ = {
@@ -4506,6 +4517,7 @@
 				8D1E7E612317B40F004104CC /* VinciCallsLargeTitleView.swift in Sources */,
 				4CB5F26920F7D060004D1B42 /* MessageActions.swift in Sources */,
 				17BEFD99232F8ECF0096ED75 /* VinciChallengeLargeCollectionCell.swift in Sources */,
+				17D20A582345E95C001A59EF /* Statistic.swift in Sources */,
 				17C120C7232FC2AD00A38A87 /* VinciCard.swift in Sources */,
 				17D20A4D2344FFD8001A59EF /* VinciChallengeStatisticsPresenter.swift in Sources */,
 				340FC8B5204DAC8D007AEB0F /* AboutTableViewController.m in Sources */,

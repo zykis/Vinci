@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -31,7 +29,11 @@
                     </constraints>
                 </imageView>
                 <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wVj-I8-s5p" customClass="VinciAnimatableButton" customModule="Vinci" customModuleProvider="target">
-                    <rect key="frame" x="342" y="2" width="29" height="32"/>
+                    <rect key="frame" x="349.5" y="6" width="21.5" height="24"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="wVj-I8-s5p" secondAttribute="height" multiplier="29:32" id="HsA-J8-7s6"/>
+                        <constraint firstAttribute="height" constant="24" id="MN9-HO-7Xx"/>
+                    </constraints>
                     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <state key="normal" image="icon_favourite_empty_32.png"/>
                 </button>
@@ -64,7 +66,7 @@
                     </constraints>
                 </stackView>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="flE-NI-IAn">
-                    <rect key="frame" x="268" y="1" width="62" height="34"/>
+                    <rect key="frame" x="275.5" y="1" width="62" height="34"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Wv4-KJ-iXB">
                             <rect key="frame" x="0.0" y="0.0" width="62" height="16"/>
@@ -124,6 +126,7 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="7Cr-Wv-s0N"/>
+            <point key="canvasLocation" x="136.80000000000001" y="153.82308845577214"/>
         </view>
     </objects>
     <resources>

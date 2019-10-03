@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -27,7 +25,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sEY-Q6-nSV">
-                    <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                     <items>
                         <navigationItem id="OSx-ey-ocJ">
                             <barButtonItem key="leftBarButtonItem" title="Item" image="vinciSettingsIcon" id="ja9-ge-GPn">
@@ -46,11 +44,11 @@
                     </items>
                 </navigationBar>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5ih-IL-BV6">
-                    <rect key="frame" x="16" y="116" width="343" height="579"/>
+                    <rect key="frame" x="0.0" y="96" width="375" height="599"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Games" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tLf-AL-8Kx">
-                    <rect key="frame" x="16" y="69" width="98" height="39"/>
+                    <rect key="frame" x="16" y="49" width="98" height="39"/>
                     <fontDescription key="fontDescription" type="system" pointSize="32"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -58,11 +56,11 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="kXj-vd-7Sz" firstAttribute="trailing" secondItem="5ih-IL-BV6" secondAttribute="trailing" constant="16" id="51U-Yx-8x4"/>
+                <constraint firstItem="kXj-vd-7Sz" firstAttribute="trailing" secondItem="5ih-IL-BV6" secondAttribute="trailing" id="51U-Yx-8x4"/>
                 <constraint firstItem="sEY-Q6-nSV" firstAttribute="top" secondItem="kXj-vd-7Sz" secondAttribute="top" id="COj-x2-g1f"/>
                 <constraint firstItem="tLf-AL-8Kx" firstAttribute="top" secondItem="sEY-Q6-nSV" secondAttribute="top" constant="49" id="DGw-rc-Uy7"/>
                 <constraint firstItem="5ih-IL-BV6" firstAttribute="top" secondItem="sEY-Q6-nSV" secondAttribute="bottom" constant="52" id="POL-v0-dSi"/>
-                <constraint firstItem="5ih-IL-BV6" firstAttribute="leading" secondItem="kXj-vd-7Sz" secondAttribute="leading" constant="16" id="YNg-8n-Mi4"/>
+                <constraint firstItem="5ih-IL-BV6" firstAttribute="leading" secondItem="kXj-vd-7Sz" secondAttribute="leading" id="YNg-8n-Mi4"/>
                 <constraint firstItem="tLf-AL-8Kx" firstAttribute="leading" secondItem="sEY-Q6-nSV" secondAttribute="leading" constant="16" id="hCU-ye-0FG"/>
                 <constraint firstItem="sEY-Q6-nSV" firstAttribute="leading" secondItem="kXj-vd-7Sz" secondAttribute="leading" id="hlj-5K-LtI"/>
                 <constraint firstItem="kXj-vd-7Sz" firstAttribute="bottom" secondItem="5ih-IL-BV6" secondAttribute="bottom" constant="-28" id="n2k-pp-vpn"/>

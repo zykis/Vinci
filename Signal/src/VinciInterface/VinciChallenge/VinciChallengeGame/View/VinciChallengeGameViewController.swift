@@ -213,7 +213,7 @@ class VinciChallengeGameViewController: VinciViewController {
         if let avatarUrl = challenge.avatarUrl, let url = URL(string: avatarUrl) {
             avatarImageView.downloadAndSetupImage(with: url, completion: nil)
         }
-        favouriteButton.setImage(UIImage(named: challenge.favourite ? kFavouriteImage : kUnfavouriteImage), for: .normal)
+        favouriteButton.setImage(UIImage(named: challenge.favourite ? kFavouriteImageWhite : kUnfavouriteImageWhite), for: .normal)
         
         if let lat = challenge.latitude, let lon = challenge.longitude {
             let location = CLLocation(latitude: lat, longitude: lon)

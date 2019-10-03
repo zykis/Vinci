@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -55,14 +55,14 @@
                     </userDefinedRuntimeAttributes>
                 </textView>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="b4U-ll-fks">
-                    <rect key="frame" x="16" y="299" width="378" height="498.5"/>
+                    <rect key="frame" x="16" y="299" width="378" height="469"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FaB-nv-RDd">
-                    <rect key="frame" x="20" y="805.5" width="374" height="56.5"/>
+                    <rect key="frame" x="20" y="776" width="374" height="66"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="width" secondItem="FaB-nv-RDd" secondAttribute="height" multiplier="398:60" id="gga-ak-wak"/>
+                        <constraint firstAttribute="width" secondItem="FaB-nv-RDd" secondAttribute="height" multiplier="398:70" id="gga-ak-wak"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="24"/>
                     <state key="normal" title="Post Media">
@@ -82,7 +82,7 @@
                 <constraint firstItem="i9O-Q4-cwQ" firstAttribute="bottom" secondItem="brw-2r-gHN" secondAttribute="bottom" id="E1t-Ql-VkR"/>
                 <constraint firstItem="i9O-Q4-cwQ" firstAttribute="leading" secondItem="brw-2r-gHN" secondAttribute="trailing" constant="8.5" id="H1B-O6-glV"/>
                 <constraint firstItem="b4U-ll-fks" firstAttribute="leading" secondItem="8nl-Ep-7Jv" secondAttribute="leading" constant="16" id="Hgy-vr-ME1"/>
-                <constraint firstItem="8nl-Ep-7Jv" firstAttribute="bottom" secondItem="FaB-nv-RDd" secondAttribute="bottom" id="K3q-Ig-zt8"/>
+                <constraint firstItem="8nl-Ep-7Jv" firstAttribute="bottom" secondItem="FaB-nv-RDd" secondAttribute="bottom" constant="20" id="K3q-Ig-zt8"/>
                 <constraint firstItem="kgD-89-A9Q" firstAttribute="leading" secondItem="8nl-Ep-7Jv" secondAttribute="leading" id="Ogp-Rm-iAg"/>
                 <constraint firstItem="kgD-89-A9Q" firstAttribute="top" secondItem="8nl-Ep-7Jv" secondAttribute="top" id="Rnh-rV-ZRM"/>
                 <constraint firstItem="brw-2r-gHN" firstAttribute="top" secondItem="kgD-89-A9Q" secondAttribute="bottom" constant="16" id="Usr-Ec-tfo"/>
